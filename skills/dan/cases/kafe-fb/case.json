@@ -1,0 +1,24 @@
+{
+  "title": "Studi bangunan F&B: denah → massa 3D → RAB → dashboard tanpa data marketing",
+  "desc": "Menguji pertahanan defensif: exec_dashboard tetap jalan walau sumber marketing tidak ada.",
+  "steps": [
+    { "engine": "arch_design",
+      "args": ["{root}/data/kafe_case.json", "--stem", "kafe_", "--out-dir", "{out}"] },
+    { "engine": "exec_dashboard",
+      "args": ["--marketing", "{out}/tidak_ada.json",
+               "--arch", "{out}/kafe_report.json", "--out", "{out}/exec.html",
+               "--title", "Dashboard Studi Kafe"] },
+    { "engine": "claim_audit",
+      "args": ["--report", "{out}/kafe_report.md", "--source", "{out}/kafe_report.json",
+               "--out", "{out}/claim.json"] }
+  ],
+  "asserts": [
+    { "kind": "file", "path": "{out}/kafe_denah_L1.svg" },
+    { "kind": "file", "path": "{out}/kafe_massing_3d.svg" },
+    { "kind": "file", "path": "{out}/exec.html" },
+    { "kind": "json", "path": "{out}/kafe_report.json", "key": "compliance.kdb_ok", "op": "eq", "value": true },
+    { "kind": "json", "path": "{out}/kafe_report.json", "key": "compliance.klb_ok", "op": "eq", "value": true },
+    { "kind": "json", "path": "{out}/claim.json", "key": "coverage_pct", "op": "gte", "value": 95 },
+    { "kind": "text", "path": "{out}/exec.html", "needle": "Dashboard Studi Kafe" }
+  ]
+}

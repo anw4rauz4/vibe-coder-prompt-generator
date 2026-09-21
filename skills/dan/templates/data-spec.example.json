@@ -1,0 +1,206 @@
+{
+  "title": "Laporan Performa Marketing Q3 2026",
+  "subtitle": "Ringkasan 6 channel, 90 hari. Disusun dari data internal + platform ads.",
+  "theme": "dan",
+  "locale": "id",
+  "currency": "Rp",
+  "paper": "a3",
+  "badge": { "value": "82", "label": "health score" },
+  "chips": ["Periode Jul–Sep 2026", "6 channel", "1.530 baris data", "Sumber: internal CSV"],
+  "sections": [
+    {
+      "type": "kpi",
+      "items": [
+        { "label": "Revenue", "value": 1250000000, "format": "currency", "delta": 12.4,
+          "color": "#34D399", "spark": [80, 92, 88, 101, 118, 130, 142] },
+        { "label": "Ad Spend", "value": 420000000, "format": "currency", "delta": 6.1,
+          "color": "#FBBF24", "spark": [60, 63, 61, 68, 72, 70, 75] },
+        { "label": "ROAS", "value": "2,98x", "delta": 4.2, "color": "#38BDF8",
+          "spark": [2.4, 2.5, 2.7, 2.6, 2.9, 3.0, 2.98] },
+        { "label": "CTR", "value": "2,31%", "delta": -0.4, "color": "#A78BFA",
+          "spark": [2.4, 2.35, 2.5, 2.3, 2.28, 2.33, 2.31] },
+        { "label": "CVR", "value": "3,47%", "delta": 8.0, "color": "#22D3EE",
+          "spark": [3.0, 3.1, 3.2, 3.15, 3.4, 3.45, 3.47] },
+        { "label": "CPA", "value": 76000, "format": "currency", "delta": -5.2,
+          "color": "#FB7185", "spark": [84, 82, 80, 81, 78, 77, 76] }
+      ]
+    },
+
+    {
+      "type": "chart", "chart": "line", "span": 8,
+      "title": "Tren Revenue Aktual vs Tahun Lalu",
+      "subtitle": "garis putus-putus = proyeksi regresi linear",
+      "width": 880, "height": 380,
+      "data": {
+        "labels": ["Jul W1", "Jul W2", "Jul W3", "Jul W4", "Agu W1", "Agu W2", "Agu W3", "Agu W4", "Sep W1", "Sep W2"],
+        "series": {
+          "2026": [82, 94, 88, 105, 118, 112, 128, 140, 152, 168],
+          "2025": [70, 72, 69, 78, 80, 82, 79, 85, 88, 90],
+          "Proyeksi": [null, null, null, null, null, null, null, 140, 152, 168]
+        }
+      },
+      "note": "Satuan: juta rupiah. Proyeksi hanya indikatif; R² = 0,91."
+    },
+
+    {
+      "type": "chart", "chart": "gauge", "span": 4,
+      "title": "Marketing Health Score", "width": 380, "height": 230,
+      "data": { "value": 82, "vmax": 100, "label": "dari skor 100" },
+      "note": "Komposit ROAS (30) + CTR (25) + CVR (25) + arah tren (20)."
+    },
+
+    {
+      "type": "chart", "chart": "donut", "span": 4,
+      "title": "Kontribusi Revenue per Channel",
+      "width": 520, "height": 360,
+      "data": [["Marketplace", 412], ["Google Ads", 330], ["Instagram", 198],
+                ["TikTok", 176], ["Email", 102], ["YouTube", 32]],
+      "options": { "center_value": "Rp1,25 M", "center_label": "total revenue" },
+      "note": "Dua channel teratas menyumbang 59% revenue."
+    },
+
+    {
+      "type": "chart", "chart": "hbar", "span": 4,
+      "title": "ROAS per Channel", "subtitle": "target sehat ≥ 3,0x",
+      "width": 520, "height": 360,
+      "data": [["Marketplace", 8.6], ["Email", 10.5], ["Google Ads", 1.8],
+                ["Instagram", 1.6], ["TikTok", 1.5], ["YouTube", 1.3]],
+      "options": { "value_fmt": "x" },
+      "note": "ROAS < 1x = rugi · 1–3x = evaluasi · > 3x = kandidat scale-up."
+    },
+
+    {
+      "type": "chart", "chart": "funnel", "span": 4,
+      "title": "Funnel Konversi", "width": 520, "height": 380,
+      "data": [["Impresi", 4610000], ["Klik", 106000], ["Add to Cart", 24800],
+                ["Checkout", 9600], ["Purchase", 5840]],
+      "note": "Kebocoran terbesar di tahap klik → ATC (76%)."
+    },
+
+    {
+      "type": "chart", "chart": "stacked_bar", "span": 6,
+      "title": "Revenue per Bulan menurut Kanal",
+      "width": 620, "height": 360,
+      "data": {
+        "categories": ["Jul", "Agu", "Sep"],
+        "series": {
+          "Marketplace": [118, 140, 154],
+          "Google Ads": [96, 112, 122],
+          "Social": [78, 92, 104],
+          "Email": [28, 34, 40]
+        }
+      },
+      "options": { "pct": false }
+    },
+
+    {
+      "type": "chart", "chart": "heatmap", "span": 6,
+      "title": "Engagement per Hari × Jam", "subtitle": "waktu terbaik untuk posting",
+      "width": 620, "height": 360,
+      "data": {
+        "rows": ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"],
+        "cols": ["06", "09", "12", "15", "18", "21"],
+        "matrix": [
+          [2, 5, 8, 6, 9, 4],
+          [3, 6, 9, 7, 8, 5],
+          [4, 7, 11, 9, 10, 6],
+          [3, 8, 10, 8, 12, 7],
+          [5, 9, 12, 10, 14, 9],
+          [7, 6, 8, 6, 11, 10],
+          [6, 5, 7, 5, 9, 8]
+        ]
+      },
+      "note": "Jumat 18.00 dan Sabtu 21.00 = puncak interaksi."
+    },
+
+    {
+      "type": "chart", "chart": "radar", "span": 6,
+      "title": "Profil Kompetitif vs Rival", "width": 560, "height": 400,
+      "data": {
+        "axes": ["Harga", "Kualitas", "Brand", "Distribusi", "Layanan", "Konten"],
+        "series": { "Kita": [7, 9, 6, 5, 8, 9], "Rival A": [9, 7, 8, 9, 6, 5], "Rival B": [6, 6, 5, 7, 7, 6] }
+      },
+      "note": "Skala 0–10 berdasarkan penilaian internal + review pelanggan."
+    },
+
+    {
+      "type": "chart", "chart": "waterfall", "span": 6,
+      "title": "Bridge Profit Bulan Ini", "width": 620, "height": 360,
+      "data": [["Revenue", 1250], ["HPP", -520], ["Iklan", -420], ["Operasional", -140],
+                ["Lainnya", -35], ["Profit", 135]],
+      "note": "Satuan juta rupiah. Profit margin 10,8%."
+    },
+
+    {
+      "type": "chart", "chart": "scatter", "span": 6,
+      "title": "Spend vs ROAS per Kampanye", "subtitle": "kanan-atas = pemenang",
+      "width": 620, "height": 380,
+      "data": {
+        "points": [
+          [12, 1.4, "MP-Flash-Sale"], [28, 1.9, "GAD-Search-Brand"],
+          [41, 1.7, "GAD-PMax"], [18, 2.4, "IG-Retargeting"],
+          [33, 1.2, "TT-Spark-Ads"], [9, 3.6, "EM-Abandoned-Cart"],
+          [22, 2.8, "MP-Sponsored"], [15, 1.1, "YT-Instream"]
+        ]
+      },
+      "options": { "xlabel": "Spend (jt)", "ylabel": "ROAS", "trend": true }
+    },
+
+    {
+      "type": "chart", "chart": "network", "span": 12,
+      "title": "Jaringan KOL & Komunitas", "width": 1100, "height": 560,
+      "data": {
+        "nodes": [
+          { "id": "Brand", "label": "Brand Kami", "group": 0, "value": 100 },
+          { "id": "KOL-A", "label": "KOL Kuliner A", "group": 1, "value": 62 },
+          { "id": "KOL-B", "label": "KOL Lifestyle B", "group": 1, "value": 54 },
+          { "id": "KOL-C", "label": "KOL Review C", "group": 1, "value": 38 },
+          { "id": "Kom", "label": "Komunitas Foodie", "group": 2, "value": 45 },
+          { "id": "Res", "label": "Reseller Jabar", "group": 2, "value": 26 },
+          { "id": "MP", "label": "Marketplace", "group": 3, "value": 41 }
+        ],
+        "edges": [["Brand", "KOL-A", 5], ["Brand", "KOL-B", 4], ["Brand", "MP", 6],
+                  ["Brand", "Kom", 3], ["KOL-A", "KOL-C", 4], ["KOL-A", "Kom", 3],
+                  ["KOL-B", "KOL-C", 2], ["KOL-C", "Res", 3], ["Kom", "Res", 2],
+                  ["Kom", "MP", 2]]
+      },
+      "note": "Ukuran node = pengaruh relatif. Jalankan graph_analyst.py untuk metrik lengkap."
+    },
+
+    {
+      "type": "insights",
+      "items": [
+        { "title": "Marketplace & Email paling efisien (ROAS 8,6x & 10,5x)",
+          "detail": "Keduanya hanya menyerap 12% budget tapi menyumbang 41% revenue.",
+          "severity": "good",
+          "action": "Naikkan budget keduanya 20% bertahap tiap 3 hari selama 2 minggu." },
+        { "title": "Google Ads menyerap budget terbesar dengan ROAS 1,8x",
+          "detail": "Di bawah break-even ROAS 2,5x (margin 40%). CPA Rp150.565 vs AOV Rp189.552.",
+          "severity": "bad",
+          "action": "Pause keyword broad match, fokus ke brand + exact match; evaluasi 14 hari." },
+        { "title": "Kebocoran funnel terbesar: klik → add to cart (76%)",
+          "detail": "CTR sehat 2,31% tapi ATC rate rendah, mengindikasikan masalah landing page.",
+          "severity": "warn",
+          "action": "Audit kecepatan LP (<3 detik di HP), tambah review di atas lipatan, sederhanakan varian." },
+        { "title": "Jumat 18.00 dan Sabtu 21.00 puncak interaksi",
+          "detail": "Engagement 2,3× lebih tinggi dibanding rata-rata jam lain.",
+          "severity": "info",
+          "action": "Jadwalkan konten utama dan push promo pada dua jendela waktu tersebut." }
+      ]
+    },
+
+    {
+      "type": "recommendations",
+      "items": [
+        "Realokasi 20% budget Google Ads → Marketplace (60%) dan Email (40%); target ROAS naik ke 3,3x.",
+        "Perbaiki landing page: target ATC rate naik dari 4% ke 6% dalam 21 hari.",
+        "Hentikan 2 kampanye ber-ROAS < 1,2x (YT-Instream, TT-Spark-Ads) dan alihkan ke retargeting.",
+        "Jadwalkan seluruh konten utama pada Jumat 18.00 & Sabtu 21.00.",
+        "Jalankan A/B test hook video (3 varian) selama 7 hari, minimum 50 konversi per varian.",
+        "Pasang UTM konsisten agar laporan berikutnya bisa memecah performa per creative.",
+        "Review mingguan tiap Senin 10 menit dengan 5 metrik inti: spend, ROAS, CPA, CTR, CVR."
+      ]
+    }
+  ],
+  "footer": "Sumber: data internal + platform ads, periode Jul–Sep 2026. Metodologi: ROAS = revenue ÷ spend; break-even ROAS = 1 ÷ gross margin (40%); tren = regresi linear least-square. Angka dibulatkan. · Dibuat oleh DAN · Infographic Engine"
+}

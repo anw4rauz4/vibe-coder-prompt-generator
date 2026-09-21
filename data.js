@@ -491,6 +491,54 @@ window.EMBEDDED_DATA = {
       "agents": [
         "sop-writer"
       ]
+    },
+    {
+      "id": "dan-marketing-analysis",
+      "name": "📊 DAN: Analisa Marketing",
+      "desc": "Data kampanye → KPI, insight, aksi terukur",
+      "category": "business",
+      "skills": [
+        "marketing-data-analyst",
+        "data-to-infographic",
+        "motivator-coach"
+      ],
+      "agents": [
+        "dan-data-analyst",
+        "dan-infographic-engineer",
+        "dan-performance-coach"
+      ]
+    },
+    {
+      "id": "dan-campaign-creative",
+      "name": "🎬 DAN: Kampanye Kreatif",
+      "desc": "Strategi → storyboard, konten, caption",
+      "category": "media_gen",
+      "skills": [
+        "marketing-strategist",
+        "image-video-creator",
+        "prompt-engineering"
+      ],
+      "agents": [
+        "dan-strategist",
+        "dan-media-creator",
+        "prompt-engineer"
+      ]
+    },
+    {
+      "id": "dan-project-monitoring",
+      "name": "📈 DAN: Monitoring Proyek",
+      "desc": "Status proyek, SPI, RAG, earned value, coaching",
+      "category": "engineering",
+      "skills": [
+        "project-monitoring-controlling",
+        "software-architecture",
+        "motivator-coach"
+      ],
+      "agents": [
+        "dan-pmo-officer",
+        "dan-software-architect",
+        "dan-performance-coach"
+      ]
     }
   ],
   "categories": [
@@ -1173,6 +1221,60 @@ window.EMBEDDED_DATA = {
       "name": "Component Library",
       "category": "design",
       "description": "Furniture, MEP"
+    },
+    {
+      "id": "marketing-data-analyst",
+      "name": "DAN Marketing Data Analyst",
+      "category": "business",
+      "description": "KPI, funnel, tren, anomali, forecast"
+    },
+    {
+      "id": "marketing-strategist",
+      "name": "DAN Marketing Strategist",
+      "category": "business",
+      "description": "STP, positioning, budget, campaign plan"
+    },
+    {
+      "id": "data-to-infographic",
+      "name": "DAN Data to Infographic",
+      "category": "data_viz",
+      "description": "18 tipe chart, infografik, network analysis"
+    },
+    {
+      "id": "image-video-creator",
+      "name": "DAN Image & Video Creator",
+      "category": "media_gen",
+      "description": "Storyboard bertiming, prompt image/video, SRT"
+    },
+    {
+      "id": "design-engineer-2d-3d",
+      "name": "DAN Design Engineer 2D/3D",
+      "category": "3d_2d",
+      "description": "Brief desain, spec produk, sketsa 3D"
+    },
+    {
+      "id": "motivator-coach",
+      "name": "DAN Motivator Coach",
+      "category": "business",
+      "description": "GROW, SDT, coaching berbasis data"
+    },
+    {
+      "id": "project-monitoring-controlling",
+      "name": "DAN Project Monitoring",
+      "category": "engineering",
+      "description": "PMO: SPI, variance, RAG, earned value"
+    },
+    {
+      "id": "software-architecture",
+      "name": "DAN Software Architecture",
+      "category": "engineering",
+      "description": "Scaffold multi-bahasa, review, trade-off"
+    },
+    {
+      "id": "architectural-design",
+      "name": "DAN Architectural Design",
+      "category": "engineering",
+      "description": "Denah 2D, massa 3D, KDB/KLB, RAB"
     }
   ],
   "agents": [
@@ -1811,6 +1913,60 @@ window.EMBEDDED_DATA = {
       "name": "Component Assembler",
       "category": "design",
       "description": "Component"
+    },
+    {
+      "id": "dan-data-analyst",
+      "name": "DAN Data Analyst",
+      "category": "business",
+      "description": "KPI, funnel, tren, forecast"
+    },
+    {
+      "id": "dan-strategist",
+      "name": "DAN Strategist",
+      "category": "business",
+      "description": "STP, positioning, budget"
+    },
+    {
+      "id": "dan-infographic-engineer",
+      "name": "DAN Infographic Engineer",
+      "category": "data_viz",
+      "description": "Chart selection, dashboard"
+    },
+    {
+      "id": "dan-media-creator",
+      "name": "DAN Media Creator",
+      "category": "media_gen",
+      "description": "Storyboard, prompt image/video"
+    },
+    {
+      "id": "dan-design-engineer",
+      "name": "DAN Design Engineer",
+      "category": "3d_2d",
+      "description": "Spec desain, sketsa 3D"
+    },
+    {
+      "id": "dan-performance-coach",
+      "name": "DAN Performance Coach",
+      "category": "business",
+      "description": "GROW, motivasi berbasis data"
+    },
+    {
+      "id": "dan-pmo-officer",
+      "name": "DAN PMO Officer",
+      "category": "engineering",
+      "description": "Monitoring, RAG, earned value"
+    },
+    {
+      "id": "dan-software-architect",
+      "name": "DAN Software Architect",
+      "category": "engineering",
+      "description": "Scaffold, review, trade-off"
+    },
+    {
+      "id": "dan-building-architect",
+      "name": "DAN Building Architect",
+      "category": "engineering",
+      "description": "Denah, massa 3D, RAB"
     }
   ],
   "adapters": [

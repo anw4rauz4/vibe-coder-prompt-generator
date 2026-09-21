@@ -219,6 +219,49 @@ test('index.html punya UI upload gambar', () => {
   assert.ok(html.includes('multiple'), 'input harus multiple');
 });
 
+// ---------- DAN PLAYBOOK INTEGRATION ----------
+console.log('\n🧠 DAN Playbook');
+const danSkill = { id: 'marketing-data-analyst', name: 'DAN Marketing Data Analyst', description: 'KPI, funnel' };
+const danAgent = { id: 'dan-data-analyst', name: 'DAN Data Analyst', description: 'KPI' };
+
+test('skill DAN → prompt memuat DAN PLAYBOOK + prinsip + deliverable', () => {
+  const prompt = buildPrompt({
+    project: baseProject, skills: [danSkill], agents: [danAgent],
+    platform: {}, detail: '', categories: []
+  });
+  assert.ok(prompt.includes('## 🧠 DAN PLAYBOOK'));
+  assert.ok(prompt.includes('Data dulu, opini belakangan'));
+  assert.ok(prompt.includes('**DAN Marketing Data Analyst** → JSON hasil analisa'));
+  assert.ok(prompt.includes('skills/dan/'));
+});
+
+test('tanpa skill DAN → tidak ada blok playbook', () => {
+  const prompt = buildPrompt({ project: baseProject, skills: [], agents: [], platform: {}, detail: '', categories: [] });
+  assert.ok(!prompt.includes('DAN PLAYBOOK'));
+});
+
+test('paket skills/dan/ lengkap & konsisten', () => {
+  const danRoot = path.join(ROOT, 'skills', 'dan');
+  assert.ok(fs.existsSync(path.join(danRoot, 'SKILL.md')), 'SKILL.md tidak ada');
+  assert.ok(fs.existsSync(path.join(danRoot, 'AGENT.md')), 'AGENT.md tidak ada');
+  assert.ok(fs.existsSync(path.join(danRoot, 'SYSTEM_PROMPT.txt')), 'SYSTEM_PROMPT.txt tidak ada');
+  assert.ok(fs.existsSync(path.join(danRoot, 'references', 'metric-library.md')), 'references hilang');
+  assert.ok(fs.existsSync(path.join(danRoot, 'scripts', 'dan_analytics.py')), 'engine hilang');
+  assert.ok(fs.existsSync(path.join(danRoot, 'templates', 'campaign-plan.md')), 'templates hilang');
+  assert.ok(fs.existsSync(path.join(danRoot, 'examples-data', 'sample_campaign.csv')), 'contoh data hilang');
+});
+
+test('skill/agent DAN di data JSON match paket (9+9)', () => {
+  const danSkillsInData = data.skills.filter(s => s.name.startsWith('DAN '));
+  const danAgentsInData = data.agents.filter(a => a.name.startsWith('DAN '));
+  assert.strictEqual(danSkillsInData.length, 9, 'harus 9 skill DAN');
+  assert.strictEqual(danAgentsInData.length, 9, 'harus 9 agent DAN');
+  const engineSkillIds = Object.keys(require('../core.js').buildDanPlaybook ? {} : {});
+  danSkillsInData.forEach(s => {
+    assert.ok(/^(marketing-data-analyst|marketing-strategist|data-to-infographic|image-video-creator|design-engineer-2d-3d|motivator-coach|project-monitoring-controlling|software-architecture|architectural-design)$/.test(s.id), `id tak dikenal: ${s.id}`);
+  });
+});
+
 // ---------- APP.JS INTEGRITY ----------
 console.log('\n🧩 app.js integrity');
 test('app.js syntax valid', () => {

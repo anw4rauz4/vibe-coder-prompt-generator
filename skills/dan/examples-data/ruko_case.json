@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "name": "Ruko 3 Lantai — Toko + Kantor + Hunian",
+    "style": "minimalis fungsional",
+    "currency": "Rp",
+    "today": "2026-09-16",
+    "client": "Ibu Hartini",
+    "location": "Surabaya (kawasan ruko)"
+  },
+
+  "site": {
+    "width": 6,
+    "length": 16,
+    "build_width": 5.5,
+    "kdb_max": 0.9,
+    "klb_max": 2.7,
+    "floors_allowed": 3,
+    "setback_front": 1.5,
+    "setback_side": 0
+  },
+
+  "floors": [
+    {
+      "name": "Lantai 1 (Toko)",
+      "height": 3.6,
+      "rooms": [
+        { "name": "Area Toko / Display", "w": 5.0, "d": 7.0, "function": "living" },
+        { "name": "Kasir & Gudang Kecil", "w": 2.5, "d": 3.0, "function": "service" },
+        { "name": "Kamar Mandi 1", "w": 1.5, "d": 2.0, "function": "wet" },
+        { "name": "Tangga & Void", "w": 2.2, "d": 4.0, "function": "circulation" }
+      ]
+    },
+    {
+      "name": "Lantai 2 (Kantor)",
+      "height": 3.2,
+      "rooms": [
+        { "name": "Ruang Kerja Terbuka", "w": 5.0, "d": 6.0, "function": "living" },
+        { "name": "Ruang Rapat", "w": 3.0, "d": 3.2, "function": "living" },
+        { "name": "Pantry", "w": 2.0, "d": 2.4, "function": "service" },
+        { "name": "Kamar Mandi 2", "w": 1.5, "d": 2.0, "function": "wet" },
+        { "name": "Tangga", "w": 2.2, "d": 4.0, "function": "circulation" }
+      ]
+    },
+    {
+      "name": "Lantai 3 (Hunian)",
+      "height": 3.0,
+      "rooms": [
+        { "name": "Kamar Tidur Utama", "w": 3.6, "d": 4.0, "function": "private" },
+        { "name": "Kamar Tidur Anak", "w": 3.0, "d": 3.2, "function": "private" },
+        { "name": "Ruang Keluarga", "w": 3.4, "d": 3.6, "function": "living" },
+        { "name": "Kamar Mandi 3", "w": 1.6, "d": 2.2, "function": "wet" },
+        { "name": "Area Cuci Jemur", "w": 2.0, "d": 2.4, "function": "service" },
+        { "name": "Tangga & Balkon", "w": 2.2, "d": 4.2, "function": "circulation" }
+      ]
+    }
+  ],
+
+  "cost": {
+    "structure_per_m2": 3800000,
+    "finish_per_m2": 2400000,
+    "mep_per_m2": 1200000,
+    "other_pct": 10
+  },
+
+  "notes": {
+    "struktur": "pondasi footplat; kolom praktis tiap 3,5 m; pelat beton per lantai",
+    "dinding": "bata ringan; fasad cat weathershield + aksen GRC",
+    "lantai": "granit 60x60 toko & hunian; keramik anti-slip KM & area cuci",
+    "mep": "listrik 2200 VA (toko) + 1300 VA (hunian); toren 600L; exhaust KM"
+  }
+}

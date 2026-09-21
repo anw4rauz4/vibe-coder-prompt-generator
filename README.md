@@ -2,7 +2,9 @@
 
 Generator prompt AI berbasis web — tanpa framework, tanpa install, langsung jalan di browser.
 
-Pilih project → pilih skills & sub-agents → tulis detail → dapatkan **prompt siap pakai** yang sudah dioptimalkan sesuai platform AI tujuan Anda (ChatGPT, Claude, Gemini, dan lainnya).
+Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gambar referensi → dapatkan **prompt siap pakai** yang sudah dioptimalkan sesuai platform AI tujuan Anda (ChatGPT, Claude, Gemini, dan lainnya).
+
+> 🆕 **Terintegrasi paket skill DAN** — metodologi marketing multi-keahlian (analisa data, strategi, infografik, storyboard, PMO, arsitektur software & bangunan). Pilih skill "DAN ..." dan prompt otomatis memuat **DAN Playbook**: prinsip kerja berbasis data + target deliverable per skill. Paket lengkap (pustaka referensi, engine CLI Python zero-dependency, template dokumen) ada di folder [`skills/dan/`](skills/dan/).
 
 ---
 
@@ -11,8 +13,9 @@ Pilih project → pilih skills & sub-agents → tulis detail → dapatkan **prom
 | Fitur | Keterangan |
 |---|---|
 | 📁 **Preset Project** | 32 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, dll. |
-| 🛠️ **105 Skills** | Multi-pilih skill, cari dengan pencarian, filter per kategori |
-| 🤖 **106 Sub-Agents** | Pilih agent pendamping untuk memecah tugas kompleks |
+| 🛠️ **114 Skills** | Multi-pilih skill, cari dengan pencarian, filter per kategori — termasuk 9 skill DAN |
+| 🤖 **115 Sub-Agents** | Pilih agent pendamping untuk memecah tugas kompleks — termasuk 9 agent DAN |
+| 🧠 **DAN Playbook** | Skill "DAN ..." mengaktifkan metodologi: data dulu, tiap temuan = aksi terukur, deliverable jelas per skill |
 | 🌐 **10 Platform AI** | Template prompt berbeda untuk ChatGPT, Claude, Gemini, Grok, Perplexity, Llama, Mistral, DeepSeek, Qwen, dan generic |
 | 🎯 **Auto-Preset** | Skill & agent rekomendasi otomatis terpilih saat project diklik |
 | ✨ **Custom Skills/Agents** | Tambah skill atau agent buatan sendiri (tersimpan di browser) |
@@ -62,17 +65,21 @@ Tempel hasilnya ke ChatGPT / Claude / Gemini Anda. Prompt sudah berisi struktur 
 ├── index.html          # Halaman utama (UI)
 ├── style.css           # Styling + tema dark/light
 ├── app.js              # Logika UI, state, event, localStorage
-├── core.js             # Logika murni: template prompt per-platform, encode/decode
+├── core.js             # Logika murni: template per-platform, playbook DAN, encode/decode
 ├── data.js             # Data tertanam (auto-generated, agar jalan via file://)
 ├── data/
-│   ├── projects.json   # Preset project
+│   ├── projects.json   # Preset project (incl. 3 preset DAN)
 │   ├── categories.json # Kategori project
-│   ├── skills.json     # Daftar skills
-│   ├── agents.json     # Daftar sub-agents
+│   ├── skills.json     # Daftar skills (incl. 9 skill DAN)
+│   ├── agents.json     # Daftar sub-agents (incl. 9 agent DAN)
 │   └── adapters.json   # Platform AI + template-nya
+├── skills/dan/         # 🆕 Paket skill DAN: SKILL.md, AGENT.md, SYSTEM_PROMPT,
+│   │                   #    9 pustaka referensi, 40+ engine Python zero-dependency,
+│   │                   #    11+ template dokumen, data contoh
+│   └── ...             # Lihat skills/dan/SKILL.md untuk indeks lengkap
 └── tests/
     ├── build-data.js   # Generator data.js dari data/*.json
-    └── core.test.js    # Unit test logika inti
+    └── core.test.js    # Unit test logika inti + integrasi DAN
 ```
 
 ---

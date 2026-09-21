@@ -1,0 +1,40 @@
+{
+  "title": "Launch produk: data kampanye → analisa → infografik → monitoring → guard → slides",
+  "desc": "Skenario paling umum: tim marketing menjalankan kampanye, data masuk CSV, PMO memantau, pimpinan mendapat deck.",
+  "steps": [
+    { "engine": "make_sample_data",
+      "args": ["--days", "30", "--seed", "11", "--out", "{out}/campaign.csv"] },
+    { "engine": "dan_analytics",
+      "args": ["{out}/campaign.csv", "--currency", "Rp", "--forecast", "7",
+               "--out", "{out}/analysis.json", "--report", "{out}/analysis.md"] },
+    { "engine": "make_infographic",
+      "args": ["{out}/analysis.json", "--out", "{out}/infographic.html"] },
+    { "engine": "project_monitor",
+      "args": ["report", "{root}/skills/dan/templates/projects.example.json",
+               "--out-dir", "{out}"] },
+    { "engine": "weekly_run",
+      "args": ["--projects", "{root}/skills/dan/templates/projects.example.json",
+               "--updates", "{root}/data/weekly_batch.example.json",
+               "--marketing", "{out}/analysis.json", "--out-dir", "{out}",
+               "--period", "Minggu demo"] },
+    { "engine": "pmo_guard",
+      "args": ["{out}/projects_updated.json", "--report", "{out}/guard.md"],
+      "expect_exit": [0] },
+    { "engine": "claim_audit",
+      "args": ["--report", "{out}/analysis.md", "--source", "{out}/analysis.json",
+               "--out", "{out}/claim_audit.md"] },
+    { "engine": "make_slides",
+      "args": ["--marketing", "{out}/analysis.json", "--project", "{out}/project_report.json",
+               "--out", "{out}/slides.html"] }
+  ],
+  "asserts": [
+    { "kind": "file", "path": "{out}/infographic.html" },
+    { "kind": "file", "path": "{out}/weekly_summary.html" },
+    { "kind": "file", "path": "{out}/slides.html" },
+    { "kind": "json", "path": "{out}/analysis.json", "key": "kpi.roas", "op": "gte", "value": 1 },
+    { "kind": "json", "path": "{out}/project_report.json", "key": "portfolio.stalled", "op": "eq", "value": 0 },
+    { "kind": "json", "path": "{out}/claim_audit.json", "key": "coverage_pct", "op": "gte", "value": 98 },
+    { "kind": "text", "path": "{out}/weekly_summary.md", "needle": "Tiga keputusan" },
+    { "kind": "text", "path": "{out}/guard.md", "needle": "BERSIH" }
+  ]
+}

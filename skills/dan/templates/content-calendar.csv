@@ -1,0 +1,9 @@
+tanggal,platform,pilar_konten,format,judul_atau_hook,durasi_atau_jumlah_slide,cta,produk,talent_atau_aset,owner,status,utm_source,utm_medium,utm_campaign,kpi_target,catatan
+2026-09-21,TikTok,edukasi,video-9x16,"3 kesalahan yang bikin serum kamu nggak ngefek",30,"Follow untuk part 2",Serum Vitamin C,talent+produk,Andi,planned,tiktok,organic,edukasi-09,retention-50%,ambil dari storyboard.py
+2026-09-22,Instagram,bukti sosial,carousel-4x5,"12.000 review bintang 4,9 — ini 5 yang paling jujur",8 slide,"Save & cek link di bio",Serum Vitamin C,screenshot-review,Sari,planned,instagram,organic,social-proof-09,save-rate-2%,gunakan template flatlay
+2026-09-23,TikTok,hiburan,video-9x16,"POV: kamu baru sadar skincare mahal bukan berarti cocok",21,"Komen tim mana kamu",Serum Vitamin C,talent,Andi,planned,tiktok,organic,hiburan-09,comment-rate-1%,hook POV
+2026-09-24,Instagram,hard-sell,video-9x16,"Diskon 40% cuma sampai Minggu — ini isinya",30,"Klik keranjang",Serum Vitamin C,produk+offer,Budi,planned,instagram,paid,kampanye-q3,roas-3x,gunakan struktur hook_story_offer
+2026-09-25,Email,edukasi,email-html,"Cara pakai Vitamin C yang benar (pagi vs malam)",-,,"Balas email ini",Serum Vitamin C,template,Andi,planned,email,newsletter,edu-email-09,ctr-4%,kirim Kamis 18.00
+2026-09-26,WhatsApp,bukti sosial,broadcast,"Testimoni 14 hari + foto before-after",-,,"Balas MAU untuk diskon",Serum Vitamin C,foto-user,Sari,planned,wa,broadcast,wa-09,cvr-6%,segmentasi: belum beli
+2026-09-27,Marketplace,hard-sell,live-shopping,"Flash sale 2 jam + bundle hemat",7200,"Beli sekarang di live",Serum Vitamin C,host+Budi,Budi,planned,marketplace,live,flash-09,gmv-25jt,Sabtu 21.00 = puncak
+2026-09-28,YouTube,edukasi,longform-16x9,"Review jujur 30 hari: apa yang berubah dan apa yang tidak",420,"Cek deskripsi",Serum Vitamin C,talent,Andi,planned,youtube,organic,review-09,avg-view-45%,chapter tiap 60-90 detik

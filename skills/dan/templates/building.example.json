@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "name": "Rumah Tinggal Keluarga Arunika",
+    "style": "modern tropis",
+    "currency": "Rp",
+    "today": "2026-09-16",
+    "client": "Bpk. Arunika",
+    "location": "Bandung, Jawa Barat"
+  },
+
+  "site": {
+    "width": 12,
+    "length": 20,
+    "build_width": 10,
+    "kdb_max": 0.6,
+    "klb_max": 1.6,
+    "floors_allowed": 2,
+    "setback_front": 3,
+    "setback_side": 1.5
+  },
+
+  "floors": [
+    {
+      "name": "Lantai 1",
+      "height": 3.4,
+      "rooms": [
+        { "name": "Ruang Tamu", "w": 3.5, "d": 4.0, "function": "living" },
+        { "name": "Ruang Keluarga", "w": 4.2, "d": 4.5, "function": "living" },
+        { "name": "Dapur & Pantry", "w": 3.2, "d": 3.6, "function": "service" },
+        { "name": "Kamar Mandi Tamu", "w": 1.8, "d": 2.2, "function": "wet" },
+        { "name": "Garasi 1 Mobil", "w": 3.0, "d": 5.0, "function": "service" },
+        { "name": "Teras Belakang", "w": 3.0, "d": 2.0, "function": "circulation" }
+      ]
+    },
+    {
+      "name": "Lantai 2",
+      "height": 3.1,
+      "rooms": [
+        { "name": "Kamar Utama + WIC", "w": 4.2, "d": 4.6, "function": "private" },
+        { "name": "Kamar Anak 1", "w": 3.2, "d": 3.6, "function": "private" },
+        { "name": "Kamar Anak 2", "w": 3.2, "d": 3.6, "function": "private" },
+        { "name": "Kamar Mandi Keluarga", "w": 2.0, "d": 2.4, "function": "wet" },
+        { "name": "Ruang Kerja", "w": 2.6, "d": 3.0, "function": "living" },
+        { "name": "Balkon", "w": 3.0, "d": 1.6, "function": "circulation" }
+      ]
+    }
+  ],
+
+  "cost": {
+    "structure_per_m2": 3500000,
+    "finish_per_m2": 2600000,
+    "mep_per_m2": 1300000,
+    "other_pct": 10
+  },
+
+  "notes": {
+    "struktur": "pondasi footplat + kolom beton bertulang; rangka atap baja ringan",
+    "dinding": "bata ringan (hebel) diplester-aci; cat weathershield eksterior",
+    "lantai": "granit 60x60 area hidup; keramik anti-slip area basah",
+    "atap": "genteng beton flat + talang tersembunyi",
+    "mep": "PDAM + toren 1000L + booster; listrik 2200 VA; solar water heater"
+  }
+}

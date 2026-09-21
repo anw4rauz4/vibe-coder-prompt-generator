@@ -4,255 +4,534 @@
     "name": "🌐 Web App",
     "desc": "Buat aplikasi web modern",
     "category": "web_app",
-    "skills": ["web-app", "ui-design", "design-system"],
-    "agents": ["frontend-dev", "ui-designer"]
+    "skills": [
+      "web-app",
+      "ui-design",
+      "design-system"
+    ],
+    "agents": [
+      "frontend-dev",
+      "ui-designer"
+    ]
   },
   {
     "id": "mobile-app",
     "name": "📱 Mobile App",
     "desc": "Buat aplikasi mobile",
     "category": "web_app",
-    "skills": ["web-app", "ui-design"],
-    "agents": ["frontend-dev", "ui-designer"]
+    "skills": [
+      "web-app",
+      "ui-design"
+    ],
+    "agents": [
+      "frontend-dev",
+      "ui-designer"
+    ]
   },
   {
     "id": "dashboard",
     "name": "📊 Dashboard",
     "desc": "Buat dashboard analytics",
     "category": "data_viz",
-    "skills": ["data-viz", "dashboard-builder"],
-    "agents": ["data-viz-expert", "dashboard-developer"]
+    "skills": [
+      "data-viz",
+      "dashboard-builder"
+    ],
+    "agents": [
+      "data-viz-expert",
+      "dashboard-developer"
+    ]
   },
   {
     "id": "video-cinematic",
     "name": "🎬 Video Sinematik",
     "desc": "Buat video sinematik Hollywood",
     "category": "cinematic",
-    "skills": ["cinematic-video", "scene-shots", "camera-movement", "lens-visual-look", "lighting-mood"],
-    "agents": ["cinematic-director", "scene-director", "camera-operator", "lens-specialist", "lighting-director"]
+    "skills": [
+      "cinematic-video",
+      "scene-shots",
+      "camera-movement",
+      "lens-visual-look",
+      "lighting-mood"
+    ],
+    "agents": [
+      "cinematic-director",
+      "scene-director",
+      "camera-operator",
+      "lens-specialist",
+      "lighting-director"
+    ]
   },
   {
     "id": "video-ads",
     "name": "📺 Video Ads",
     "desc": "Buat video iklan commercial",
     "category": "media_gen",
-    "skills": ["video-ads", "copywriting-ads"],
-    "agents": ["ads-producer", "copywriter"]
+    "skills": [
+      "video-ads",
+      "copywriting-ads"
+    ],
+    "agents": [
+      "ads-producer",
+      "copywriter"
+    ]
   },
   {
     "id": "short-form",
     "name": "📱 Short-Form Video",
     "desc": "Buat Reels, TikTok, Shorts",
     "category": "media_gen",
-    "skills": ["short-form-video", "motion-graphics"],
-    "agents": ["short-form-creator", "motion-graphics-artist"]
+    "skills": [
+      "short-form-video",
+      "motion-graphics"
+    ],
+    "agents": [
+      "short-form-creator",
+      "motion-graphics-artist"
+    ]
   },
   {
     "id": "banner-ads",
     "name": "🖼️ Banner Ads",
     "desc": "Buat banner iklan",
     "category": "media_gen",
-    "skills": ["banner-design", "banner-ads", "copywriting-ads"],
-    "agents": ["banner-designer", "copywriter"]
+    "skills": [
+      "banner-design",
+      "banner-ads",
+      "copywriting-ads"
+    ],
+    "agents": [
+      "banner-designer",
+      "copywriter"
+    ]
   },
   {
     "id": "3d-model",
     "name": "🏗️ 3D Model",
     "desc": "Buat model 3D",
     "category": "3d_2d",
-    "skills": ["3d-2d-engine", "blender-3d"],
-    "agents": ["3d-engineer", "blender-artist"]
+    "skills": [
+      "3d-2d-engine",
+      "blender-3d"
+    ],
+    "agents": [
+      "3d-engineer",
+      "blender-artist"
+    ]
   },
   {
     "id": "indoor-design",
     "name": "🏠 Indoor Design",
     "desc": "Desain interior",
     "category": "design",
-    "skills": ["indoor-design", "sketchup-3d"],
-    "agents": ["interior-designer", "sketchup-modeler"]
+    "skills": [
+      "indoor-design",
+      "sketchup-3d"
+    ],
+    "agents": [
+      "interior-designer",
+      "sketchup-modeler"
+    ]
   },
   {
     "id": "outdoor-design",
     "name": "🌳 Outdoor Design",
     "desc": "Desain landscape",
     "category": "design",
-    "skills": ["outdoor-design", "sketchup-3d"],
-    "agents": ["landscape-architect", "sketchup-modeler"]
+    "skills": [
+      "outdoor-design",
+      "sketchup-3d"
+    ],
+    "agents": [
+      "landscape-architect",
+      "sketchup-modeler"
+    ]
   },
   {
     "id": "cad-drawing",
     "name": "📐 CAD Drawing",
     "desc": "Buat gambar teknik",
     "category": "engineering",
-    "skills": ["cad-engineering", "civil-engineering"],
-    "agents": ["cad-draftsman", "civil-engineer"]
+    "skills": [
+      "cad-engineering",
+      "civil-engineering"
+    ],
+    "agents": [
+      "cad-draftsman",
+      "civil-engineer"
+    ]
   },
   {
     "id": "software-engineering",
     "name": "💻 Software Engineering",
     "desc": "Buat software full-stack",
     "category": "engineering",
-    "skills": ["software-engineering"],
-    "agents": ["software-engineer", "frontend-dev"]
+    "skills": [
+      "software-engineering"
+    ],
+    "agents": [
+      "software-engineer",
+      "frontend-dev"
+    ]
   },
   {
     "id": "ui-ux-design",
     "name": "🎨 UI/UX Design",
     "desc": "Desain UI/UX lengkap",
     "category": "design",
-    "skills": ["ui-design", "ux-research", "design-system", "usability-testing"],
-    "agents": ["ui-designer", "ux-researcher", "design-system-architect", "usability-tester"]
+    "skills": [
+      "ui-design",
+      "ux-research",
+      "design-system",
+      "usability-testing"
+    ],
+    "agents": [
+      "ui-designer",
+      "ux-researcher",
+      "design-system-architect",
+      "usability-tester"
+    ]
   },
   {
     "id": "ai-saas",
     "name": "🤖 AI SaaS",
     "desc": "Buat AI SaaS lengkap",
     "category": "ai_modern",
-    "skills": ["ai-app-saas-building", "rag-system", "ai-agents", "llm-observability"],
-    "agents": ["ai-saas-builder", "rag-engineer", "ai-agent-architect", "llm-observability-engineer"]
+    "skills": [
+      "ai-app-saas-building",
+      "rag-system",
+      "ai-agents",
+      "llm-observability"
+    ],
+    "agents": [
+      "ai-saas-builder",
+      "rag-engineer",
+      "ai-agent-architect",
+      "llm-observability-engineer"
+    ]
   },
   {
     "id": "ai-video",
     "name": "🎥 AI Video Generation",
     "desc": "Buat video dengan AI",
     "category": "ai_modern",
-    "skills": ["ai-video-generation", "voice-ai-avatars"],
-    "agents": ["ai-video-director", "voice-avatar-producer"]
+    "skills": [
+      "ai-video-generation",
+      "voice-ai-avatars"
+    ],
+    "agents": [
+      "ai-video-director",
+      "voice-avatar-producer"
+    ]
   },
   {
     "id": "clone-app",
     "name": "🧬 Clone App",
     "desc": "Clone dari link/screenshot",
     "category": "cloning",
-    "skills": ["link-to-app", "screenshot-to-app", "app-cloning", "reverse-engineering"],
-    "agents": ["link-analyzer", "screenshot-analyzer", "app-cloner", "reverse-engineer"]
+    "skills": [
+      "link-to-app",
+      "screenshot-to-app",
+      "app-cloning",
+      "reverse-engineering"
+    ],
+    "agents": [
+      "link-analyzer",
+      "screenshot-analyzer",
+      "app-cloner",
+      "reverse-engineer"
+    ]
   },
   {
     "id": "image-analysis",
     "name": "🔍 Image Analysis",
     "desc": "Analisis gambar + cari jawaban",
     "category": "image_processing",
-    "skills": ["image-to-answer", "visual-qa", "image-analysis"],
-    "agents": ["image-answerer", "visual-qa-specialist", "image-analyst"]
+    "skills": [
+      "image-to-answer",
+      "visual-qa",
+      "image-analysis"
+    ],
+    "agents": [
+      "image-answerer",
+      "visual-qa-specialist",
+      "image-analyst"
+    ]
   },
   {
     "id": "image-to-video",
     "name": "🎞️ Image to Video",
     "desc": "Ubah gambar jadi video",
     "category": "image_processing",
-    "skills": ["image-to-video"],
-    "agents": ["image-to-video-producer", "ai-video-director"]
+    "skills": [
+      "image-to-video"
+    ],
+    "agents": [
+      "image-to-video-producer",
+      "ai-video-director"
+    ]
   },
   {
     "id": "image-to-banner",
     "name": "🖼️ Image to Banner",
     "desc": "Ubah gambar jadi banner",
     "category": "image_processing",
-    "skills": ["image-to-banner", "banner-design"],
-    "agents": ["image-to-banner-designer", "banner-designer"]
+    "skills": [
+      "image-to-banner",
+      "banner-design"
+    ],
+    "agents": [
+      "image-to-banner-designer",
+      "banner-designer"
+    ]
   },
   {
     "id": "presentation",
     "name": "📽️ Presentasi",
     "desc": "Buat presentasi + animasi",
     "category": "education",
-    "skills": ["presentation", "presentation-animation"],
-    "agents": ["presentation-designer", "presentation-animator"]
+    "skills": [
+      "presentation",
+      "presentation-animation"
+    ],
+    "agents": [
+      "presentation-designer",
+      "presentation-animator"
+    ]
   },
   {
     "id": "teaching-material",
     "name": "📚 Bahan Ajar",
     "desc": "Buat modul + slide + soal",
     "category": "education",
-    "skills": ["teaching-materials", "curriculum-design", "assessment-evaluation"],
-    "agents": ["teaching-material-developer", "curriculum-designer", "assessment-specialist"]
+    "skills": [
+      "teaching-materials",
+      "curriculum-design",
+      "assessment-evaluation"
+    ],
+    "agents": [
+      "teaching-material-developer",
+      "curriculum-designer",
+      "assessment-specialist"
+    ]
   },
   {
     "id": "math-tutor",
     "name": "🧮 Math Tutor",
     "desc": "Buat bahan ajar matematika",
     "category": "education",
-    "skills": ["mathematics", "math-formula-process", "statistics"],
-    "agents": ["mathematician", "formula-explainer", "statistician"]
+    "skills": [
+      "mathematics",
+      "math-formula-process",
+      "statistics"
+    ],
+    "agents": [
+      "mathematician",
+      "formula-explainer",
+      "statistician"
+    ]
   },
   {
     "id": "history-lesson",
     "name": "📜 History Lesson",
     "desc": "Buat materi sejarah",
     "category": "education",
-    "skills": ["history", "teaching-materials"],
-    "agents": ["historian", "teaching-material-developer"]
+    "skills": [
+      "history",
+      "teaching-materials"
+    ],
+    "agents": [
+      "historian",
+      "teaching-material-developer"
+    ]
   },
   {
     "id": "translation",
     "name": "🌐 Translation",
     "desc": "Terjemahkan multi-bahasa",
     "category": "education",
-    "skills": ["translation"],
-    "agents": ["translator"]
+    "skills": [
+      "translation"
+    ],
+    "agents": [
+      "translator"
+    ]
   },
   {
     "id": "sales-strategy",
     "name": "💼 Sales Strategy",
     "desc": "Buat strategi sales lengkap",
     "category": "business",
-    "skills": ["sales-strategy", "sales-marketing", "negotiation-selling"],
-    "agents": ["sales-strategist", "sales-marketing-expert", "negotiation-trainer"]
+    "skills": [
+      "sales-strategy",
+      "sales-marketing",
+      "negotiation-selling"
+    ],
+    "agents": [
+      "sales-strategist",
+      "sales-marketing-expert",
+      "negotiation-trainer"
+    ]
   },
   {
     "id": "sales-coaching",
     "name": "🎯 Sales Coaching",
     "desc": "Coach & motivasi tim sales",
     "category": "business",
-    "skills": ["sales-coaching", "team-performance", "motivation-strategy"],
-    "agents": ["sales-coach", "team-performance-coach", "motivation-expert"]
+    "skills": [
+      "sales-coaching",
+      "team-performance",
+      "motivation-strategy"
+    ],
+    "agents": [
+      "sales-coach",
+      "team-performance-coach",
+      "motivation-expert"
+    ]
   },
   {
     "id": "sales-monitoring",
     "name": "📊 Sales Monitoring",
     "desc": "Monitoring & analytics sales",
     "category": "business",
-    "skills": ["sales-monitoring", "dashboard-builder", "forecast-modeling"],
-    "agents": ["sales-analyst", "dashboard-developer", "forecast-analyst"]
+    "skills": [
+      "sales-monitoring",
+      "dashboard-builder",
+      "forecast-modeling"
+    ],
+    "agents": [
+      "sales-analyst",
+      "dashboard-developer",
+      "forecast-analyst"
+    ]
   },
   {
     "id": "hr-management",
     "name": "👥 HR Management",
     "desc": "Kelola SDM 3 tingkat",
     "category": "business",
-    "skills": ["hrm-3-levels", "talent-management", "personality-assessment"],
-    "agents": ["top-management-coach", "middle-management-coach", "lower-management-coach", "talent-manager"]
+    "skills": [
+      "hrm-3-levels",
+      "talent-management",
+      "personality-assessment"
+    ],
+    "agents": [
+      "top-management-coach",
+      "middle-management-coach",
+      "lower-management-coach",
+      "talent-manager"
+    ]
   },
   {
     "id": "talent-mapping",
     "name": "🧠 Talent Mapping",
     "desc": "Klasifikasi SDM berdasarkan sifat",
     "category": "business",
-    "skills": ["talent-management", "personality-assessment", "conflict-management"],
-    "agents": ["talent-manager", "personality-analyst", "conflict-resolver"]
+    "skills": [
+      "talent-management",
+      "personality-assessment",
+      "conflict-management"
+    ],
+    "agents": [
+      "talent-manager",
+      "personality-analyst",
+      "conflict-resolver"
+    ]
   },
   {
     "id": "strategy-tools",
     "name": "📈 Strategy Tools",
     "desc": "OKR, KPI, SWOT, BSC",
     "category": "business",
-    "skills": ["strategy-tools", "okr-kpi-tools", "swot-pestel-tools", "balanced-scorecard"],
-    "agents": ["strategy-architect", "okr-kpi-specialist", "swot-pestel-analyst", "balanced-scorecard-expert"]
+    "skills": [
+      "strategy-tools",
+      "okr-kpi-tools",
+      "swot-pestel-tools",
+      "balanced-scorecard"
+    ],
+    "agents": [
+      "strategy-architect",
+      "okr-kpi-specialist",
+      "swot-pestel-analyst",
+      "balanced-scorecard-expert"
+    ]
   },
   {
     "id": "monitoring-tools",
     "name": "🔍 Monitoring Tools",
     "desc": "PDCA, OODA, Dashboard, Alert",
     "category": "business",
-    "skills": ["monitoring-tools", "pdca-ooda-tools", "alert-system", "forecast-modeling"],
-    "agents": ["monitoring-engineer", "pdca-ooda-specialist", "alert-system-engineer", "forecast-analyst"]
+    "skills": [
+      "monitoring-tools",
+      "pdca-ooda-tools",
+      "alert-system",
+      "forecast-modeling"
+    ],
+    "agents": [
+      "monitoring-engineer",
+      "pdca-ooda-specialist",
+      "alert-system-engineer",
+      "forecast-analyst"
+    ]
   },
   {
     "id": "sop-maker",
     "name": "📋 SOP Maker",
     "desc": "Buat SOP lengkap",
     "category": "business",
-    "skills": ["sop-templates"],
-    "agents": ["sop-writer"]
+    "skills": [
+      "sop-templates"
+    ],
+    "agents": [
+      "sop-writer"
+    ]
+  },
+  {
+    "id": "dan-marketing-analysis",
+    "name": "📊 DAN: Analisa Marketing",
+    "desc": "Data kampanye → KPI, insight, aksi terukur",
+    "category": "business",
+    "skills": [
+      "marketing-data-analyst",
+      "data-to-infographic",
+      "motivator-coach"
+    ],
+    "agents": [
+      "dan-data-analyst",
+      "dan-infographic-engineer",
+      "dan-performance-coach"
+    ]
+  },
+  {
+    "id": "dan-campaign-creative",
+    "name": "🎬 DAN: Kampanye Kreatif",
+    "desc": "Strategi → storyboard, konten, caption",
+    "category": "media_gen",
+    "skills": [
+      "marketing-strategist",
+      "image-video-creator",
+      "prompt-engineering"
+    ],
+    "agents": [
+      "dan-strategist",
+      "dan-media-creator",
+      "prompt-engineer"
+    ]
+  },
+  {
+    "id": "dan-project-monitoring",
+    "name": "📈 DAN: Monitoring Proyek",
+    "desc": "Status proyek, SPI, RAG, earned value, coaching",
+    "category": "engineering",
+    "skills": [
+      "project-monitoring-controlling",
+      "software-architecture",
+      "motivator-coach"
+    ],
+    "agents": [
+      "dan-pmo-officer",
+      "dan-software-architect",
+      "dan-performance-coach"
+    ]
   }
 ]

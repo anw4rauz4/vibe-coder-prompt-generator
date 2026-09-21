@@ -1,0 +1,26 @@
+# requirements.txt — skill DAN
+#
+# PENTING: semua engine inti DAN berjalan TANPA dependensi apa pun (stdlib Python 3.8+).
+# Pustaka di bawah hanya OPSIONAL dan menambah kemampuan.
+
+# --- opsional: memproses aset gambar (crop/pad ke rasio platform) — fit_asset.py
+Pillow>=10.0
+
+# --- opsional: membaca file XLSX (dan_analytics.py)
+openpyxl>=3.1
+
+# --- opsional: cross-check / verifikasi metrik graph (graph_analyst.py, _test_graph.py)
+#     graph_analyst.py punya fallback pure-python yang sudah dicocokkan dengan networkx (deviasi 0,0000)
+networkx>=3.0
+scipy>=1.10        # dibutuhkan networkx untuk pagerank
+
+# --- opsional: bila ingin merender chart ke PNG/PDF lewat matplotlib
+#     (tidak diperlukan; svg_charts.py menghasilkan SVG murni)
+matplotlib>=3.7
+pandas>=2.0
+numpy>=1.24
+
+# Instal minimal:
+#   pip install openpyxl
+# Instal lengkap (termasuk verifikasi):
+#   pip install -r requirements.txt

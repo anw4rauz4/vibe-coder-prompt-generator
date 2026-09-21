@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "name": "Portofolio Proyek Marketing Q3–Q4 2026",
+    "currency": "Rp",
+    "today": "2026-09-16",
+    "theme": "dan",
+    "owner": "PMO",
+    "review_cadence": "Senin 09.00 (10 menit angka) · Jumat 16.00 (keputusan)"
+  },
+
+  "projects": [
+    {
+      "id": "PRJ-01",
+      "name": "Launch Serum GlowLab",
+      "owner": "Andi",
+      "start": "2026-09-01",
+      "end": "2026-10-15",
+      "goal": "ROAS ≥ 3x pada minggu ke-4 setelah launch",
+      "budget_planned": 250000000,
+      "budget_actual": 96000000,
+      "kpi": [
+        { "name": "ROAS", "target": 3.0, "actual": 2.4 },
+        { "name": "CTR", "target": 2.0, "actual": 2.3 },
+        { "name": "CPA", "target": 80000, "actual": 92000 }
+      ],
+      "tasks": [
+        { "id": "T1", "name": "Riset audiens & positioning", "owner": "Sari",
+          "start": "2026-09-01", "end": "2026-09-07", "progress": 100, "weight": 8, "status": "done" },
+        { "id": "T2", "name": "Produksi konten (12 aset)", "owner": "Andi",
+          "start": "2026-09-06", "end": "2026-09-20", "progress": 70, "weight": 20,
+          "notes": "8 dari 12 aset selesai; 4 menunggu review legal" },
+        { "id": "T3", "name": "Setup tracking & UTM", "owner": "Budi",
+          "start": "2026-09-08", "end": "2026-09-12", "progress": 100, "weight": 6, "status": "done" },
+        { "id": "T4", "name": "Media buying minggu 1-2", "owner": "Budi",
+          "start": "2026-09-13", "end": "2026-09-26", "progress": 35, "weight": 22 },
+        { "id": "T5", "name": "Landing page & CRO", "owner": "Dewi",
+          "start": "2026-09-10", "end": "2026-09-18", "progress": 40, "weight": 18,
+          "blockers": ["menunggu aset foto final", "review copy belum dijadwalkan"] },
+        { "id": "T6", "name": "KOL briefing & kontrak", "owner": "Sari",
+          "start": "2026-09-15", "end": "2026-09-22", "progress": 20, "weight": 12 },
+        { "id": "T7", "name": "Launch & monitoring harian", "owner": "Andi",
+          "start": "2026-09-27", "end": "2026-10-15", "progress": 0, "weight": 14, "milestone": false }
+      ],
+      "risks": [
+        { "id": "R1", "desc": "KOL utama batal karena jadwal syuting", "prob": 2, "impact": 4,
+          "mitigation": "siapkan 3 KOL cadangan tier menengah", "owner": "Sari" },
+        { "id": "R2", "desc": "Stok habis saat spike pasca-launch", "prob": 3, "impact": 5,
+          "mitigation": "safety stock 1,5x + pre-order bila habis", "owner": "Budi" }
+      ],
+      "actions": [
+        { "id": "CA1", "issue": "CVR landing page 1,1% (target 2,5%)",
+          "root_cause": "loading 6,2 detik di 4G; form 7 field",
+          "action": "kompres gambar + CDN, pangkas form jadi 3 field",
+          "owner": "Dewi", "due": "2026-09-19", "status": "open" }
+      ]
+    },
+
+    {
+      "id": "PRJ-02",
+      "name": "Program Loyalitas Member",
+      "owner": "Sari",
+      "start": "2026-08-17",
+      "end": "2026-11-30",
+      "goal": "repeat purchase rate ≥ 30% pada cohort pertama",
+      "budget_planned": 120000000,
+      "budget_actual": 48000000,
+      "kpi": [
+        { "name": "Repeat rate", "target": 30, "actual": 22 },
+        { "name": "Member aktif", "target": 15000, "actual": 9400 }
+      ],
+      "tasks": [
+        { "id": "T1", "name": "Riset & segmentasi member", "owner": "Sari",
+          "start": "2026-08-17", "end": "2026-08-28", "progress": 100, "weight": 10, "status": "done" },
+        { "id": "T2", "name": "Desain tier & benefit", "owner": "Dewi",
+          "start": "2026-08-24", "end": "2026-09-11", "progress": 100, "weight": 12, "status": "done" },
+        { "id": "T3", "name": "Migrasi data historis", "owner": "Budi",
+          "start": "2026-08-30", "end": "2026-09-10", "progress": 70, "weight": 10,
+          "blockers": ["format data legacy tidak konsisten"] },
+        { "id": "T4", "name": "Integrasi CRM & poin engine", "owner": "Budi",
+          "start": "2026-09-01", "end": "2026-10-09", "progress": 55, "weight": 25 },
+        { "id": "T5", "name": "Kampanye reaktivasi churn", "owner": "Andi",
+          "start": "2026-09-14", "end": "2026-10-16", "progress": 10, "weight": 20 },
+        { "id": "T6", "name": "Uji coba closed beta", "owner": "Sari",
+          "start": "2026-10-12", "end": "2026-10-30", "progress": 0, "weight": 18 },
+        { "id": "T7", "name": "Rollout nasional", "owner": "Andi",
+          "start": "2026-11-02", "end": "2026-11-30", "progress": 0, "weight": 15 }
+      ],
+      "risks": [
+        { "id": "R3", "desc": "Migrasi data gagal saat cutover", "prob": 2, "impact": 5,
+          "mitigation": "dry-run 2x + rollback plan teruji", "owner": "Budi" }
+      ],
+      "actions": []
+    },
+
+    {
+      "id": "PRJ-03",
+      "name": "Ekspansi Marketplace Timur",
+      "owner": "Budi",
+      "start": "2026-09-07",
+      "end": "2026-12-18",
+      "goal": "GMV Rp 2 M/bulan dari region timur pada bulan ke-3",
+      "budget_planned": 300000000,
+      "budget_actual": 150000000,
+      "kpi": [
+        { "name": "Seller onboarded", "target": 120, "actual": 18 },
+        { "name": "Ongkir rata-rata", "target": 22000, "actual": 31000 }
+      ],
+      "tasks": [
+        { "id": "T1", "name": "Studi kelayakan & regulator", "owner": "Budi",
+          "start": "2026-09-07", "end": "2026-09-18", "progress": 60, "weight": 15 },
+        { "id": "T2", "name": "Negosiasi vendor logistik", "owner": "Andi",
+          "start": "2026-09-10", "end": "2026-09-25", "progress": 30, "weight": 20 },
+        { "id": "T3", "name": "Onboarding seller lokal", "owner": "Sari",
+          "start": "2026-09-14", "end": "2026-10-10", "progress": 0, "weight": 25 },
+        { "id": "T4", "name": "Gudang & fulfillment", "owner": "Dewi",
+          "start": "2026-09-21", "end": "2026-11-06", "progress": 0, "weight": 25 },
+        { "id": "T5", "name": "Kampanye regional", "owner": "Andi",
+          "start": "2026-11-09", "end": "2026-12-18", "progress": 0, "weight": 15 }
+      ],
+      "risks": [
+        { "id": "R4", "desc": "Regulasi daerah berubah mendadak", "prob": 3, "impact": 4,
+          "mitigation": "konsultan hukum lokal + skenario cadangan", "owner": "Budi" },
+        { "id": "R5", "desc": "Biaya logistik naik di atas asumsi", "prob": 4, "impact": 3,
+          "mitigation": "kontrak harga tetap 6 bulan dengan 2 vendor", "owner": "Andi" }
+      ],
+      "actions": [
+        { "id": "CA2", "issue": "Studi kelayakan molor 4 hari",
+          "root_cause": "dokumen regulator tidak lengkap, harus diajukan ulang",
+          "action": "sewa jasa pengurus dokumen; paralelkan dengan negosiasi vendor",
+          "owner": "Budi", "due": "2026-09-22", "status": "open" }
+      ]
+    }
+  ],
+
+  "history": [
+    { "form": "progress", "project": "PRJ-01", "task": "T5", "date": "2026-09-12", "progress": 40, "owner": "Dewi" },
+    { "form": "progress", "project": "PRJ-01", "task": "T5", "date": "2026-09-15", "progress": 40, "owner": "Dewi",
+      "blockers": ["menunggu aset foto final"] },
+    { "form": "progress", "project": "PRJ-01", "task": "T2", "date": "2026-09-12", "progress": 55, "owner": "Andi" },
+    { "form": "progress", "project": "PRJ-01", "task": "T2", "date": "2026-09-15", "progress": 70, "owner": "Andi" },
+    { "form": "progress", "project": "PRJ-03", "task": "T1", "date": "2026-09-14", "progress": 50, "owner": "Budi" },
+    { "form": "progress", "project": "PRJ-03", "task": "T1", "date": "2026-09-16", "progress": 60, "owner": "Budi" },
+    { "form": "monitoring", "project": "PRJ-01", "date": "2026-09-14", "rag": "yellow",
+      "summary": "Media buying jalan; landing page jadi bottleneck utama." },
+    { "form": "controlling", "project": "PRJ-01", "date": "2026-09-14",
+      "issue": "CVR landing rendah", "corrective_action": "kompres gambar + pangkas form",
+      "owner": "Dewi", "due": "2026-09-19", "status": "open" }
+  ]
+}

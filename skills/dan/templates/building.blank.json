@@ -1,0 +1,52 @@
+{
+  "_petunjuk": [
+    "Isi file ini lalu jalankan:  python3 arch_design.py berkas_ini.json --stem nama_",
+    "Semua ukuran dalam meter. function salah satu: living | private | service | wet | circulation",
+    "kdb_max/klb_max dalam desimal (0.6 = 60%). Lihat references/architectural-design-guide.md untuk standar ukuran ruang.",
+    "Hapus kunci _petunjuk ini sebelum dipakai (atau biarkan, akan diabaikan)."
+  ],
+
+  "meta": {
+    "name": "NAMA BANGUNAN ANDA",
+    "style": "modern tropis",
+    "currency": "Rp",
+    "today": "2026-09-16",
+    "client": "",
+    "location": ""
+  },
+
+  "site": {
+    "width": 0,
+    "length": 0,
+    "build_width": 0,
+    "kdb_max": 0.6,
+    "klb_max": 1.6,
+    "floors_allowed": 2,
+    "setback_front": 0,
+    "setback_side": 0
+  },
+
+  "floors": [
+    {
+      "name": "Lantai 1",
+      "height": 3.2,
+      "rooms": [
+        { "name": "Contoh Ruang", "w": 3.0, "d": 4.0, "function": "living" }
+      ]
+    }
+  ],
+
+  "cost": {
+    "structure_per_m2": 3500000,
+    "finish_per_m2": 2500000,
+    "mep_per_m2": 1300000,
+    "other_pct": 10
+  },
+
+  "notes": {
+    "struktur": "",
+    "dinding": "",
+    "lantai": "",
+    "mep": ""
+  }
+}

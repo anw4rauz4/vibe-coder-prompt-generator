@@ -158,6 +158,44 @@ const formatBytes = (bytes) => {
   return `${Number.isInteger(v) ? v : v.toFixed(1)} ${units[i]}`;
 };
 
+const DAN_PRINCIPLES = [
+  '1. Data dulu, opini belakangan — setiap klaim punya angka atau ditandai `asumsi:`.',
+  '2. Setiap temuan punya "so what": satu aksi konkret + pemilik + tenggat.',
+  '3. Jujur soal ketidakpastian: sebut sampel, rentang waktu, dan keterbatasan.',
+  '4. Hemat kata, kaya substansi: tabel/daftar, bukan paragraf panjang.',
+  '5. Selesaikan sampai deliverable, bukan sekadar saran.',
+  '6. Tutup dengan 2-3 langkah berikutnya.'
+];
+
+const DAN_DELIVERABLE_HINTS = {
+  'marketing-data-analyst': 'JSON hasil analisa + Markdown ringkasan (KPI, anomali, forecast)',
+  'marketing-strategist': 'Campaign plan: tujuan, audiens, channel mix, budget, A/B test',
+  'data-to-infographic': 'Infografik/chart SVG self-contained (tanpa CDN)',
+  'image-video-creator': 'Storyboard shot-list bertiming + prompt image/video + SRT',
+  'design-engineer-2d-3d': 'Brief desain + spec teknis + sketsa/mockup 3D',
+  'motivator-coach': 'Rencana coaching GROW berbasis data performa',
+  'project-monitoring-controlling': 'Status proyek: variance, SPI, RAG, stalled, earned value',
+  'software-architecture': 'Scaffold/review/trade-off + rekomendasi ber-konteks',
+  'architectural-design': 'Denah 2D, massa 3D, tampak, KDB/KLB, RAB, tahapan konstruksi'
+};
+
+function buildDanPlaybook(skills = []) {
+  const danSkills = skills.filter(s => DAN_DELIVERABLE_HINTS[s.id]);
+  if (danSkills.length === 0) return null;
+
+  const lines = [];
+  lines.push('## 🧠 DAN PLAYBOOK (METODOLOGI WAJIB)');
+  lines.push('Skill DAN aktif dalam prompt ini. Ikuti metodologi DAN:');
+  lines.push('');
+  DAN_PRINCIPLES.forEach(l => lines.push(l));
+  lines.push('');
+  lines.push('**Deliverable yang diharapkan per skill DAN:**');
+  danSkills.forEach(s => lines.push(`- **${s.name}** → ${DAN_DELIVERABLE_HINTS[s.id]}`));
+  lines.push('');
+  lines.push('Paket referensi lengkap (pustaka metrik, framework, runbook, engine CLI) tersedia di folder `skills/dan/` pada repositori ini.');
+  return lines;
+}
+
 function buildImageSection(images = [], notes = '') {
   if (!Array.isArray(images) || images.length === 0) return null;
 
@@ -263,6 +301,12 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
     }
   }
 
+  const danPlaybook = buildDanPlaybook(skills);
+  if (danPlaybook) {
+    lines.push(...danPlaybook);
+    lines.push('');
+  }
+
   lines.push('## 🚀 EXECUTION INSTRUCTIONS');
   tpl.execution.forEach(l => lines.push(l));
   lines.push('');
@@ -282,7 +326,7 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
   return lines.join('\n');
 }
 
-const VibeCore = { escapeHtml, encodeConfig, decodeConfig, buildPrompt, buildImageSection, PLATFORM_TEMPLATES };
+const VibeCore = { escapeHtml, encodeConfig, decodeConfig, buildPrompt, buildImageSection, buildDanPlaybook, PLATFORM_TEMPLATES };
 
 // UMD-style: Node (tests) & browser
 if (typeof module !== 'undefined' && module.exports) {

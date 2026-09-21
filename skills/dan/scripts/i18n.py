@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+i18n.py — Lapisan bahasa untuk label STRUKTURAL keluaran DAN.
+
+Cakupan v1 (sengaja terbatas & jujur):
+  - judul seksi, header tabel, label KPI, kata status, dan footer pada
+    weekly_summary (weekly_run.py) dan slide deck (make_slides.py).
+  - NARASI (insight, rekomendasi, pesan coach) tetap berbahasa sumber data,
+    karena ia dihasilkan engine dalam Bahasa Indonesia; menerjemahkannya
+    otomatis berisiko mengubah makna angka/konteks. Bila butuh EN penuh,
+    minta agent menyunting narasi setelah struktur dibuat.
+
+PAKAI
+  from i18n import t
+  t("sec_numbers", "en")   -> "This week in numbers"
+  weekly_run.main([... , "--lang", "en"])
+"""
+from __future__ import annotations
+
+from typing import Dict
+
+STR: Dict[str, Dict[str, str]] = {
+    "id": {
+        "weekly_title": "Ringkasan Mingguan",
+        "period": "Periode laporan",
+        "compiled": "Disusun",
+        "sec_numbers": "1. Angka minggu ini",
+        "sec_decisions": "2. Tiga keputusan yang dibutuhkan minggu ini",
+        "sec_focus": "3. Fokus eksekusi minggu depan",
+        "sec_coach": "4. Catatan coach per owner",
+        "sec_risks": "5. Risiko terbuka teratas",
+        "portfolio": "Portofolio",
+        "tasks": "tugas",
+        "on_track": "on-track",
+        "warn": "waspada",
+        "critical": "kritis",
+        "stalled": "stalled",
+        "overdue": "terlambat",
+        "budget_used": "budget terpakai",
+        "th_project": "Proyek", "th_progress": "Progres", "th_plan": "Rencana",
+        "th_var": "Var", "th_status": "Status", "th_forecast": "Forecast",
+        "th_slip": "Slip", "th_task": "Tugas", "th_owner": "Owner",
+        "th_actual": "Aktual", "th_note": "Catatan",
+        "reason": "Alasan", "action": "Aksi", "source": "Sumber",
+        "all_clear": "semua tugas dalam ambang",
+        "keep": "pertahankan",
+        "score": "skor",
+        "mitigation": "mitigasi",
+        "footer": ("Ringkasan ini dihasilkan otomatis oleh `weekly_run.py`. Detail lengkap: "
+                   "`project_report.md`, `project_dashboard.html`, `exec_dashboard.html`, "
+                   "`coach.md`."),
+        "cl_head": "Ringkasan satu napas",
+        "cl_happen": "Apa yang terjadi",
+        "cl_mean": "Apa artinya untuk bisnis Anda",
+        "cl_next": "Langkah berikutnya (kami sarankan urutan ini)",
+        "cl_gloss": "Istilah singkat",
+        "cl_footer": "Disusun otomatis dari data kampanye. Angka dibulatkan; rincian teknis "
+                     "tersedia pada laporan internal.",
+        "rep_kpi": "KPI Utama",
+        "rep_channel": "Performa per Channel",
+        "rep_campaign": "Top Kampanye",
+        "rep_trend": "Tren & Proyeksi",
+        "rep_anom": "Anomali Terdeteksi",
+        "rep_pareto": "Analisa Pareto",
+        "rep_week": "Pola Hari",
+        "rep_ins": "Insight & Rekomendasi",
+        "rep_corr": "Korelasi Antar Metrik",
+        "inf_kpi": "Ringkasan KPI",
+        "inf_vis": "Visualisasi",
+        "inf_ins": "Insight & Temuan",
+        "inf_rec": "Rekomendasi Aksi",
+        "deck_mkt": "Marketing",
+        "deck_prj": "Eksekusi proyek",
+        "deck_arch": "Portofolio studi bangunan",
+        "deck_ins": "Insight & rekomendasi",
+        "show_title": "Showcase Paket DAN",
+        "show_sub": "Etalase artefak contoh — klik kartu untuk membuka.",
+
+        "slide_exec": "Ringkasan eksekutif",
+        "slide_marketing": "Marketing",
+        "slide_channel": "Marketing · channel",
+        "slide_project": "Proyek · progres vs rencana",
+        "slide_decision": "Proyek · keputusan & risiko",
+        "slide_arch": "Portofolio studi bangunan",
+        "slide_focus": "Fokus minggu depan & catatan coach",
+        "slide_close": "Penutup",
+    },
+    "en": {
+        "weekly_title": "Weekly Summary",
+        "period": "Reporting period",
+        "compiled": "Compiled",
+        "sec_numbers": "1. This week in numbers",
+        "sec_decisions": "2. Three decisions needed this week",
+        "sec_focus": "3. Execution focus next week",
+        "sec_coach": "4. Coach notes per owner",
+        "sec_risks": "5. Top open risks",
+        "portfolio": "Portfolio",
+        "tasks": "tasks",
+        "on_track": "on-track",
+        "warn": "at-risk",
+        "critical": "critical",
+        "stalled": "stalled",
+        "overdue": "overdue",
+        "budget_used": "budget used",
+        "th_project": "Project", "th_progress": "Progress", "th_plan": "Plan",
+        "th_var": "Var", "th_status": "Status", "th_forecast": "Forecast",
+        "th_slip": "Slip", "th_task": "Task", "th_owner": "Owner",
+        "th_actual": "Actual", "th_note": "Note",
+        "reason": "Reason", "action": "Action", "source": "Source",
+        "all_clear": "all tasks within threshold",
+        "keep": "maintain",
+        "score": "score",
+        "mitigation": "mitigation",
+        "footer": ("Auto-generated by `weekly_run.py`. Full detail: "
+                   "project_report.md, project_dashboard.html, exec_dashboard.html, coach.md."),
+        "slide_exec": "Executive summary",
+        "slide_marketing": "Marketing",
+        "slide_channel": "Marketing · channels",
+        "slide_project": "Projects · progress vs plan",
+        "slide_decision": "Projects · decisions & risks",
+        "slide_arch": "Building study portfolio",
+        "slide_focus": "Next-week focus & coach notes",
+        "slide_close": "Closing",
+        "cl_head": "One-breath summary",
+        "cl_happen": "What happened",
+        "cl_mean": "What it means for your business",
+        "cl_next": "Next steps (we suggest this order)",
+        "cl_gloss": "Quick glossary",
+        "cl_footer": "Auto-generated from campaign data. Figures rounded; technical detail "
+                     "available in the internal report.",
+        "rep_kpi": "Key KPIs",
+        "rep_channel": "Channel performance",
+        "rep_campaign": "Top campaigns",
+        "rep_trend": "Trend & forecast",
+        "rep_anom": "Detected anomalies",
+        "rep_pareto": "Pareto analysis",
+        "rep_week": "Weekday pattern",
+        "rep_ins": "Insights & recommendations",
+        "rep_corr": "Metric correlations",
+        "inf_kpi": "KPI summary",
+        "inf_vis": "Visuals",
+        "inf_ins": "Insights & findings",
+        "inf_rec": "Action recommendations",
+        "deck_mkt": "Marketing",
+        "deck_prj": "Project execution",
+        "deck_arch": "Building study portfolio",
+        "deck_ins": "Insights & recommendations",
+        "show_title": "DAN Package Showcase",
+        "show_sub": "Example artifact gallery — click a card to open.",
+
+    },
+    "zh": {
+        "rep_kpi": "核心 KPI",
+        "rep_channel": "各渠道表现",
+        "rep_campaign": "热门活动",
+        "rep_trend": "趋势与预测",
+        "rep_anom": "检测到的异常",
+        "rep_pareto": "帕累托分析",
+        "rep_week": "星期规律",
+        "rep_ins": "洞察与建议",
+        "rep_corr": "指标相关性",
+        "inf_kpi": "KPI 摘要",
+        "inf_vis": "可视化",
+        "inf_ins": "洞察与发现",
+        "inf_rec": "行动建议",
+        "deck_mkt": "营销",
+        "deck_prj": "项目执行",
+        "deck_arch": "建筑研究组合",
+        "deck_ins": "洞察与建议",
+        "show_title": "DAN 包展示",
+        "show_sub": "示例成果画廊——点击卡片打开。",
+        "weekly_title": "每周摘要",
+        "cl_head": "一句话总结",
+        "cl_happen": "发生了什么",
+        "cl_mean": "对您的业务意味着什么",
+        "cl_next": "下一步（建议顺序）",
+        "cl_gloss": "术语简表",
+    },
+}
+
+
+def t(key: str, lang: str = "id") -> str:
+    return STR.get(lang, STR["id"]).get(key, STR["id"].get(key, key))
+
+
+def langs():
+    return sorted(STR)

@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "name": "Kafe & Roastery Sudut Kota",
+    "style": "industrial tropis",
+    "currency": "Rp",
+    "today": "2026-09-16",
+    "client": "Koperasi Kopi Sudut",
+    "location": "Yogyakarta"
+  },
+
+  "site": {
+    "width": 10,
+    "length": 18,
+    "build_width": 8.5,
+    "kdb_max": 0.7,
+    "klb_max": 1.2,
+    "floors_allowed": 2,
+    "setback_front": 2,
+    "setback_side": 1.0
+  },
+
+  "floors": [
+    {
+      "name": "Lantai 1",
+      "height": 3.8,
+      "rooms": [
+        { "name": "Bar & Kasir", "w": 3.0, "d": 2.6, "function": "service" },
+        { "name": "Dapur & Roastery", "w": 4.0, "d": 3.6, "function": "service" },
+        { "name": "Ruang Duduk Utama", "w": 5.2, "d": 4.6, "function": "living" },
+        { "name": "Kamar Mandi", "w": 1.6, "d": 2.0, "function": "wet" },
+        { "name": "Gudang Biji & Kemasan", "w": 2.0, "d": 2.0, "function": "service" },
+        { "name": "Teras Luar", "w": 4.2, "d": 2.2, "function": "circulation" }
+      ]
+    },
+    {
+      "name": "Mezzanine",
+      "height": 2.7,
+      "rooms": [
+        { "name": "Area Duduk Mezzanine", "w": 4.6, "d": 3.6, "function": "living" },
+        { "name": "Ruang Kerja / Komunitas", "w": 3.0, "d": 3.0, "function": "living" },
+        { "name": "Balkon Depan", "w": 3.2, "d": 1.5, "function": "circulation" }
+      ]
+    }
+  ],
+
+  "cost": {
+    "structure_per_m2": 4000000,
+    "finish_per_m2": 3000000,
+    "mep_per_m2": 1600000,
+    "other_pct": 12
+  },
+
+  "notes": {
+    "struktur": "pondasi footplat; rangka baja untuk mezzanine; atap mono-pitch baja ringan",
+    "dinding": "bata ekspos interior + cat weathershield eksterior; roster beton untuk ventilasi",
+    "lantai": "semen poles (polished concrete) area duduk; keramik anti-slip dapur & KM",
+    "mep": "grease trap dapur, exhaust roastery, listrik 3500 VA, titik audio & lighting track"
+  }
+}

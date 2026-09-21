@@ -1,0 +1,27 @@
+{
+  "title": "Ruko 3 lantai + demonstrasi policy gate: GAGAL sebelum tindakan, BERSIH sesudah",
+  "desc": "Menunjukkan loop governance: guard menolak portofolio yang punya tugas kritis tanpa tindakan, lalu lulus setelah update mingguan diterapkan.",
+  "steps": [
+    { "engine": "arch_design",
+      "args": ["{root}/data/ruko_case.json", "--stem", "ruko_", "--out-dir", "{out}"] },
+    { "engine": "pmo_guard",
+      "args": ["{root}/skills/dan/templates/projects.example.json",
+               "--report", "{out}/guard_before.md"],
+      "expect_exit": [1] },
+    { "engine": "weekly_run",
+      "args": ["--projects", "{root}/skills/dan/templates/projects.example.json",
+               "--updates", "{root}/data/weekly_batch.example.json",
+               "--out-dir", "{out}", "--period", "Minggu demo"] },
+    { "engine": "pmo_guard",
+      "args": ["{out}/projects_updated.json", "--report", "{out}/guard_after.md"],
+      "expect_exit": [0] }
+  ],
+  "asserts": [
+    { "kind": "file", "path": "{out}/ruko_denah_L3.svg" },
+    { "kind": "file", "path": "{out}/ruko_tampak_depan.svg" },
+    { "kind": "json", "path": "{out}/ruko_report.json", "key": "compliance.kdb_ok", "op": "eq", "value": true },
+    { "kind": "text", "path": "{out}/guard_before.md", "needle": "G1" },
+    { "kind": "text", "path": "{out}/guard_before.md", "needle": "GAGAL" },
+    { "kind": "text", "path": "{out}/guard_after.md", "needle": "BERSIH" }
+  ]
+}
