@@ -83,6 +83,24 @@
             <textarea id="project-detail" placeholder="Contoh: Buatkan aplikasi e-commerce dengan React dan Tailwind..."></textarea>
           </div>
 
+          <!-- Step 4b: Reference Images -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="image-input">4b. Gambar Referensi (opsional)</label>
+              <span id="image-count" class="count-badge">0 gambar</span>
+            </div>
+            <div id="image-dropzone" class="image-dropzone">
+              <input type="file" id="image-input" accept="image/*" multiple hidden>
+              <div class="dropzone-hint">
+                <span class="dropzone-icon">🖼️</span>
+                <p><strong>Klik</strong> atau <strong>drag &amp; drop</strong> gambar ke sini</p>
+                <p class="dropzone-sub">Bisa juga paste (Ctrl+V) screenshot langsung · Maks 10 gambar, dipadatkan otomatis</p>
+              </div>
+            </div>
+            <textarea id="image-notes" placeholder="Catatan untuk gambar-gambar ini (opsional): contoh — 'Gambar 1 adalah layout yang saya mau, Gambar 2 warnanya jangan terlalu gelap'"></textarea>
+            <div id="image-preview-list" class="image-preview-list"></div>
+          </div>
+
           <!-- Step 5: Pilih AI Platform -->
           <div class="form-group">
             <label for="platform-select">5. AI Platform</label>

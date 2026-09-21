@@ -7,6 +7,8 @@ const HISTORY_KEY = 'vibe-coder-history-v1';
 const CUSTOM_KEY = 'vibe-coder-custom-v1';
 const HISTORY_LIMIT = 20;
 
+const MAX_IMAGES = 10;
+
 // escapeHtml tersedia global dari core.js (jangan dideklarasikan ulang di sini)
 
 class VibeCoderApp {
@@ -23,6 +25,8 @@ class VibeCoderApp {
       selectedAgents: [],
       selectedPlatform: 'chatgpt',
       projectDetail: '',
+      images: [],
+      imageNotes: '',
       skillSearch: '',
       agentSearch: '',
       autoSelect: true,
@@ -44,6 +48,7 @@ class VibeCoderApp {
     this.applyTheme();
     this.loadCustomData();
     this.loadHistory();
+    this.loadImages();
     await this.loadData();
     this.restoreState();
     this.render();
@@ -135,6 +140,158 @@ class VibeCoderApp {
     this.state.agents = [];
     this.state.adapters = [{ id: 'chatgpt', name: 'ChatGPT', features: [] }];
     this.mergeCustom();
+  }
+
+  // ============================================
+  // IMAGES (multi upload + notes)
+  // ============================================
+
+  async addImageFiles(fileList) {
+    const files = Array.from(fileList || []).filter(f => f.type.startsWith('image/'));
+    if (files.length === 0) {
+      this.toast('⚠️ Tidak ada file gambar yang valid.', 'warning');
+      return;
+    }
+
+    const room = MAX_IMAGES - this.state.images.length;
+    if (room <= 0) {
+      this.toast(`⚠️ Maksimal ${MAX_IMAGES} gambar.`, 'warning');
+      return;
+    }
+    if (files.length > room) {
+      this.toast(`⚠️ Hanya ${room} gambar ditambahkan (maks ${MAX_IMAGES}).`, 'warning');
+    }
+
+    for (const file of files.slice(0, room)) {
+      try {
+        const dataUrl = await this.compressImage(file);
+        this.state.images.push({
+          id: `img-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,
+          name: file.name || 'screenshot.png',
+          type: file.type || 'image/png',
+          size: file.size || 0,
+          dataUrl,
+          note: ''
+        });
+      } catch (e) {
+        this.toast(`❌ Gagal memproses ${file.name}.`, 'error');
+      }
+    }
+
+    this.renderImages();
+    this.saveImages();
+    this.generatePrompt(true);
+  }
+
+  compressImage(file) {
+    return new Promise((resolve, reject) => {
+      // PNG/GIF kecil: simpan apa adanya (biar animasi/ketajaman aman)
+      if (file.size <= 300 * 1024 && (file.type === 'image/png' || file.type === 'image/gif')) {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = reject;
+        r.readAsDataURL(file);
+        return;
+      }
+
+      // Kompres via canvas → JPEG (hindari masalah encoding berbagai browser)
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        try {
+          const MAX_DIM = 1568;
+          const scale = Math.min(1, MAX_DIM / Math.max(img.width, img.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.max(1, Math.round(img.width * scale));
+          canvas.height = Math.max(1, Math.round(img.height * scale));
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          const out = canvas.toDataURL('image/jpeg', 0.82);
+          URL.revokeObjectURL(url);
+          resolve(out);
+          this._warnIfTransparentPng(file);
+        } catch (e) {
+          URL.revokeObjectURL(url);
+          reject(e);
+        }
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('decode gagal')); };
+      img.src = url;
+    });
+  }
+
+  _warnIfTransparentPng(file) {
+    if (file.type === 'image/png') {
+      if (!this._pngWarned) {
+        this._pngWarned = true;
+        this.toast('💡 PNG dikompres ke JPEG — area transparan jadi putih.', 'info');
+      }
+      return;
+    }
+  }
+
+  removeImage(id) {
+    this.state.images = this.state.images.filter(i => i.id !== id);
+    this.renderImages();
+    this.saveImages();
+    this.generatePrompt(true);
+  }
+
+  updateImageNote(id, note) {
+    const img = this.state.images.find(i => i.id === id);
+    if (!img) return;
+    img.note = note;
+    this.saveImages();
+    clearTimeout(this._noteTimer);
+    this._noteTimer = setTimeout(() => this.generatePrompt(true), 300);
+
+  }
+
+  renderImages() {
+    const list = document.getElementById('image-preview-list');
+    const count = document.getElementById('image-count');
+    if (!list || !count) return;
+
+    count.textContent = `${this.state.images.length} gambar`;
+
+    list.innerHTML = this.state.images.map((img, idx) => `
+      <div class="image-preview-item" data-id="${escapeHtml(img.id)}">
+        <img src="${escapeHtml(img.dataUrl)}" alt="${escapeHtml(img.name)}">
+        <span class="image-meta">${idx + 1}. ${escapeHtml(img.name)}</span>
+        <button class="image-remove" title="Hapus gambar" type="button">✕</button>
+      </div>
+    `).join('');
+  }
+
+  saveImages() {
+    try {
+      localStorage.setItem('vibe-coder-images-v1', JSON.stringify({
+        notes: this.state.imageNotes,
+        images: this.state.images
+      }));
+    } catch (e) {
+      // Kemungkinan kuota localStorage penuh → buang gambar, simpan catatan saja
+      try {
+        localStorage.setItem('vibe-coder-images-v1', JSON.stringify({
+          notes: this.state.imageNotes,
+          images: []
+        }));
+      } catch (e2) { /* storage unavailable */ }
+      if (this.state.images.length > 0) {
+        this.toast('⚠️ Kuota browser penuh — gambar tidak ikut tersimpan permanen.', 'warning');
+      }
+  }
+  }
+
+  loadImages() {
+    try {
+      const raw = localStorage.getItem('vibe-coder-images-v1');
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      this.state.imageNotes = typeof saved.notes === 'string' ? saved.notes : '';
+      this.state.images = Array.isArray(saved.images)
+        ? saved.images.filter(i => i && i.id && typeof i.dataUrl === 'string').slice(0, MAX_IMAGES)
+        : [];
+    } catch (e) { /* corrupted */ }
   }
 
   // ============================================
@@ -308,6 +465,8 @@ class VibeCoderApp {
     document.getElementById('platform-select').value = this.state.selectedPlatform;
     document.getElementById('project-detail').value = this.state.projectDetail;
     document.getElementById('auto-select-toggle').checked = this.state.autoSelect;
+    document.getElementById('image-notes').value = this.state.imageNotes;
+    this.renderImages();
 
     // Highlight project aktif
     if (this.state.selectedProject) {
@@ -497,6 +656,54 @@ class VibeCoderApp {
       this.generatePrompt(true);
     });
 
+    // --- Images: upload, drag & drop, paste, notes ---
+    $('image-input').addEventListener('change', (e) => {
+      this.addImageFiles(e.target.files);
+      e.target.value = '';
+    });
+
+    const dropzone = $('image-dropzone');
+    dropzone.addEventListener('click', () => $('image-input').click());
+    dropzone.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('image-input').click(); }
+    });
+    ['dragenter', 'dragover'].forEach(ev => dropzone.addEventListener(ev, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add('dragover');
+    }));
+    ['dragleave', 'drop'].forEach(ev => dropzone.addEventListener(ev, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('dragover');
+    }));
+    dropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer && e.dataTransfer.files) this.addImageFiles(e.dataTransfer.files);
+    });
+
+    document.addEventListener('paste', (e) => {
+      const items = e.clipboardData && e.clipboardData.files;
+      if (!items || items.length === 0) return;
+      const imgs = Array.from(items).filter(f => f.type.startsWith('image/'));
+      if (imgs.length > 0) {
+        e.preventDefault();
+        this.addImageFiles(imgs);
+      }
+    });
+
+    $('image-notes').addEventListener('input', (e) => {
+      this.state.imageNotes = e.target.value;
+      this.saveImages();
+      this.generatePrompt(true);
+    });
+
+    $('image-preview-list').addEventListener('click', (delegated) => {
+      const btn = delegated.target.closest('.image-remove');
+      if (!btn) return;
+      delegated.preventDefault();
+      this.removeImage(btn.closest('.image-preview-item').dataset.id);
+    });
+
     // --- Auto-select toggle ---
     $('auto-select-toggle').addEventListener('change', (e) => {
       this.state.autoSelect = e.target.checked;
@@ -650,12 +857,15 @@ class VibeCoderApp {
       this.state.projectDetail = '';
       this.state.skillSearch = '';
       this.state.agentSearch = '';
+      this.state.images = [];
+      this.state.imageNotes = '';
 
       document.querySelectorAll('.project-item').forEach(i => i.classList.remove('active'));
       document.getElementById('category-select').value = '';
       document.getElementById('project-detail').value = '';
       document.getElementById('skill-search').value = '';
       document.getElementById('agent-search').value = '';
+      document.getElementById('image-notes').value = '';
       document.getElementById('output-preview').textContent =
         'Pilih project dan klik "Generate Prompt" untuk melihat hasilnya...';
       window.location.hash = '';
@@ -667,6 +877,8 @@ class VibeCoderApp {
     this.renderSkills();
     this.renderAgents();
     this.renderCounts();
+    this.renderImages();
+    this.saveImages();
     this.saveState();
     this.generatePrompt(true);
   }
@@ -676,7 +888,7 @@ class VibeCoderApp {
   // ============================================
 
   generatePrompt(silent = false) {
-    const { selectedProject, selectedSkills, selectedAgents, selectedPlatform, projectDetail } = this.state;
+    const { selectedProject, selectedSkills, selectedAgents, selectedPlatform, projectDetail, images, imageNotes } = this.state;
 
     if (!selectedProject) {
       if (!silent) this.toast('⚠️ Pilih project terlebih dahulu!', 'warning');
@@ -693,7 +905,9 @@ class VibeCoderApp {
       agents,
       platform,
       detail: projectDetail,
-      categories: this.state.categories
+      categories: this.state.categories,
+      images,
+      imageNotes
     });
     document.getElementById('output-preview').textContent = prompt;
     return prompt;
@@ -711,6 +925,11 @@ class VibeCoderApp {
       agents: this.state.selectedAgents,
       platform: this.state.selectedPlatform,
       detail: this.state.projectDetail,
+      imageNotes: this.state.imageNotes || '',
+      images: this.state.images.map(i => ({
+        id: i.id, name: i.name, type: i.type, size: i.size,
+        width: i.width, height: i.height, note: i.note, dataUrl: i.dataUrl
+      })),
       timestamp: new Date().toISOString()
     };
   }
@@ -723,15 +942,22 @@ class VibeCoderApp {
     this.state.selectedAgents = Array.isArray(config.agents) ? config.agents : [];
     this.state.selectedPlatform = config.platform || 'chatgpt';
     this.state.projectDetail = config.detail || '';
+    this.state.imageNotes = typeof config.imageNotes === 'string' ? config.imageNotes : '';
+    this.state.images = Array.isArray(config.images)
+      ? config.images.filter(i => i && typeof i.dataUrl === 'string').slice(0, MAX_IMAGES)
+      : [];
 
     document.querySelectorAll('.project-item').forEach(i =>
       i.classList.toggle('active', i.dataset.id === config.project));
     document.getElementById('category-select').value = this.state.selectedCategory;
     document.getElementById('project-detail').value = this.state.projectDetail;
+    document.getElementById('image-notes').value = this.state.imageNotes;
 
     this.renderSkills();
     this.renderAgents();
     this.renderCounts();
+    this.renderImages();
+    this.saveImages();
     this.generatePrompt(true);
     this.saveState();
   }
@@ -787,7 +1013,7 @@ class VibeCoderApp {
   }
 
   sharePrompt() {
-    const config = this.getConfig();
+    const config = this.getLightConfig();
     const encoded = VibeCore.encodeConfig(config);
     if (!encoded) { this.toast('❌ Gagal encode config.', 'error'); return; }
     const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
@@ -836,17 +1062,25 @@ class VibeCoderApp {
     }
   }
 
+  // Config ringan untuk riwayat/share: tanpa base64 gambar (hemat kuota localStorage & panjang URL)
+  getLightConfig() {
+    const config = this.getConfig();
+    return { ...config, images: [] };
+  }
+
   saveToHistory() {
     const prompt = document.getElementById('output-preview').textContent;
     if (!prompt || !this.state.selectedProject) return;
 
-    const config = this.getConfig();
+    const config = this.getLightConfig();
     const last = this.state.history[0];
+    const imgCount = this.state.images.length;
     if (last && last.config.project === config.project &&
         JSON.stringify(last.config.skills) === JSON.stringify(config.skills) &&
         JSON.stringify(last.config.agents) === JSON.stringify(config.agents) &&
         last.config.detail === config.detail &&
-        last.config.platform === config.platform) {
+        last.config.platform === config.platform &&
+        (last.config.imageCount || 0) === imgCount) {
       return;
     }
 
@@ -854,7 +1088,7 @@ class VibeCoderApp {
       id: Date.now().toString(36),
       at: new Date().toISOString(),
       preview: prompt.slice(0, 120),
-      config
+      config: { ...config, imageCount: imgCount }
     });
     this.state.history = this.state.history.slice(0, HISTORY_LIMIT);
     try { localStorage.setItem(HISTORY_KEY, JSON.stringify(this.state.history)); } catch (e) {}
@@ -874,7 +1108,7 @@ class VibeCoderApp {
       <div class="history-item">
         <button class="history-load" data-id="${escapeHtml(h.id)}" title="Muat config ini">
           <span class="history-preview">${escapeHtml((h.config.detail || '').slice(0, 60) || h.preview)}</span>
-          <span class="history-meta">${new Date(h.at).toLocaleString('id-ID')} · ${(h.config.skills || []).length} skill · ${(h.config.agents || []).length} agent</span>
+          <span class="history-meta">${new Date(h.at).toLocaleString('id-ID')} · ${(h.config.skills || []).length} skill · ${(h.config.agents || []).length} agent${h.config.imageCount ? ` · 🖼️ ${h.config.imageCount}` : ''}</span>
         </button>
         <button class="history-delete" data-id="${escapeHtml(h.id)}" title="Hapus dari riwayat" type="button">✕</button>
       </div>

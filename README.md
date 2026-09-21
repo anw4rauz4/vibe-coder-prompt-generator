@@ -17,7 +17,8 @@ Pilih project → pilih skills & sub-agents → tulis detail → dapatkan **prom
 | 🎯 **Auto-Preset** | Skill & agent rekomendasi otomatis terpilih saat project diklik |
 | ✨ **Custom Skills/Agents** | Tambah skill atau agent buatan sendiri (tersimpan di browser) |
 | 📋 **Copy / Download** | Salin prompt ke clipboard atau unduh sebagai file `.txt` |
-| 📦 **Export / Import JSON** | Simpan konfigurasi ke file, buka lagi kapan saja |
+| 🖼️ **Upload Multi-Image** | Lampirkan hingga 10 gambar referensi (klik, drag & drop, atau Ctrl+V) + catatan per kebutuhan — AI paham visual yang Anda maksud |
+| 📦 **Export / Import JSON** | Simpan konfigurasi ke file (termasuk gambar), buka lagi kapan saja |
 | 🔗 **Share Link** | Bagikan konfigurasi via URL — penerima langsung melihat setup yang sama |
 | 🕘 **Riwayat** | 20 prompt terakhir tersimpan otomatis, bisa dimuat ulang |
 | 🌗 **Dark / Light Mode** | Tema gelap & terang, preferensi diingat |
@@ -46,9 +47,12 @@ Lalu buka `http://localhost:8080`. Mode ini memuat data langsung dari folder `da
 2. **Pilih Kategori** (opsional) untuk memfilter daftar skill & agent
 3. **Centang Skills & Sub-Agents** yang diinginkan — atau biarkan auto-preset yang memilihkan
 4. **Tulis Detail Project** — misal: *"Buatkan aplikasi e-commerce dengan React dan Tailwind"*
-5. **Pilih Platform AI** tujuan, klik **🚀 Generate Prompt**, lalu **📋 Copy**
+5. **Lampirkan Gambar Referensi** (opsional) — klik/drag & drop/Ctrl+V, beri catatan misal *"Gambar 1 adalah layout yang saya mau"*
+6. **Pilih Platform AI** tujuan, klik **🚀 Generate Prompt**, lalu **📋 Copy**
 
 Tempel hasilnya ke ChatGPT / Claude / Gemini Anda. Prompt sudah berisi struktur instruksi yang disesuaikan dengan kemampuan platform tersebut.
+
+> 💡 **Tips gambar:** gambar otomatis dipadatkan agar ringan. Data gambar tersimpan lokal di browser Anda dan ikut saat Export JSON — tapi tidak ikut di link share & riwayat agar tetap ringan.
 
 ---
 

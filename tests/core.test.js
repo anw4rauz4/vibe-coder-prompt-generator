@@ -158,6 +158,67 @@ test('prompt dengan skills/agents kosong tetap valid', () => {
   assert.ok(prompt.includes('**Platform:** Generic'));
 });
 
+// ---------- IMAGE SUPPORT ----------
+console.log('\n🖼️ Image support');
+const baseImage = {
+  id: 'img-1', name: 'mockup.png', type: 'image/png',
+  size: 2048, width: 1920, height: 1080, note: 'Layout yang diinginkan',
+  dataUrl: 'data:image/png;base64,AAAA'
+};
+
+test('tanpa gambar: tidak ada section REFERENCE IMAGES', () => {
+  const prompt = buildPrompt({ project: baseProject, skills: [], agents: [], platform: {}, detail: '', categories: [] });
+  assert.ok(!prompt.includes('REFERENCE IMAGES'));
+});
+
+test('dengan gambar: section REFERENCE IMAGES muncul + nomor urut + catatan', () => {
+  const prompt = buildPrompt({
+    project: baseProject, skills: [], agents: [], platform: {},
+    detail: '', categories: [],
+    images: [baseImage, { ...baseImage, id: 'img-2', name: 'warna.png', note: '' }],
+    imageNotes: 'Gambar 1 wajib, Gambar 2 hanya referensi warna'
+  });
+  assert.ok(prompt.includes('## 🖼️ REFERENCE IMAGES (2)'));
+  assert.ok(prompt.includes('1. **mockup.png**'));
+  assert.ok(prompt.includes('2. **warna.png**'));
+  assert.ok(prompt.includes('(1920×1080'));
+  assert.ok(prompt.includes('Layout yang diinginkan'));
+  assert.ok(prompt.includes('Gambar 1 wajib, Gambar 2 hanya referensi warna'));
+  assert.ok(prompt.includes('Instruksi analisis gambar'));
+});
+
+test('prompt TIDAK pernah memuat data base64 gambar', () => {
+  const prompt = buildPrompt({
+    project: baseProject, skills: [], agents: [], platform: {},
+    detail: '', categories: [], images: [baseImage]
+  });
+  assert.ok(!prompt.includes('data:image'), 'base64 tidak boleh bocor ke prompt text');
+});
+
+test('buildImageSection: null jika kosong, terformat jika ada', () => {
+  const { buildImageSection } = require('../core.js');
+  assert.strictEqual(buildImageSection([], ''), null);
+  assert.strictEqual(buildImageSection(null, 'abc'), null);
+  const lines = buildImageSection([baseImage], '');
+  assert.ok(Array.isArray(lines) && lines.length > 3);
+});
+
+test('app.js punya integrasi gambar (state, persistence, dropzone)', () => {
+  const appSrc = fs.readFileSync(path.join(ROOT, 'app.js'), 'utf8');
+  assert.ok(appSrc.includes('addImageFiles'));
+  assert.ok(appSrc.includes("'vibe-coder-images-v1'"));
+  assert.ok(appSrc.includes('image-dropzone'));
+  assert.ok(appSrc.includes('getLightConfig'), 'riwayat/share harus pakai config ringan');
+});
+
+test('index.html punya UI upload gambar', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  for (const id of ['image-input', 'image-dropzone', 'image-notes', 'image-preview-list', 'image-count']) {
+    assert.ok(html.includes(`id="${id}"`), `element ${id} tidak ada`);
+  }
+  assert.ok(html.includes('multiple'), 'input harus multiple');
+});
+
 // ---------- APP.JS INTEGRITY ----------
 console.log('\n🧩 app.js integrity');
 test('app.js syntax valid', () => {

@@ -143,6 +143,48 @@ const TOKEN_LINES = [
   '- Progressive disclosure (load skill on demand)'
 ];
 
+const IMAGE_INSTRUCTIONS = [
+  '- Perlakukan setiap gambar sebagai requirement visual yang mengikat.',
+  '- Ekstrak layout, palet warna, komponen, dan hierarki informasi dari gambar.',
+  '- Jika teks dan gambar saling bertentangan, sebutkan konfliknya dan minta klarifikasi sebelum lanjut.',
+  '- Referensikan gambar dengan nomor (contoh: "sesuai Gambar 2") dalam jawaban Anda.'
+];
+
+const formatBytes = (bytes) => {
+  if (!Number.isFinite(bytes) || bytes <= 0) return '';
+  const units = ['B', 'KB', 'MB'];
+  let i = 0, v = bytes;
+  while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+  return `${Number.isInteger(v) ? v : v.toFixed(1)} ${units[i]}`;
+};
+
+function buildImageSection(images = [], notes = '') {
+  if (!Array.isArray(images) || images.length === 0) return null;
+
+  const lines = [];
+  lines.push(`## 🖼️ REFERENCE IMAGES (${images.length})`);
+  lines.push(`User melampirkan ${images.length} gambar sebagai referensi visual (dilampirkan bersama prompt ini):`);
+  lines.push('');
+
+  images.forEach((img, i) => {
+    const dims = (img.width && img.height)
+      ? ` (${img.width}×${img.height}${img.size ? `, ${formatBytes(img.size)}` : ''})`
+      : (img.size ? ` (${formatBytes(img.size)})` : '');
+    const note = img.note ? ` — ${img.note}` : '';
+    lines.push(`${i + 1}. **${img.name || `Gambar ${i + 1}`}**${dims}${note}`);
+  });
+
+  if (notes && String(notes).trim()) {
+    lines.push('');
+    lines.push(`**Catatan tambahan dari user:** ${String(notes).trim()}`);
+  }
+
+  lines.push('');
+  lines.push('**Instruksi analisis gambar:**');
+  IMAGE_INSTRUCTIONS.forEach(l => lines.push(l));
+  return lines;
+}
+
 const escapeHtml = (str) =>
   String(str ?? '').replace(/[&<>"']/g, (c) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -170,7 +212,7 @@ function decodeConfig(str) {
   }
 }
 
-function buildPrompt({ project, skills = [], agents = [], platform = {}, detail = '', categories = [] } = {}) {
+function buildPrompt({ project, skills = [], agents = [], platform = {}, detail = '', categories = [], images = [], imageNotes = '' } = {}) {
   if (!project || !project.name) {
     throw new TypeError('buildPrompt: project dengan .name wajib ada');
   }
@@ -213,6 +255,14 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
     lines.push('');
   }
 
+  if (images && images.length > 0) {
+    const imageLines = buildImageSection(images, imageNotes);
+    if (imageLines) {
+      lines.push(...imageLines);
+      lines.push('');
+    }
+  }
+
   lines.push('## 🚀 EXECUTION INSTRUCTIONS');
   tpl.execution.forEach(l => lines.push(l));
   lines.push('');
@@ -232,7 +282,7 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
   return lines.join('\n');
 }
 
-const VibeCore = { escapeHtml, encodeConfig, decodeConfig, buildPrompt, PLATFORM_TEMPLATES };
+const VibeCore = { escapeHtml, encodeConfig, decodeConfig, buildPrompt, buildImageSection, PLATFORM_TEMPLATES };
 
 // UMD-style: Node (tests) & browser
 if (typeof module !== 'undefined' && module.exports) {
