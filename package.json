@@ -1,0 +1,15 @@
+{
+  "name": "vibe-coder-prompt-generator",
+  "version": "2.1.0",
+  "description": "Generator prompt AI dengan 105+ skills, 106+ sub-agents, dan template per-platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx http-server -p 8080 -o",
+    "build:data": "node tests/build-data.js",
+    "pretest": "node tests/build-data.js",
+    "test": "node tests/core.test.js",
+    "validate": "node tests/core.test.js --validate-only"
+  },
+  "keywords": ["prompt", "generator", "ai", "skills", "agents"],
+  "license": "MIT"
+}

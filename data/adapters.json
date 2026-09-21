@@ -1,0 +1,12 @@
+[
+  { "id": "chatgpt", "name": "ChatGPT", "features": ["code-interpreter", "dall-e", "browsing", "custom-gpts"] },
+  { "id": "claude", "name": "Claude", "features": ["artifacts", "projects", "skills", "mcp", "vision"] },
+  { "id": "gemini", "name": "Gemini", "features": ["multimodal", "workspace", "youtube", "code-execution"] },
+  { "id": "grok", "name": "Grok", "features": ["real-time-x", "vision", "code"] },
+  { "id": "perplexity", "name": "Perplexity", "features": ["real-time-search", "deep-research", "spaces"] },
+  { "id": "llama", "name": "Llama", "features": ["open-source", "fine-tuning", "ollama"] },
+  { "id": "mistral", "name": "Mistral", "features": ["open-source", "fast", "codestral"] },
+  { "id": "deepseek", "name": "DeepSeek", "features": ["reasoning", "code", "affordable"] },
+  { "id": "qwen", "name": "Qwen", "features": ["multilingual", "vision", "coder"] },
+  { "id": "generic", "name": "Generic", "features": ["fallback"] }
+]

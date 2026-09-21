@@ -1,0 +1,14 @@
+[
+  { "id": "web_app", "name": "🌐 Web & App" },
+  { "id": "data_viz", "name": "📊 Data Viz" },
+  { "id": "media_gen", "name": "🎬 Media Gen" },
+  { "id": "3d_2d", "name": "🏗️ 3D & 2D" },
+  { "id": "engineering", "name": "⚙️ Engineering" },
+  { "id": "design", "name": "🎨 Design" },
+  { "id": "ai_modern", "name": "🤖 AI Modern" },
+  { "id": "business", "name": "💼 Business" },
+  { "id": "education", "name": "📚 Education" },
+  { "id": "image_processing", "name": "🖼️ Image Processing" },
+  { "id": "cloning", "name": "🧬 Cloning" },
+  { "id": "cinematic", "name": "🎥 Cinematic" }
+]

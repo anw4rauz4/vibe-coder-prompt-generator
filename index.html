@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generator prompt AI untuk 105+ skills dan 107+ sub-agents. Plug & play di 14+ AI platforms.">
+  <title>Vibe Coder Prompt Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🧠</span>
+        <h1>Vibe Coder Prompt Generator</h1>
+        <span class="version">v2.0.0</span>
+      </div>
+      <div class="header-right">
+        <div class="stats">
+          <span class="stat">105 Skills</span>
+          <span class="stat">107 Sub-Agents</span>
+          <span class="stat">10 Platforms</span>
+        </div>
+        <button id="theme-toggle" class="btn-small" title="Ganti tema">☀️ Light</button>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- SIDEBAR: PROJECT SELECTOR -->
+      <aside class="sidebar">
+        <h2>📁 Pilih Project</h2>
+        <div id="project-list" class="project-list"></div>
+      </aside>
+
+      <!-- CONTENT: PROMPT BUILDER -->
+      <section class="content">
+        <div class="builder">
+          <h2>🛠️ Bangun Prompt</h2>
+
+          <!-- Step 1: Pilih Kategori -->
+          <div class="form-group">
+            <label for="category-select">1. Kategori</label>
+            <select id="category-select">
+              <option value="">-- Pilih Kategori --</option>
+            </select>
+          </div>
+
+          <!-- Step 2: Pilih Skills -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="skill-search">2. Skills (bisa multi-pilih)</label>
+              <span id="skill-count" class="count-badge">0 dipilih</span>
+            </div>
+            <div class="list-toolbar">
+              <input type="search" id="skill-search" placeholder="🔍 Cari skill...">
+              <button id="add-skill-btn" class="btn-tiny" type="button" title="Buat skill custom">➕ Custom</button>
+              <button id="skill-select-all" class="btn-tiny" type="button">✅ Semua</button>
+              <button id="skill-clear" class="btn-tiny" type="button">✖ Kosongkan</button>
+            </div>
+            <div id="skill-list" class="skill-list"></div>
+          </div>
+
+          <!-- Step 3: Pilih Sub-Agents -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="agent-search">3. Sub-Agents (bisa multi-pilih)</label>
+              <span id="agent-count" class="count-badge">0 dipilih</span>
+            </div>
+            <div class="list-toolbar">
+              <input type="search" id="agent-search" placeholder="🔍 Cari agent...">
+              <button id="add-agent-btn" class="btn-tiny" type="button" title="Buat agent custom">➕ Custom</button>
+              <button id="agent-select-all" class="btn-tiny" type="button">✅ Semua</button>
+              <button id="agent-clear" class="btn-tiny" type="button">✖ Kosongkan</button>
+            </div>
+            <div id="agent-list" class="agent-list"></div>
+          </div>
+
+          <!-- Step 4: Detail Project -->
+          <div class="form-group">
+            <label for="project-detail">4. Detail Project</label>
+            <textarea id="project-detail" placeholder="Contoh: Buatkan aplikasi e-commerce dengan React dan Tailwind..."></textarea>
+          </div>
+
+          <!-- Step 5: Pilih AI Platform -->
+          <div class="form-group">
+            <label for="platform-select">5. AI Platform</label>
+            <select id="platform-select">
+              <option value="chatgpt">ChatGPT</option>
+            </select>
+          </div>
+
+          <!-- Auto-select preset -->
+          <div class="form-group checkbox-group">
+            <label class="toggle-label">
+              <input type="checkbox" id="auto-select-toggle" checked>
+              <span>🎯 Auto-pilih skills &amp; agents rekomendasi saat project diklik</span>
+            </label>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button id="generate-btn" class="btn-primary">🚀 Generate Prompt</button>
+            <button id="clear-btn" class="btn-secondary">🗑️ Clear</button>
+          </div>
+        </div>
+
+        <!-- OUTPUT PREVIEW -->
+        <div class="output">
+          <h2>📄 Preview Prompt</h2>
+          <div class="output-actions">
+            <button id="copy-btn" class="btn-small">📋 Copy</button>
+            <button id="download-btn" class="btn-small">💾 Download</button>
+            <button id="export-json-btn" class="btn-small">📦 Export JSON</button>
+            <button id="import-json-btn" class="btn-small">📥 Import JSON</button>
+            <button id="share-btn" class="btn-small">🔗 Share</button>
+            <button id="history-toggle-btn" class="btn-small">🕘 Riwayat</button>
+            <input type="file" id="import-file" accept=".json,application/json" hidden>
+          </div>
+
+          <!-- HISTORY PANEL -->
+          <div id="history-panel" class="history-panel">
+            <div class="history-header">
+              <span>🕘 Riwayat Prompt (20 terakhir)</span>
+              <button id="history-clear-btn" class="btn-tiny" type="button">🗑️ Kosongkan</button>
+            </div>
+            <div id="history-list" class="history-list"></div>
+          </div>
+          <pre id="output-preview" class="output-preview">Pilih project dan klik "Generate Prompt" untuk melihat hasilnya...</pre>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Vibe Coder Prompt Generator — 105 Skills, 107 Sub-Agents, 10 Platforms</p>
+      <p>Plug &amp; Play di 14+ AI Platforms</p>
+    </footer>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- CUSTOM DIALOG -->
+  <div id="custom-dialog" class="dialog-overlay" role="dialog" aria-modal="true" aria-labelledby="custom-title">
+    <div class="dialog">
+      <h3 id="custom-title">➕ Tambah <span id="custom-type-label">Skill</span> Custom</h3>
+      <div class="form-group">
+        <label for="custom-name">Nama</label>
+        <input type="text" id="custom-name" placeholder="Contoh: Flutter Mobile">
+      </div>
+      <div class="form-group">
+        <label for="custom-desc">Deskripsi (opsional)</label>
+        <input type="text" id="custom-desc" placeholder="Contoh: Flutter, Dart, Firebase">
+      </div>
+      <div class="dialog-actions">
+        <button id="custom-cancel" class="btn-secondary" type="button">Batal</button>
+        <button id="custom-submit" class="btn-primary" type="button">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
