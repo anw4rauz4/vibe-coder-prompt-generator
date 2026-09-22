@@ -868,6 +868,8 @@ class VibeCoderApp {
       document.getElementById('image-notes').value = '';
       document.getElementById('output-preview').textContent =
         'Pilih project dan klik "Generate Prompt" untuk melihat hasilnya...';
+      const badge = document.getElementById('persona-badge');
+      if (badge) { badge.hidden = true; badge.innerHTML = ''; }
       window.location.hash = '';
     } else {
       const key = type === 'skills' ? 'selectedSkills' : 'selectedAgents';
@@ -910,7 +912,19 @@ class VibeCoderApp {
       imageNotes
     });
     document.getElementById('output-preview').textContent = prompt;
+    this.renderPersonaBadge(selectedProject, skills);
     return prompt;
+  }
+
+  renderPersonaBadge(project, skills) {
+    const badge = document.getElementById('persona-badge');
+    if (!badge) return;
+    const persona = VibeCore.resolvePersona(project, this.state.categories, skills);
+    if (!persona) { badge.hidden = true; badge.innerHTML = ''; return; }
+    badge.hidden = false;
+    badge.innerHTML =
+      `<span>${escapeHtml(persona.icon)} Mode ${escapeHtml(persona.label)}</span>` +
+      `<span class="persona-label">— prompt disusun sesuai kebutuhan profesi ini</span>`;
   }
 
   // ============================================

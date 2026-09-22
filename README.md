@@ -5,6 +5,8 @@ Generator prompt AI berbasis web — tanpa framework, tanpa install, langsung ja
 Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gambar referensi → dapatkan **prompt siap pakai** yang sudah dioptimalkan sesuai platform AI tujuan Anda (ChatGPT, Claude, Gemini, dan lainnya).
 
 > 🆕 **Terintegrasi paket skill DAN** — metodologi marketing multi-keahlian (analisa data, strategi, infografik, storyboard, PMO, arsitektur software & bangunan). Pilih skill "DAN ..." dan prompt otomatis memuat **DAN Playbook**: prinsip kerja berbasis data + target deliverable per skill. Paket lengkap (pustaka referensi, engine CLI Python zero-dependency, template dokumen) ada di folder [`skills/dan/`](skills/dan/).
+>
+> 🎭 **Persona Profesi** — tampilan & struktur prompt otomatis menyesuaikan profesi. Pilih project coaching → prompt jadi **sesi GROW + rencana aksi**. Pilih project konstruksi → prompt menuntut **denah 2D, takeoff material, RAB, jadwal**. Ada 10 persona: Coach, Engineer Konstruksi, Arsitek, Software Engineer, Data Analyst, Strategist Marketing, Creative Producer, UI/UX Designer, Edukator, Business Ops — masing-masing dengan alur kerja, blueprint deliverable, dan quality checklist-nya sendiri.
 
 ---
 
@@ -16,6 +18,7 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 | 🛠️ **114 Skills** | Multi-pilih skill, cari dengan pencarian, filter per kategori — termasuk 9 skill DAN |
 | 🤖 **115 Sub-Agents** | Pilih agent pendamping untuk memecah tugas kompleks — termasuk 9 agent DAN |
 | 🧠 **DAN Playbook** | Skill "DAN ..." mengaktifkan metodologi: data dulu, tiap temuan = aksi terukur, deliverable jelas per skill |
+| 🎭 **Persona Profesi** | 10 blueprint profesi (coach, engineer konstruksi, arsitek, dst) — struktur prompt berbeda sesuai kebutuhan tiap profesi |
 | 🌐 **10 Platform AI** | Template prompt berbeda untuk ChatGPT, Claude, Gemini, Grok, Perplexity, Llama, Mistral, DeepSeek, Qwen, dan generic |
 | 🎯 **Auto-Preset** | Skill & agent rekomendasi otomatis terpilih saat project diklik |
 | ✨ **Custom Skills/Agents** | Tambah skill atau agent buatan sendiri (tersimpan di browser) |

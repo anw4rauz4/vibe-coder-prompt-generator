@@ -46,7 +46,8 @@ window.EMBEDDED_DATA = {
       "agents": [
         "data-viz-expert",
         "dashboard-developer"
-      ]
+      ],
+      "persona": "data-analyst"
     },
     {
       "id": "video-cinematic",
@@ -137,7 +138,8 @@ window.EMBEDDED_DATA = {
       "agents": [
         "interior-designer",
         "sketchup-modeler"
-      ]
+      ],
+      "persona": "architect"
     },
     {
       "id": "outdoor-design",
@@ -151,7 +153,8 @@ window.EMBEDDED_DATA = {
       "agents": [
         "landscape-architect",
         "sketchup-modeler"
-      ]
+      ],
+      "persona": "architect"
     },
     {
       "id": "cad-drawing",
@@ -377,7 +380,8 @@ window.EMBEDDED_DATA = {
         "sales-strategist",
         "sales-marketing-expert",
         "negotiation-trainer"
-      ]
+      ],
+      "persona": "marketing-strategist"
     },
     {
       "id": "sales-coaching",
@@ -393,7 +397,8 @@ window.EMBEDDED_DATA = {
         "sales-coach",
         "team-performance-coach",
         "motivation-expert"
-      ]
+      ],
+      "persona": "coach"
     },
     {
       "id": "sales-monitoring",
@@ -409,7 +414,8 @@ window.EMBEDDED_DATA = {
         "sales-analyst",
         "dashboard-developer",
         "forecast-analyst"
-      ]
+      ],
+      "persona": "business-ops"
     },
     {
       "id": "hr-management",
@@ -426,7 +432,8 @@ window.EMBEDDED_DATA = {
         "middle-management-coach",
         "lower-management-coach",
         "talent-manager"
-      ]
+      ],
+      "persona": "business-ops"
     },
     {
       "id": "talent-mapping",
@@ -442,7 +449,8 @@ window.EMBEDDED_DATA = {
         "talent-manager",
         "personality-analyst",
         "conflict-resolver"
-      ]
+      ],
+      "persona": "business-ops"
     },
     {
       "id": "strategy-tools",
@@ -460,7 +468,8 @@ window.EMBEDDED_DATA = {
         "okr-kpi-specialist",
         "swot-pestel-analyst",
         "balanced-scorecard-expert"
-      ]
+      ],
+      "persona": "marketing-strategist"
     },
     {
       "id": "monitoring-tools",
@@ -478,7 +487,8 @@ window.EMBEDDED_DATA = {
         "pdca-ooda-specialist",
         "alert-system-engineer",
         "forecast-analyst"
-      ]
+      ],
+      "persona": "business-ops"
     },
     {
       "id": "sop-maker",
@@ -490,7 +500,8 @@ window.EMBEDDED_DATA = {
       ],
       "agents": [
         "sop-writer"
-      ]
+      ],
+      "persona": "business-ops"
     },
     {
       "id": "dan-marketing-analysis",
@@ -506,7 +517,8 @@ window.EMBEDDED_DATA = {
         "dan-data-analyst",
         "dan-infographic-engineer",
         "dan-performance-coach"
-      ]
+      ],
+      "persona": "data-analyst"
     },
     {
       "id": "dan-campaign-creative",
@@ -522,7 +534,8 @@ window.EMBEDDED_DATA = {
         "dan-strategist",
         "dan-media-creator",
         "prompt-engineer"
-      ]
+      ],
+      "persona": "creative-producer"
     },
     {
       "id": "dan-project-monitoring",
@@ -538,7 +551,8 @@ window.EMBEDDED_DATA = {
         "dan-pmo-officer",
         "dan-software-architect",
         "dan-performance-coach"
-      ]
+      ],
+      "persona": "business-ops"
     }
   ],
   "categories": [

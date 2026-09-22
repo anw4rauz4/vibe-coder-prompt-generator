@@ -40,7 +40,8 @@
     "agents": [
       "data-viz-expert",
       "dashboard-developer"
-    ]
+    ],
+    "persona": "data-analyst"
   },
   {
     "id": "video-cinematic",
@@ -131,7 +132,8 @@
     "agents": [
       "interior-designer",
       "sketchup-modeler"
-    ]
+    ],
+    "persona": "architect"
   },
   {
     "id": "outdoor-design",
@@ -145,7 +147,8 @@
     "agents": [
       "landscape-architect",
       "sketchup-modeler"
-    ]
+    ],
+    "persona": "architect"
   },
   {
     "id": "cad-drawing",
@@ -371,7 +374,8 @@
       "sales-strategist",
       "sales-marketing-expert",
       "negotiation-trainer"
-    ]
+    ],
+    "persona": "marketing-strategist"
   },
   {
     "id": "sales-coaching",
@@ -387,7 +391,8 @@
       "sales-coach",
       "team-performance-coach",
       "motivation-expert"
-    ]
+    ],
+    "persona": "coach"
   },
   {
     "id": "sales-monitoring",
@@ -403,7 +408,8 @@
       "sales-analyst",
       "dashboard-developer",
       "forecast-analyst"
-    ]
+    ],
+    "persona": "business-ops"
   },
   {
     "id": "hr-management",
@@ -420,7 +426,8 @@
       "middle-management-coach",
       "lower-management-coach",
       "talent-manager"
-    ]
+    ],
+    "persona": "business-ops"
   },
   {
     "id": "talent-mapping",
@@ -436,7 +443,8 @@
       "talent-manager",
       "personality-analyst",
       "conflict-resolver"
-    ]
+    ],
+    "persona": "business-ops"
   },
   {
     "id": "strategy-tools",
@@ -454,7 +462,8 @@
       "okr-kpi-specialist",
       "swot-pestel-analyst",
       "balanced-scorecard-expert"
-    ]
+    ],
+    "persona": "marketing-strategist"
   },
   {
     "id": "monitoring-tools",
@@ -472,7 +481,8 @@
       "pdca-ooda-specialist",
       "alert-system-engineer",
       "forecast-analyst"
-    ]
+    ],
+    "persona": "business-ops"
   },
   {
     "id": "sop-maker",
@@ -484,7 +494,8 @@
     ],
     "agents": [
       "sop-writer"
-    ]
+    ],
+    "persona": "business-ops"
   },
   {
     "id": "dan-marketing-analysis",
@@ -500,7 +511,8 @@
       "dan-data-analyst",
       "dan-infographic-engineer",
       "dan-performance-coach"
-    ]
+    ],
+    "persona": "data-analyst"
   },
   {
     "id": "dan-campaign-creative",
@@ -516,7 +528,8 @@
       "dan-strategist",
       "dan-media-creator",
       "prompt-engineer"
-    ]
+    ],
+    "persona": "creative-producer"
   },
   {
     "id": "dan-project-monitoring",
@@ -532,6 +545,7 @@
       "dan-pmo-officer",
       "dan-software-architect",
       "dan-performance-coach"
-    ]
+    ],
+    "persona": "business-ops"
   }
 ]

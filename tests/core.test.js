@@ -262,6 +262,68 @@ test('skill/agent DAN di data JSON match paket (9+9)', () => {
   });
 });
 
+// ---------- PERSONA PROFESI ----------
+console.log('\n🎭 Persona Profesi');
+const { resolvePersona } = require('../core.js');
+const cats = [{ id: 'business', name: 'Business' }, { id: 'engineering', name: 'Engineering' }];
+
+function buildFor(project, skills) {
+  return buildPrompt({ project, skills, agents: [], platform: {}, detail: '', categories: cats });
+}
+
+test('project coaching → persona COACH (GROW, sesi, rencana aksi)', () => {
+  const prompt = buildFor(
+    { name: '🎯 Sales Coaching', desc: 'Coach tim sales', category: 'business', persona: 'coach' },
+    [{ id: 'sales-coaching', name: 'Sales Coaching', description: 'GROW' }]
+  );
+  assert.ok(prompt.includes('PERSONA: PERFORMANCE COACH'));
+  assert.ok(prompt.includes('GROW'));
+  assert.ok(prompt.includes('BLUEPRINT SESI COACHING'));
+  assert.ok(prompt.includes('pertanyaan reflektif'));
+  assert.ok(prompt.includes('Quality Checklist'.toUpperCase().slice(0, 8)));
+  const p = resolvePersona({ category: 'business', persona: 'coach' }, cats, []);
+  assert.strictEqual(p.id, 'coach');
+});
+
+test('project konstruksi → persona ENGINEER (RAB, denah 2D, material takeoff)', () => {
+  const prompt = buildFor(
+    { name: '📐 CAD Drawing', desc: 'Gambar teknik', category: 'engineering' },
+    [{ id: 'cad-engineering', name: 'CAD', description: 'AutoCAD' }]
+  );
+  assert.ok(prompt.includes('PERSONA: ENGINEER KONSTRUKSI'));
+  assert.ok(prompt.includes('RAB'));
+  assert.ok(prompt.includes('Denah 2D'));
+  assert.ok(prompt.includes('Material (Takeoff)'));
+  assert.ok(prompt.includes('Jadwal konstruksi'));
+  assert.ok(prompt.includes('KDB/KLB'));
+});
+
+test('skill architectural-design mengangkat persona ARSITEK meski kategori design', () => {
+  const prompt = buildFor(
+    { name: '🏠 Indoor Design', desc: 'Interior', category: 'design' },
+    [{ id: 'architectural-design', name: 'DAN Architectural Design', description: 'Denah' }]
+  );
+  assert.ok(prompt.includes('PERSONA: ARSITEK'));
+  assert.ok(prompt.includes('BLUEPRINT DESAIN ARSITEKTUR'));
+});
+
+test('kategori web_app → default SOFTWARE ENGINEER; kategori kosong → tanpa persona', () => {
+  const web = buildFor({ name: '🌐 Web App', desc: 'Web', category: 'web_app' }, []);
+  assert.ok(web.includes('PERSONA: SOFTWARE ENGINEER'));
+  const noCat = buildFor({ name: 'X', desc: 'x' }, []);
+  assert.ok(!noCat.includes('## 🎯 PERSONA'));
+});
+
+test('10 persona terdaftar & semua project preset punya persona valid', () => {
+  const { PERSONA_TEMPLATES } = require('../core.js');
+  assert.strictEqual(Object.keys(PERSONA_TEMPLATES).length, 10);
+  data.projects.forEach(p => {
+    if (p.persona) {
+      assert.ok(PERSONA_TEMPLATES[p.persona], `project ${p.id}: persona ${p.persona} tidak dikenal`);
+    }
+  });
+});
+
 // ---------- APP.JS INTEGRITY ----------
 console.log('\n🧩 app.js integrity');
 test('app.js syntax valid', () => {
