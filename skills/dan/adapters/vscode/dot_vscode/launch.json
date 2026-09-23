@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "DAN: engine saat ini",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "DAN_ROOT": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "DAN: CLI args",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/skills/dan/scripts/dan.py",
+      "args": "${input:danArgs}",
+      "console": "integratedTerminal",
+      "env": {
+        "DAN_ROOT": "${workspaceFolder}"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "danArgs",
+      "type": "promptString",
+      "description": "argumen dan.py, mis.: run dan_analytics data.csv",
+      "default": "list"
+    }
+  ]
+}

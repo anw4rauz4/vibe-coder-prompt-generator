@@ -499,7 +499,7 @@
   },
   {
     "id": "dan-marketing-analysis",
-    "name": "📊 DAN: Analisa Marketing",
+    "name": "📊 RAUZA: Analisa Marketing",
     "desc": "Data kampanye → KPI, insight, aksi terukur",
     "category": "business",
     "skills": [
@@ -516,7 +516,7 @@
   },
   {
     "id": "dan-campaign-creative",
-    "name": "🎬 DAN: Kampanye Kreatif",
+    "name": "🎬 RAUZA: Kampanye Kreatif",
     "desc": "Strategi → storyboard, konten, caption",
     "category": "media_gen",
     "skills": [
@@ -533,7 +533,7 @@
   },
   {
     "id": "dan-project-monitoring",
-    "name": "📈 DAN: Monitoring Proyek",
+    "name": "📈 RAUZA: Monitoring Proyek",
     "desc": "Status proyek, SPI, RAG, earned value, coaching",
     "category": "engineering",
     "skills": [
@@ -547,5 +547,172 @@
       "dan-performance-coach"
     ],
     "persona": "business-ops"
+  },
+  {
+    "id": "banana-product-photo",
+    "name": "🍌 Banana Product Photo",
+    "desc": "Foto & edit produk dengan Nano Banana (Gemini Image)",
+    "category": "image_processing",
+    "skills": [
+      "nanobanana-image",
+      "prompt-detail-engineering",
+      "image-enhancement",
+      "persona-visual-director"
+    ],
+    "agents": [
+      "dan-multimodal-specialist",
+      "dan-prompt-engineer",
+      "dan-media-creator"
+    ],
+    "persona": "creative-producer",
+    "accent": "banana",
+    "tips": "Unggah screenshot/foto produk → prompt akan menyusun instruct edit Nano Banana: ganti background, sudut kamera, variasi rasio 1:1/9:16/16:9 tanpa mengubah bentuk produk.",
+    "placeholders": {
+      "detail": "Contoh: Serum vitamin C 30ml botol kaca amber — foto studio putih, buat 3 varian: (1) hero shot di atas batu marmer, (2) lifestyle di bathroom shelf, (3) flat-lay dengan ilustrasi bahan; pertahankan label produk persis sama."
+    }
+  },
+  {
+    "id": "google-flow-video",
+    "name": "🎥 Google Flow / Veo 3",
+    "desc": "Video sinematik AI dengan audio — scenebuilder",
+    "category": "ai_modern",
+    "skills": [
+      "google-flow-video",
+      "cinematic-video",
+      "scene-shots",
+      "camera-movement",
+      "lighting-mood",
+      "prompt-detail-engineering"
+    ],
+    "agents": [
+      "cinematic-director",
+      "dan-ai-video-editor",
+      "dan-voice-producer"
+    ],
+    "persona": "creative-producer",
+    "accent": "flow",
+    "tips": "Alur kerja Flow: jump-to sesi → siapkan ingredients (gambar produk/karakter) → prompt per scene 8 detik dengan dialog & SFX → extend sampai durasi target.",
+    "placeholders": {
+      "detail": "Contoh: Iklan 30 dtk kopi susu brand lokal — 4 scene: (1) barista menuang susu, slow motion, suara espresso machine, (2) close-up latte art, VO bahasa Indonesia santai, (3) pelanggan menyesap sambil senyum di kafe sore, (4) produk + tagline. Rasio 9:16 untuk TikTok."
+    }
+  },
+  {
+    "id": "gamma-presentation",
+    "name": "📽️ Gamma / PPT AI",
+    "desc": "Deck presentasi instan dengan Gamma/Tome",
+    "category": "education",
+    "skills": [
+      "gamma-presentation",
+      "presentation",
+      "data-to-infographic",
+      "prompt-detail-engineering"
+    ],
+    "agents": [
+      "presentation-designer",
+      "dan-infographic-engineer"
+    ],
+    "persona": "educator",
+    "accent": "gamma",
+    "tips": "Prompt disusun sebagai outline per-slide (judul + poin + visual) — tinggal paste ke Gamma 'Paste in text' atau ChatGPT/Claude untuk ekspor PPTX.",
+    "placeholders": {
+      "detail": "Contoh: Deck 10 slide 'Rencana Marketing Q4' untuk manajemen — gaya korporat minimalis, biru navy + oranye, tiap slide 3 poin maksimal, sertakan chart tren penjualan."
+    }
+  },
+  {
+    "id": "ai-web-builder",
+    "name": "⚡ AI Web Dev Builder",
+    "desc": "Bangun web/app via Lovable, Bolt, v0, Replit",
+    "category": "ai_modern",
+    "skills": [
+      "ai-web-dev-builder",
+      "web-app",
+      "ui-design",
+      "design-system",
+      "prompt-detail-engineering"
+    ],
+    "agents": [
+      "frontend-dev",
+      "ui-designer",
+      "dan-ai-saas-launcher"
+    ],
+    "persona": "software-engineer",
+    "accent": "builder",
+    "tips": "Prompt diformat agar diterima Lovable, Bolt, v0, Replit Agent, dan Firebase Studio: fitur MVP dulu, tech stack eksplisit, halaman dikomposisi berurutan agar AI tidak melompat.",
+    "placeholders": {
+      "detail": "Contoh: Landing page + dashboard SaaS pencatat keuangan UMKM — Next.js + Tailwind + Supabase, halaman: landing, login, dashboard, laporan; dark mode; responsif mobile."
+    }
+  },
+  {
+    "id": "screenshot-to-visual",
+    "name": "📸 Screenshot → Visual",
+    "desc": "1 screenshot produk → video / 3D / wireframe",
+    "category": "image_processing",
+    "skills": [
+      "screenshot-to-video",
+      "screenshot-to-3d",
+      "screenshot-to-wireframe",
+      "prompt-detail-engineering",
+      "persona-visual-director"
+    ],
+    "agents": [
+      "image-to-video-producer",
+      "3d-engineer",
+      "screenshot-analyzer"
+    ],
+    "persona": "creative-producer",
+    "accent": "shot",
+    "tips": "Cukup lampirkan 1 screenshot produk — prompt otomatis berisi 3 pipeline: (1) Video: orbit kamera + VO, (2) 3D: rekonstruksi & render turntable, (3) Wireframe: struktur UI & blueprint redesign.",
+    "placeholders": {
+      "detail": "Contoh: Ini screenshot aplikasi e-commerce saya — buatkan video demo 15 dtk dengan orbit kamera di sekitar mockup HP, lalu wireframe ulang halaman home biar lebih modern."
+    }
+  },
+  {
+    "id": "product-visual-suite",
+    "name": "🧴 Product Visual Suite",
+    "desc": "Paket lengkap visual produk: foto, video, 3D",
+    "category": "media_gen",
+    "skills": [
+      "product-visual-suite",
+      "nanobanana-image",
+      "image-to-video",
+      "screenshot-to-3d",
+      "persona-visual-director"
+    ],
+    "agents": [
+      "dan-media-creator",
+      "image-to-video-producer",
+      "3d-engineer",
+      "dan-multimodal-specialist"
+    ],
+    "persona": "creative-producer",
+    "accent": "suite",
+    "tips": "Satu prompt master untuk seluruh paket aset produk: foto hero, video 15 dtk, turntable 3D, dan banner per platform — konsisten warna & gaya brand.",
+    "placeholders": {
+      "detail": "Contoh: Produk parfum 50ml untuk brand skincare lokal — paket: 1 foto hero 1:1, 1 video 15 dtk rasio 9:16, 1 render 3D turntable 10 dtk, 3 banner (Meta, TikTok, Marketplace); palet krem-emas, mood elegan."
+    }
+  },
+  {
+    "id": "ai-ux-redesign",
+    "name": "🎨 AI UX Redesign",
+    "desc": "Desain ulang UI dengan AI (Uizard, Galileo, Figma AI)",
+    "category": "design",
+    "skills": [
+      "ai-ux-designer",
+      "screenshot-to-wireframe",
+      "ui-design",
+      "design-system",
+      "usability-testing"
+    ],
+    "agents": [
+      "ui-designer",
+      "ux-researcher",
+      "screenshot-analyzer"
+    ],
+    "persona": "designer",
+    "accent": "ux",
+    "tips": "Lampirkan screenshot UI lama — AI menganalisis masalah UX (hierarki, kontras, spacing) lalu menghasilkan wireframe baru + design tokens siap Figma.",
+    "placeholders": {
+      "detail": "Contoh: Ini dashboard lama kami — perbaiki hierarki informasi, buat dark mode, dan hasilkan wireframe + design tokens untuk tim frontend."
+    }
   }
 ]

@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "skills"
+    },
+    {
+      "path": "adapters"
+    },
+    {
+      "path": "deliverables"
+    },
+    {
+      "path": "data"
+    }
+  ],
+  "settings": {
+    "python.analysis.extraPaths": [
+      "skills/dan/scripts"
+    ]
+  }
+}

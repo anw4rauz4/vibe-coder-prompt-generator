@@ -1,0 +1,11 @@
+---
+description: Menganalisa data marketing/iklan dari CSV atau XLSX (Meta Ads, Google Ads, TikTok Ads, Shopee/Tokopedia, GA4, CRM): menghitung KPI (CTR, CPC, CPM, CVR, CPA, ROAS, AOV, margin), agregasi per channel/kampanye/waktu, deteksi tren & regresi, forecasting, deteksi anomali (z-score), analisa funnel, Pareto
+globs: 
+alwaysApply: false
+---
+
+# dan-marketing-data-analyst
+
+Baca selengkapnya: `skills/dan/skills/01-marketing-data-analyst/SKILL.md`.
+
+Menganalisa data marketing/iklan dari CSV atau XLSX (Meta Ads, Google Ads, TikTok Ads, Shopee/Tokopedia, GA4, CRM): menghitung KPI (CTR, CPC, CPM, CVR, CPA, ROAS, AOV, margin), agregasi per channel/kampanye/waktu, deteksi tren & regresi, forecasting, deteksi anomali (z-score), analisa funnel, Pareto, korelasi antar metrik, dan health score. Menghasilkan laporan Markdown, JSON siap-visualisasi, dan CSV ringkasan. Gunakan saat pengguna mengirim data kampanye/penjualan dan minta analisa, evaluasi performa, diagnosis penurunan, atau laporan KPI.

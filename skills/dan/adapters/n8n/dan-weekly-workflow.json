@@ -1,0 +1,74 @@
+{
+  "name": "DAN weekly PMO",
+  "nodes": [
+    {
+      "id": "dan-0",
+      "name": "Weekly run",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ],
+      "parameters": {
+        "command": "python3 <abs>/skills/dan/scripts/weekly_run.py --projects <abs>/projects.json --out-dir <abs>/out"
+      }
+    },
+    {
+      "id": "dan-1",
+      "name": "PMO guard",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        420,
+        300
+      ],
+      "parameters": {
+        "command": "python3 <abs>/skills/dan/scripts/pmo_guard.py <abs>/out/projects_updated.json || echo GUARD_GAGAL"
+      }
+    },
+    {
+      "id": "dan-2",
+      "name": "Notify",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        640,
+        300
+      ],
+      "parameters": {
+        "command": "echo 'Ringkasan mingguan siap; lihat out/weekly_summary.md'"
+      }
+    }
+  ],
+  "connections": {
+    "Weekly run": {
+      "main": [
+        [
+          {
+            "node": "PMO guard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PMO guard": {
+      "main": [
+        [
+          {
+            "node": "Notify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "note": "Ganti <abs> dengan path absolut repositori Anda."
+  }
+}

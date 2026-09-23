@@ -1,5 +1,5 @@
 // ============================================
-// UNIT TESTS — VibeCoder Core (no framework)
+// UNIT TESTS — RAUZA Core (no framework)
 // Run: node tests/core.test.js
 // ============================================
 
@@ -115,7 +115,7 @@ test('generate prompt lengkap untuk project valid', () => {
     categories: data.categories
   });
 
-  assert.ok(prompt.includes('VIBE CODER PROMPT'), 'missing title');
+  assert.ok(prompt.includes('RAUZA PROMPT'), 'missing title');
   assert.ok(prompt.includes('PROJECT OVERVIEW'), 'missing overview');
   assert.ok(prompt.includes('Web App'), 'missing project name');
   assert.ok(prompt.includes('E-commerce dengan Next.js'), 'missing detail');
@@ -219,25 +219,25 @@ test('index.html punya UI upload gambar', () => {
   assert.ok(html.includes('multiple'), 'input harus multiple');
 });
 
-// ---------- DAN PLAYBOOK INTEGRATION ----------
-console.log('\n🧠 DAN Playbook');
-const danSkill = { id: 'marketing-data-analyst', name: 'DAN Marketing Data Analyst', description: 'KPI, funnel' };
-const danAgent = { id: 'dan-data-analyst', name: 'DAN Data Analyst', description: 'KPI' };
+// ---------- RAUZA PLAYBOOK INTEGRATION ----------
+console.log('\n🧠 RAUZA Playbook');
+const danSkill = { id: 'marketing-data-analyst', name: 'RAUZA Marketing Data Analyst', description: 'KPI, funnel' };
+const danAgent = { id: 'dan-data-analyst', name: 'RAUZA Data Analyst', description: 'KPI' };
 
-test('skill DAN → prompt memuat DAN PLAYBOOK + prinsip + deliverable', () => {
+test('skill RAUZA → prompt memuat RAUZA PLAYBOOK + prinsip + deliverable', () => {
   const prompt = buildPrompt({
     project: baseProject, skills: [danSkill], agents: [danAgent],
     platform: {}, detail: '', categories: []
   });
-  assert.ok(prompt.includes('## 🧠 DAN PLAYBOOK'));
+  assert.ok(prompt.includes('## 🧠 RAUZA PLAYBOOK'));
   assert.ok(prompt.includes('Data dulu, opini belakangan'));
-  assert.ok(prompt.includes('**DAN Marketing Data Analyst** → JSON hasil analisa'));
+  assert.ok(prompt.includes('**RAUZA Marketing Data Analyst** → JSON hasil analisa'));
   assert.ok(prompt.includes('skills/dan/'));
 });
 
-test('tanpa skill DAN → tidak ada blok playbook', () => {
+test('tanpa skill RAUZA → tidak ada blok playbook', () => {
   const prompt = buildPrompt({ project: baseProject, skills: [], agents: [], platform: {}, detail: '', categories: [] });
-  assert.ok(!prompt.includes('DAN PLAYBOOK'));
+  assert.ok(!prompt.includes('RAUZA PLAYBOOK'));
 });
 
 test('paket skills/dan/ lengkap & konsisten', () => {
@@ -251,14 +251,16 @@ test('paket skills/dan/ lengkap & konsisten', () => {
   assert.ok(fs.existsSync(path.join(danRoot, 'examples-data', 'sample_campaign.csv')), 'contoh data hilang');
 });
 
-test('skill/agent DAN di data JSON match paket (9+9)', () => {
-  const danSkillsInData = data.skills.filter(s => s.name.startsWith('DAN '));
-  const danAgentsInData = data.agents.filter(a => a.name.startsWith('DAN '));
-  assert.strictEqual(danSkillsInData.length, 9, 'harus 9 skill DAN');
-  assert.strictEqual(danAgentsInData.length, 9, 'harus 9 agent DAN');
+test('skill/agent RAUZA di data JSON match paket (9 inti + 12 AI Skills 2027)', () => {
+  const danSkillsInData = data.skills.filter(s => s.name.startsWith('RAUZA '));
+  const danAgentsInData = data.agents.filter(a => a.name.startsWith('RAUZA '));
+  assert.ok(danSkillsInData.length >= 9, 'minimal 9 skill RAUZA inti');
+  assert.ok(danAgentsInData.length >= 9, 'minimal 9 agent RAUZA inti');
+  assert.strictEqual(danSkillsInData.length, 10, '10 skill RAUZA (9 inti + Visual Director)');
+  assert.strictEqual(danAgentsInData.length, 21, '21 agent RAUZA (9 inti + 12 AI Skills 2027)');
   const engineSkillIds = Object.keys(require('../core.js').buildDanPlaybook ? {} : {});
   danSkillsInData.forEach(s => {
-    assert.ok(/^(marketing-data-analyst|marketing-strategist|data-to-infographic|image-video-creator|design-engineer-2d-3d|motivator-coach|project-monitoring-controlling|software-architecture|architectural-design)$/.test(s.id), `id tak dikenal: ${s.id}`);
+    assert.ok(/^(marketing-data-analyst|marketing-strategist|data-to-infographic|image-video-creator|design-engineer-2d-3d|motivator-coach|project-monitoring-controlling|software-architecture|architectural-design)$|^(marketing-data-analyst|marketing-strategist|data-to-infographic|image-video-creator|design-engineer-2d-3d|motivator-coach|project-monitoring-controlling|software-architecture|architectural-design|persona-visual-director)$/.test(s.id), `id tak dikenal: ${s.id}`);
   });
 });
 
@@ -301,7 +303,7 @@ test('project konstruksi → persona ENGINEER (RAB, denah 2D, material takeoff)'
 test('skill architectural-design mengangkat persona ARSITEK meski kategori design', () => {
   const prompt = buildFor(
     { name: '🏠 Indoor Design', desc: 'Interior', category: 'design' },
-    [{ id: 'architectural-design', name: 'DAN Architectural Design', description: 'Denah' }]
+    [{ id: 'architectural-design', name: 'RAUZA Architectural Design', description: 'Denah' }]
   );
   assert.ok(prompt.includes('PERSONA: ARSITEK'));
   assert.ok(prompt.includes('BLUEPRINT DESAIN ARSITEKTUR'));
@@ -322,6 +324,143 @@ test('10 persona terdaftar & semua project preset punya persona valid', () => {
       assert.ok(PERSONA_TEMPLATES[p.persona], `project ${p.id}: persona ${p.persona} tidak dikenal`);
     }
   });
+});
+
+// ---------- FITUR BARU: PLATFORM GENERATOR, PIPELINE, ADAPTIVE UI ----------
+console.log('\n🚀 Platform Generator & Visual Pipeline');
+test('setiap platform generator punya template & prompt framework muncul', () => {
+  data.adapters.forEach(a => {
+    assert.ok(PLATFORM_TEMPLATES[a.id], `template untuk ${a.id} tidak ada`);
+  });
+  const prompt = buildPrompt({
+    project: baseProject,
+    skills: [],
+    agents: [],
+    platform: data.adapters.find(a => a.id === 'banana'),
+    detail: 'foto produk serum',
+    categories: data.categories
+  });
+  assert.ok(prompt.includes('PROMPT FRAMEWORK'), 'framework block hilang');
+  assert.ok(prompt.includes('[PROMPT UTAMA]'), 'struktur framework hilang');
+});
+
+test('struktur detail 9 elemen muncul saat detail diisi', () => {
+  const prompt = buildPrompt({
+    project: baseProject, skills: [], agents: [], platform: {},
+    detail: 'E-commerce UMKM', categories: data.categories
+  });
+  assert.ok(prompt.includes('STRUKTUR DETAIL'), 'blok struktur detail hilang');
+  assert.ok(prompt.includes('[Kriteria Sukses]'), 'elemen kriteria sukses hilang');
+  assert.ok(prompt.includes('asumsi:'), 'petunjuk asumsi hilang');
+});
+
+test('visual pipeline aktif untuk project screenshot-to-visual', () => {
+  const proj = data.projects.find(p => p.id === 'screenshot-to-visual');
+  const prompt = buildPrompt({
+    project: proj,
+    skills: data.skills.filter(s => (proj.skills || []).includes(s.id)),
+    agents: [], platform: {}, detail: 'demo', categories: data.categories
+  });
+  assert.ok(prompt.includes('VISUAL PIPELINE'), 'pipeline hilang');
+  assert.ok(prompt.includes('Pipeline A'), 'pipeline video hilang');
+  assert.ok(prompt.includes('Pipeline B'), 'pipeline 3D hilang');
+  assert.ok(prompt.includes('Pipeline C'), 'pipeline wireframe hilang');
+});
+
+test('visual pipeline aktif otomatis saat ada gambar terlampir', () => {
+  const prompt = buildPrompt({
+    project: baseProject, skills: [], agents: [], platform: {},
+    detail: '', categories: data.categories,
+    images: [{ name: 'shot.png', dataUrl: 'data:image/png;base64,xxx' }]
+  });
+  assert.ok(prompt.includes('VISUAL PIPELINE'));
+});
+
+test('resolveProjectUi: aksen, placeholder & workflow per project', () => {
+  const { resolveProjectUi } = require('../core.js');
+  const banana = resolveProjectUi(data.projects.find(p => p.id === 'banana-product-photo'));
+  assert.ok(banana.accent, 'aksen banana hilang');
+  assert.ok(banana.detailPlaceholder.includes('Serum'), 'placeholder banana salah');
+  assert.ok(Array.isArray(banana.workflow) && banana.workflow.length >= 3, 'workflow banana hilang');
+  const plain = resolveProjectUi({ id: 'web-app', name: '🌐 Web App', desc: 'web' });
+  assert.strictEqual(plain.accent, null, 'project tanpa aksen harus null');
+});
+
+test('app.js punya adaptive UI (hero, aksen, placeholder)', () => {
+  const appSrc = fs.readFileSync(path.join(ROOT, 'app.js'), 'utf8');
+  assert.ok(appSrc.includes('applyProjectUi'), 'applyProjectUi hilang');
+  assert.ok(appSrc.includes('resolveProjectUi'), 'resolveProjectUi hilang');
+  assert.ok(appSrc.includes('--p-accent'), 'set CSS var aksen hilang');
+});
+
+test('index.html punya hero card adaptif', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  assert.ok(html.includes('project-hero'), 'hero card hilang');
+});
+
+// ---------- OUTPUT KONTEKSTUAL & ANTI-HALU ----------
+console.log('\n🎯 Output Kontekstual & Anti-Halu');
+test('fokus & audit menyesuaikan jenis project (media vs document)', () => {
+  const vid = data.projects.find(p => p.id === 'google-flow-video');
+  const mkt = data.projects.find(p => p.id === 'sales-strategy');
+  const pv = buildFor(vid, data.skills.filter(s => (vid.skills || []).includes(s.id)));
+  const pm = buildFor(mkt, data.skills.filter(s => (mkt.skills || []).includes(s.id)));
+  assert.ok(pv.includes('Jenis pekerjaan: MEDIA'), 'flavor media hilang');
+  assert.ok(pm.includes('Jenis pekerjaan: DOCUMENT'), 'flavor document hilang');
+  assert.ok(pv.includes('bisa dibayangkan orang lain secara identik'), 'audit visual hilang');
+  assert.ok(pm.includes('superlatif tanpa pembanding'), 'audit anti-halu dokumen hilang');
+  assert.ok(!pm.includes('VISUAL PIPELINE'), 'pipeline video bocor ke prompt marketing');
+  assert.ok(!pv.includes('Tanya maksimal 3 pertanyaan'), 'aturan coaching bocor ke prompt video');
+});
+
+test('blok audit & anti-halusinasi selalu ada + kerangka fokus', () => {
+  const p = buildFor(baseProject, []);
+  assert.ok(p.includes('AUDIT & ANTI-HALUSINASI'), 'audit hilang');
+  assert.ok(p.includes('Kerjakan HANYA yang diminta'), 'fokus hilang');
+  assert.ok(p.includes('Dilarang keluar'), 'larangan hilang');
+  assert.ok(p.includes('Definisi selesai'), 'metrik selesai hilang');
+});
+
+test('branding RAUZA menggantikan yang lama', () => {
+  const p = buildFor(baseProject, []);
+  assert.ok(p.includes('RAUZA PROMPT'));
+  assert.ok(!p.includes('VIBE CODER'));
+});
+
+// ---------- BAHASA OUTPUT (ID/EN) ----------
+console.log('\n🌐 Bahasa Output');
+test('lang=id → direktif Indonesia; lang=en → direktif English', () => {
+  const pid = buildFor(baseProject, []);
+  const pen = buildPrompt({ project: baseProject, skills: [], agents: [], platform: {}, detail: '', categories: data.categories, lang: 'en' });
+  assert.ok(pid.includes('BAHASA KELUARAN: INDONESIA'));
+  assert.ok(pen.includes('OUTPUT LANGUAGE: ENGLISH'));
+});
+
+test('lang=en menerjemahkan audit, fokus, framework & pipeline', () => {
+  const proj = data.projects.find(p => p.id === 'screenshot-to-visual');
+  const pen = buildPrompt({
+    project: proj, skills: data.skills.filter(s => (proj.skills || []).includes(s.id)),
+    agents: [], platform: {}, detail: 'x', categories: data.categories,
+    images: [{ name: 'a.png', dataUrl: 'data:image/png;base64,x' }], lang: 'en'
+  });
+  assert.ok(pen.includes('AUDIT & ANTI-HALLUCINATION'), 'audit EN hilang');
+  assert.ok(pen.includes('CONTEXT & FOCUS'), 'fokus EN hilang');
+  assert.ok(pen.includes('[MAIN PROMPT]'), 'framework EN hilang');
+  assert.ok(pen.includes('FROM SCREENSHOT TO READY-TO-USE OUTPUT'), 'pipeline EN hilang');
+  assert.ok(pen.includes('Work type: MEDIA'), 'flavor EN hilang');
+});
+
+test('lang=default id saat tidak dikirim; app.js kirim lang ke core', () => {
+  const p = buildFor(baseProject, []);
+  assert.ok(p.includes('BAHASA KELUARAN: INDONESIA'));
+  const appSrc = fs.readFileSync(path.join(ROOT, 'app.js'), 'utf8');
+  assert.ok(appSrc.includes("lang: selectedLang"), 'buildPrompt tidak menerima lang');
+  assert.ok(appSrc.includes('getPlatformLang'), 'memori bahasa per platform hilang');
+});
+
+test('index.html punya dropdown bahasa', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  assert.ok(html.includes('lang-select'), 'dropdown bahasa hilang');
 });
 
 // ---------- APP.JS INTEGRITY ----------

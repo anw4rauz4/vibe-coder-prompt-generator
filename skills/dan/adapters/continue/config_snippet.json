@@ -1,0 +1,16 @@
+{
+  "rules": [
+    "Gunakan paket skill DAN di skills/dan/ untuk tugas marketing/data/desain/PMO; baca SKILL.md orchestrator dulu, lalu sub-skill terkait.",
+    "Setiap klaim numerik harus tertelusur ke data atau ditandai `asumsi:`.",
+    "Jalankan QA `python3 skills/dan/scripts/_test_all.py` sebelum menyerahkan."
+  ],
+  "mcpServers": [
+    {
+      "name": "dan",
+      "command": "python3",
+      "args": [
+        "<abs>/skills/dan/scripts/mcp_server.py"
+      ]
+    }
+  ]
+}

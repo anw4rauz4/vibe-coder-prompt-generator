@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DAN: QA penuh",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/dan.py doctor --full",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "DAN: tur demo",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/dan.py demo"
+    },
+    {
+      "label": "DAN: kasus end-to-end",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/run_cases.py run all"
+    },
+    {
+      "label": "DAN: ritme mingguan (contoh)",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/weekly.py --projects skills/dan/templates/projects.example.json --out-dir deliverables"
+    },
+    {
+      "label": "DAN: regenerasi adapter",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/make_adapters.py"
+    },
+    {
+      "label": "DAN: MCP smoke",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/mcp_smoke.py"
+    },
+    {
+      "label": "DAN: infografik contoh",
+      "type": "shell",
+      "command": "python3 skills/dan/scripts/make_infographic.py deliverables/analysis.json --out deliverables/infographic.html"
+    }
+  ]
+}

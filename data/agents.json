@@ -637,56 +637,128 @@
   },
   {
     "id": "dan-data-analyst",
-    "name": "DAN Data Analyst",
+    "name": "RAUZA Data Analyst",
     "category": "business",
     "description": "KPI, funnel, tren, forecast"
   },
   {
     "id": "dan-strategist",
-    "name": "DAN Strategist",
+    "name": "RAUZA Strategist",
     "category": "business",
     "description": "STP, positioning, budget"
   },
   {
     "id": "dan-infographic-engineer",
-    "name": "DAN Infographic Engineer",
+    "name": "RAUZA Infographic Engineer",
     "category": "data_viz",
     "description": "Chart selection, dashboard"
   },
   {
     "id": "dan-media-creator",
-    "name": "DAN Media Creator",
+    "name": "RAUZA Media Creator",
     "category": "media_gen",
     "description": "Storyboard, prompt image/video"
   },
   {
     "id": "dan-design-engineer",
-    "name": "DAN Design Engineer",
+    "name": "RAUZA Design Engineer",
     "category": "3d_2d",
     "description": "Spec desain, sketsa 3D"
   },
   {
     "id": "dan-performance-coach",
-    "name": "DAN Performance Coach",
+    "name": "RAUZA Performance Coach",
     "category": "business",
     "description": "GROW, motivasi berbasis data"
   },
   {
     "id": "dan-pmo-officer",
-    "name": "DAN PMO Officer",
+    "name": "RAUZA PMO Officer",
     "category": "engineering",
     "description": "Monitoring, RAG, earned value"
   },
   {
     "id": "dan-software-architect",
-    "name": "DAN Software Architect",
+    "name": "RAUZA Software Architect",
     "category": "engineering",
     "description": "Scaffold, review, trade-off"
   },
   {
     "id": "dan-building-architect",
-    "name": "DAN Building Architect",
+    "name": "RAUZA Building Architect",
     "category": "engineering",
     "description": "Denah, massa 3D, RAB"
+  },
+  {
+    "id": "dan-prompt-engineer",
+    "name": "RAUZA Prompt Engineer",
+    "category": "ai_modern",
+    "description": "Lint & skor prompt 7 elemen, varian A/B"
+  },
+  {
+    "id": "dan-workflow-automator",
+    "name": "RAUZA Workflow Automator",
+    "category": "ai_modern",
+    "description": "Workflow DAG antar-engine, token {prev.*}"
+  },
+  {
+    "id": "dan-ai-agents-architect",
+    "name": "RAUZA AI Agents Architect",
+    "category": "ai_modern",
+    "description": "Kartu agent, guardrails, pola multi-agent"
+  },
+  {
+    "id": "dan-rag-engineer",
+    "name": "RAUZA RAG Engineer",
+    "category": "ai_modern",
+    "description": "Chunk ber-heading, TF-IDF, jawaban bersitasi"
+  },
+  {
+    "id": "dan-multimodal-specialist",
+    "name": "RAUZA Multimodal Specialist",
+    "category": "ai_modern",
+    "description": "Gambar, audio TTS, video, prompt reverse"
+  },
+  {
+    "id": "dan-assistant-builder",
+    "name": "RAUZA Assistant Builder",
+    "category": "ai_modern",
+    "description": "Spec JSON → system prompt + eval set"
+  },
+  {
+    "id": "dan-voice-producer",
+    "name": "RAUZA Voice Producer",
+    "category": "ai_modern",
+    "description": "Naskah TTS, pacing, avatar digital konsisten"
+  },
+  {
+    "id": "dan-stack-advisor",
+    "name": "RAUZA Stack Advisor",
+    "category": "ai_modern",
+    "description": "Rekomendasi stack tool AI per budget & tim"
+  },
+  {
+    "id": "dan-ai-video-editor",
+    "name": "RAUZA AI Video Editor",
+    "category": "ai_modern",
+    "description": "Cut-list, subtitle SRT, prompt video per shot"
+  },
+  {
+    "id": "dan-ai-saas-launcher",
+    "name": "RAUZA AI SaaS Launcher",
+    "category": "ai_modern",
+    "description": "Spec MVP, arsitektur sederhana, pricing model"
+  },
+  {
+    "id": "dan-llm-obs-engineer",
+    "name": "RAUZA LLM Obs Engineer",
+    "category": "ai_modern",
+    "description": "Trace JSONL, biaya, pass-rate, alarm murah"
+  },
+  {
+    "id": "dan-staying-updated",
+    "name": "RAUZA Staying Updated",
+    "category": "ai_modern",
+    "description": "Digest mingguan sumber terpercaya, adopsi vs hype"
   }
 ]

@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "dan": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "${workspaceFolder}/skills/dan/scripts/mcp_server.py"
+      ]
+    }
+  }
+}

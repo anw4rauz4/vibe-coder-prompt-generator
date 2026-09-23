@@ -1,0 +1,11 @@
+---
+description: Membangun produk AI/SaaS dari ide sampai launch: validasi masalah, spec MVP (fitur inti vs tunda), arsitektur sederhana (API LLM terbungkus, cache, queue), model harga (per-seat/per-usage/credit), landing & waitlist, checklist launch, dan metrik aktivasi/retensi. Menggunakan template strategi DAN ag
+globs: 
+alwaysApply: false
+---
+
+# dan-ai-app-saas-building
+
+Baca selengkapnya: `skills/dan/skills/19-ai-app-saas/SKILL.md`.
+
+Membangun produk AI/SaaS dari ide sampai launch: validasi masalah, spec MVP (fitur inti vs tunda), arsitektur sederhana (API LLM terbungkus, cache, queue), model harga (per-seat/per-usage/credit), landing & waitlist, checklist launch, dan metrik aktivasi/retensi. Menggunakan template strategi DAN agar spec tidak mengawang. Gunakan saat pengguna meminta "buatkan aplikasi AI", "MVP SaaS", "harga produk AI", "launch checklist", atau memvalidasi ide produk.

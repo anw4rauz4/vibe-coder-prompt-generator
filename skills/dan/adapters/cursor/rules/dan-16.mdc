@@ -1,0 +1,11 @@
+---
+description: Produksi suara & avatar: penyiapan naskah TTS (pacing, jeda, pelafalan angka), pemilihan suara konsisten lintas klip, brief avatar digital (penampilan, pakaian, latar, gesture, etika keterbukaan), serta checklist QC audio (loudness, kecepatan, artefak). Gunakan saat pengguna meminta voice-over, nara
+globs: 
+alwaysApply: false
+---
+
+# dan-voice-ai-avatars
+
+Baca selengkapnya: `skills/dan/skills/16-voice-ai-avatars/SKILL.md`.
+
+Produksi suara & avatar: penyiapan naskah TTS (pacing, jeda, pelafalan angka), pemilihan suara konsisten lintas klip, brief avatar digital (penampilan, pakaian, latar, gesture, etika keterbukaan), serta checklist QC audio (loudness, kecepatan, artefak). Gunakan saat pengguna meminta voice-over, narasi video, podcast ringkas, avatar presenter, atau konten berbicara tanpa merekam manusia.

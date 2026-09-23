@@ -2,9 +2,10 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generator prompt AI untuk 105+ skills dan 107+ sub-agents. Plug & play di 14+ AI platforms.">
-  <title>Vibe Coder Prompt Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="RAUZA Prompt Generator: 120+ skills, 120+ sub-agents, 21 platform AI — Banana, Google Flow, Gamma, AI Web Builder, dan lainnya.">
+  <meta name="theme-color" content="#0f172a">
+  <title>RAUZA Prompt Generator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,15 +13,15 @@
     <!-- HEADER -->
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">🧠</span>
-        <h1>Vibe Coder Prompt Generator</h1>
-        <span class="version">v2.0.0</span>
+        <span class="logo-icon">🚀</span>
+        <h1>RAUZA Prompt Generator</h1>
+        <span class="version">v3.0.0</span>
       </div>
       <div class="header-right">
         <div class="stats">
-          <span class="stat">105 Skills</span>
-          <span class="stat">107 Sub-Agents</span>
-          <span class="stat">10 Platforms</span>
+          <span class="stat">120 Skills</span>
+          <span class="stat">120 Sub-Agents</span>
+          <span class="stat">21 Platforms</span>
         </div>
         <button id="theme-toggle" class="btn-small" title="Ganti tema">☀️ Light</button>
       </div>
@@ -38,6 +39,9 @@
       <section class="content">
         <div class="builder">
           <h2>🛠️ Bangun Prompt</h2>
+
+          <!-- Hero: tampilan menyesuaikan project yang dipilih -->
+          <div id="project-hero" class="project-hero" hidden></div>
 
           <!-- Step 1: Pilih Kategori -->
           <div class="form-group">
@@ -109,6 +113,15 @@
             </select>
           </div>
 
+          <!-- Step 5b: Bahasa output prompt -->
+          <div class="form-group">
+            <label for="lang-select">5b. Bahasa Output Prompt <span id="lang-memory-note" class="lang-memory-note"></span></label>
+            <select id="lang-select">
+              <option value="id">🇮🇩 Indonesia</option>
+              <option value="en">🇬🇧 English</option>
+            </select>
+          </div>
+
           <!-- Auto-select preset -->
           <div class="form-group checkbox-group">
             <label class="toggle-label">
@@ -153,8 +166,8 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>Vibe Coder Prompt Generator — 105 Skills, 107 Sub-Agents, 10 Platforms</p>
-      <p>Plug &amp; Play di 14+ AI Platforms</p>
+      <p>RAUZA Prompt Generator — 120 Skills, 120 Sub-Agents, 21 Platforms</p>
+      <p>Plug &amp; Play di 21+ AI Platforms · Screenshot → Video / 3D / Wireframe</p>
     </footer>
   </div>
 

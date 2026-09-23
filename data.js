@@ -505,7 +505,7 @@ window.EMBEDDED_DATA = {
     },
     {
       "id": "dan-marketing-analysis",
-      "name": "📊 DAN: Analisa Marketing",
+      "name": "📊 RAUZA: Analisa Marketing",
       "desc": "Data kampanye → KPI, insight, aksi terukur",
       "category": "business",
       "skills": [
@@ -522,7 +522,7 @@ window.EMBEDDED_DATA = {
     },
     {
       "id": "dan-campaign-creative",
-      "name": "🎬 DAN: Kampanye Kreatif",
+      "name": "🎬 RAUZA: Kampanye Kreatif",
       "desc": "Strategi → storyboard, konten, caption",
       "category": "media_gen",
       "skills": [
@@ -539,7 +539,7 @@ window.EMBEDDED_DATA = {
     },
     {
       "id": "dan-project-monitoring",
-      "name": "📈 DAN: Monitoring Proyek",
+      "name": "📈 RAUZA: Monitoring Proyek",
       "desc": "Status proyek, SPI, RAG, earned value, coaching",
       "category": "engineering",
       "skills": [
@@ -553,6 +553,173 @@ window.EMBEDDED_DATA = {
         "dan-performance-coach"
       ],
       "persona": "business-ops"
+    },
+    {
+      "id": "banana-product-photo",
+      "name": "🍌 Banana Product Photo",
+      "desc": "Foto & edit produk dengan Nano Banana (Gemini Image)",
+      "category": "image_processing",
+      "skills": [
+        "nanobanana-image",
+        "prompt-detail-engineering",
+        "image-enhancement",
+        "persona-visual-director"
+      ],
+      "agents": [
+        "dan-multimodal-specialist",
+        "dan-prompt-engineer",
+        "dan-media-creator"
+      ],
+      "persona": "creative-producer",
+      "accent": "banana",
+      "tips": "Unggah screenshot/foto produk → prompt akan menyusun instruct edit Nano Banana: ganti background, sudut kamera, variasi rasio 1:1/9:16/16:9 tanpa mengubah bentuk produk.",
+      "placeholders": {
+        "detail": "Contoh: Serum vitamin C 30ml botol kaca amber — foto studio putih, buat 3 varian: (1) hero shot di atas batu marmer, (2) lifestyle di bathroom shelf, (3) flat-lay dengan ilustrasi bahan; pertahankan label produk persis sama."
+      }
+    },
+    {
+      "id": "google-flow-video",
+      "name": "🎥 Google Flow / Veo 3",
+      "desc": "Video sinematik AI dengan audio — scenebuilder",
+      "category": "ai_modern",
+      "skills": [
+        "google-flow-video",
+        "cinematic-video",
+        "scene-shots",
+        "camera-movement",
+        "lighting-mood",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "cinematic-director",
+        "dan-ai-video-editor",
+        "dan-voice-producer"
+      ],
+      "persona": "creative-producer",
+      "accent": "flow",
+      "tips": "Alur kerja Flow: jump-to sesi → siapkan ingredients (gambar produk/karakter) → prompt per scene 8 detik dengan dialog & SFX → extend sampai durasi target.",
+      "placeholders": {
+        "detail": "Contoh: Iklan 30 dtk kopi susu brand lokal — 4 scene: (1) barista menuang susu, slow motion, suara espresso machine, (2) close-up latte art, VO bahasa Indonesia santai, (3) pelanggan menyesap sambil senyum di kafe sore, (4) produk + tagline. Rasio 9:16 untuk TikTok."
+      }
+    },
+    {
+      "id": "gamma-presentation",
+      "name": "📽️ Gamma / PPT AI",
+      "desc": "Deck presentasi instan dengan Gamma/Tome",
+      "category": "education",
+      "skills": [
+        "gamma-presentation",
+        "presentation",
+        "data-to-infographic",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "presentation-designer",
+        "dan-infographic-engineer"
+      ],
+      "persona": "educator",
+      "accent": "gamma",
+      "tips": "Prompt disusun sebagai outline per-slide (judul + poin + visual) — tinggal paste ke Gamma 'Paste in text' atau ChatGPT/Claude untuk ekspor PPTX.",
+      "placeholders": {
+        "detail": "Contoh: Deck 10 slide 'Rencana Marketing Q4' untuk manajemen — gaya korporat minimalis, biru navy + oranye, tiap slide 3 poin maksimal, sertakan chart tren penjualan."
+      }
+    },
+    {
+      "id": "ai-web-builder",
+      "name": "⚡ AI Web Dev Builder",
+      "desc": "Bangun web/app via Lovable, Bolt, v0, Replit",
+      "category": "ai_modern",
+      "skills": [
+        "ai-web-dev-builder",
+        "web-app",
+        "ui-design",
+        "design-system",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "frontend-dev",
+        "ui-designer",
+        "dan-ai-saas-launcher"
+      ],
+      "persona": "software-engineer",
+      "accent": "builder",
+      "tips": "Prompt diformat agar diterima Lovable, Bolt, v0, Replit Agent, dan Firebase Studio: fitur MVP dulu, tech stack eksplisit, halaman dikomposisi berurutan agar AI tidak melompat.",
+      "placeholders": {
+        "detail": "Contoh: Landing page + dashboard SaaS pencatat keuangan UMKM — Next.js + Tailwind + Supabase, halaman: landing, login, dashboard, laporan; dark mode; responsif mobile."
+      }
+    },
+    {
+      "id": "screenshot-to-visual",
+      "name": "📸 Screenshot → Visual",
+      "desc": "1 screenshot produk → video / 3D / wireframe",
+      "category": "image_processing",
+      "skills": [
+        "screenshot-to-video",
+        "screenshot-to-3d",
+        "screenshot-to-wireframe",
+        "prompt-detail-engineering",
+        "persona-visual-director"
+      ],
+      "agents": [
+        "image-to-video-producer",
+        "3d-engineer",
+        "screenshot-analyzer"
+      ],
+      "persona": "creative-producer",
+      "accent": "shot",
+      "tips": "Cukup lampirkan 1 screenshot produk — prompt otomatis berisi 3 pipeline: (1) Video: orbit kamera + VO, (2) 3D: rekonstruksi & render turntable, (3) Wireframe: struktur UI & blueprint redesign.",
+      "placeholders": {
+        "detail": "Contoh: Ini screenshot aplikasi e-commerce saya — buatkan video demo 15 dtk dengan orbit kamera di sekitar mockup HP, lalu wireframe ulang halaman home biar lebih modern."
+      }
+    },
+    {
+      "id": "product-visual-suite",
+      "name": "🧴 Product Visual Suite",
+      "desc": "Paket lengkap visual produk: foto, video, 3D",
+      "category": "media_gen",
+      "skills": [
+        "product-visual-suite",
+        "nanobanana-image",
+        "image-to-video",
+        "screenshot-to-3d",
+        "persona-visual-director"
+      ],
+      "agents": [
+        "dan-media-creator",
+        "image-to-video-producer",
+        "3d-engineer",
+        "dan-multimodal-specialist"
+      ],
+      "persona": "creative-producer",
+      "accent": "suite",
+      "tips": "Satu prompt master untuk seluruh paket aset produk: foto hero, video 15 dtk, turntable 3D, dan banner per platform — konsisten warna & gaya brand.",
+      "placeholders": {
+        "detail": "Contoh: Produk parfum 50ml untuk brand skincare lokal — paket: 1 foto hero 1:1, 1 video 15 dtk rasio 9:16, 1 render 3D turntable 10 dtk, 3 banner (Meta, TikTok, Marketplace); palet krem-emas, mood elegan."
+      }
+    },
+    {
+      "id": "ai-ux-redesign",
+      "name": "🎨 AI UX Redesign",
+      "desc": "Desain ulang UI dengan AI (Uizard, Galileo, Figma AI)",
+      "category": "design",
+      "skills": [
+        "ai-ux-designer",
+        "screenshot-to-wireframe",
+        "ui-design",
+        "design-system",
+        "usability-testing"
+      ],
+      "agents": [
+        "ui-designer",
+        "ux-researcher",
+        "screenshot-analyzer"
+      ],
+      "persona": "designer",
+      "accent": "ux",
+      "tips": "Lampirkan screenshot UI lama — AI menganalisis masalah UX (hierarki, kontras, spacing) lalu menghasilkan wireframe baru + design tokens siap Figma.",
+      "placeholders": {
+        "detail": "Contoh: Ini dashboard lama kami — perbaiki hierarki informasi, buat dark mode, dan hasilkan wireframe + design tokens untuk tim frontend."
+      }
     }
   ],
   "categories": [
@@ -1238,57 +1405,123 @@ window.EMBEDDED_DATA = {
     },
     {
       "id": "marketing-data-analyst",
-      "name": "DAN Marketing Data Analyst",
+      "name": "RAUZA Marketing Data Analyst",
       "category": "business",
       "description": "KPI, funnel, tren, anomali, forecast"
     },
     {
       "id": "marketing-strategist",
-      "name": "DAN Marketing Strategist",
+      "name": "RAUZA Marketing Strategist",
       "category": "business",
       "description": "STP, positioning, budget, campaign plan"
     },
     {
       "id": "data-to-infographic",
-      "name": "DAN Data to Infographic",
+      "name": "RAUZA Data to Infographic",
       "category": "data_viz",
       "description": "18 tipe chart, infografik, network analysis"
     },
     {
       "id": "image-video-creator",
-      "name": "DAN Image & Video Creator",
+      "name": "RAUZA Image & Video Creator",
       "category": "media_gen",
       "description": "Storyboard bertiming, prompt image/video, SRT"
     },
     {
       "id": "design-engineer-2d-3d",
-      "name": "DAN Design Engineer 2D/3D",
+      "name": "RAUZA Design Engineer 2D/3D",
       "category": "3d_2d",
       "description": "Brief desain, spec produk, sketsa 3D"
     },
     {
       "id": "motivator-coach",
-      "name": "DAN Motivator Coach",
+      "name": "RAUZA Motivator Coach",
       "category": "business",
       "description": "GROW, SDT, coaching berbasis data"
     },
     {
       "id": "project-monitoring-controlling",
-      "name": "DAN Project Monitoring",
+      "name": "RAUZA Project Monitoring",
       "category": "engineering",
       "description": "PMO: SPI, variance, RAG, earned value"
     },
     {
       "id": "software-architecture",
-      "name": "DAN Software Architecture",
+      "name": "RAUZA Software Architecture",
       "category": "engineering",
       "description": "Scaffold multi-bahasa, review, trade-off"
     },
     {
       "id": "architectural-design",
-      "name": "DAN Architectural Design",
+      "name": "RAUZA Architectural Design",
       "category": "engineering",
       "description": "Denah 2D, massa 3D, KDB/KLB, RAB"
+    },
+    {
+      "id": "nanobanana-image",
+      "name": "Nano Banana / Banana Pro",
+      "category": "image_processing",
+      "description": "Prompt image & edit konsisten untuk Gemini 2.5 Flash Image"
+    },
+    {
+      "id": "google-flow-video",
+      "name": "Google Flow / Veo 3",
+      "category": "media_gen",
+      "description": "Scenebuilder, ingredients-to-video, Veo 3 + audio"
+    },
+    {
+      "id": "gamma-presentation",
+      "name": "Gamma / Tome PPT AI",
+      "category": "education",
+      "description": "Deck AI: outline, layout, visual, ekspor PPTX"
+    },
+    {
+      "id": "ai-web-dev-builder",
+      "name": "AI Web Dev Builder",
+      "category": "ai_modern",
+      "description": "Lovable, Bolt, v0, Replit Agent, Firebase Studio"
+    },
+    {
+      "id": "screenshot-to-video",
+      "name": "Screenshot to Video",
+      "category": "image_processing",
+      "description": "Screenshot produk → video marketing sinematik"
+    },
+    {
+      "id": "screenshot-to-3d",
+      "name": "Screenshot to 3D",
+      "category": "image_processing",
+      "description": "Foto/screenshot produk → model & render 3D"
+    },
+    {
+      "id": "screenshot-to-wireframe",
+      "name": "Screenshot to Wireframe",
+      "category": "cloning",
+      "description": "Screenshot UI → wireframe/lo-fi & blueprint redesign"
+    },
+    {
+      "id": "product-visual-suite",
+      "name": "Product Visual Suite",
+      "category": "media_gen",
+      "description": "Paket visual produk: foto, video, 3D, AR-ready"
+    },
+    {
+      "id": "ai-ux-designer",
+      "name": "AI UX Designer",
+      "category": "design",
+      "description": "Uizard, Galileo, Figma AI: desain UI berbantuan AI"
+    },
+    {
+      "id": "prompt-detail-engineering",
+      "name": "Prompt Detail Engineering",
+      "category": "ai_modern",
+      "description": "Struktur prompt universal 9 elemen — diterima semua AI generator"
+    },
+    {
+      "id": "persona-visual-director",
+      "name": "RAUZA Visual Director",
+      "category": "media_gen",
+      "description": "Irama visual, palet brand, konsistensi gaya lintas aset"
     }
   ],
   "agents": [
@@ -1930,57 +2163,129 @@ window.EMBEDDED_DATA = {
     },
     {
       "id": "dan-data-analyst",
-      "name": "DAN Data Analyst",
+      "name": "RAUZA Data Analyst",
       "category": "business",
       "description": "KPI, funnel, tren, forecast"
     },
     {
       "id": "dan-strategist",
-      "name": "DAN Strategist",
+      "name": "RAUZA Strategist",
       "category": "business",
       "description": "STP, positioning, budget"
     },
     {
       "id": "dan-infographic-engineer",
-      "name": "DAN Infographic Engineer",
+      "name": "RAUZA Infographic Engineer",
       "category": "data_viz",
       "description": "Chart selection, dashboard"
     },
     {
       "id": "dan-media-creator",
-      "name": "DAN Media Creator",
+      "name": "RAUZA Media Creator",
       "category": "media_gen",
       "description": "Storyboard, prompt image/video"
     },
     {
       "id": "dan-design-engineer",
-      "name": "DAN Design Engineer",
+      "name": "RAUZA Design Engineer",
       "category": "3d_2d",
       "description": "Spec desain, sketsa 3D"
     },
     {
       "id": "dan-performance-coach",
-      "name": "DAN Performance Coach",
+      "name": "RAUZA Performance Coach",
       "category": "business",
       "description": "GROW, motivasi berbasis data"
     },
     {
       "id": "dan-pmo-officer",
-      "name": "DAN PMO Officer",
+      "name": "RAUZA PMO Officer",
       "category": "engineering",
       "description": "Monitoring, RAG, earned value"
     },
     {
       "id": "dan-software-architect",
-      "name": "DAN Software Architect",
+      "name": "RAUZA Software Architect",
       "category": "engineering",
       "description": "Scaffold, review, trade-off"
     },
     {
       "id": "dan-building-architect",
-      "name": "DAN Building Architect",
+      "name": "RAUZA Building Architect",
       "category": "engineering",
       "description": "Denah, massa 3D, RAB"
+    },
+    {
+      "id": "dan-prompt-engineer",
+      "name": "RAUZA Prompt Engineer",
+      "category": "ai_modern",
+      "description": "Lint & skor prompt 7 elemen, varian A/B"
+    },
+    {
+      "id": "dan-workflow-automator",
+      "name": "RAUZA Workflow Automator",
+      "category": "ai_modern",
+      "description": "Workflow DAG antar-engine, token {prev.*}"
+    },
+    {
+      "id": "dan-ai-agents-architect",
+      "name": "RAUZA AI Agents Architect",
+      "category": "ai_modern",
+      "description": "Kartu agent, guardrails, pola multi-agent"
+    },
+    {
+      "id": "dan-rag-engineer",
+      "name": "RAUZA RAG Engineer",
+      "category": "ai_modern",
+      "description": "Chunk ber-heading, TF-IDF, jawaban bersitasi"
+    },
+    {
+      "id": "dan-multimodal-specialist",
+      "name": "RAUZA Multimodal Specialist",
+      "category": "ai_modern",
+      "description": "Gambar, audio TTS, video, prompt reverse"
+    },
+    {
+      "id": "dan-assistant-builder",
+      "name": "RAUZA Assistant Builder",
+      "category": "ai_modern",
+      "description": "Spec JSON → system prompt + eval set"
+    },
+    {
+      "id": "dan-voice-producer",
+      "name": "RAUZA Voice Producer",
+      "category": "ai_modern",
+      "description": "Naskah TTS, pacing, avatar digital konsisten"
+    },
+    {
+      "id": "dan-stack-advisor",
+      "name": "RAUZA Stack Advisor",
+      "category": "ai_modern",
+      "description": "Rekomendasi stack tool AI per budget & tim"
+    },
+    {
+      "id": "dan-ai-video-editor",
+      "name": "RAUZA AI Video Editor",
+      "category": "ai_modern",
+      "description": "Cut-list, subtitle SRT, prompt video per shot"
+    },
+    {
+      "id": "dan-ai-saas-launcher",
+      "name": "RAUZA AI SaaS Launcher",
+      "category": "ai_modern",
+      "description": "Spec MVP, arsitektur sederhana, pricing model"
+    },
+    {
+      "id": "dan-llm-obs-engineer",
+      "name": "RAUZA LLM Obs Engineer",
+      "category": "ai_modern",
+      "description": "Trace JSONL, biaya, pass-rate, alarm murah"
+    },
+    {
+      "id": "dan-staying-updated",
+      "name": "RAUZA Staying Updated",
+      "category": "ai_modern",
+      "description": "Digest mingguan sumber terpercaya, adopsi vs hype"
     }
   ],
   "adapters": [
@@ -2067,6 +2372,98 @@ window.EMBEDDED_DATA = {
         "multilingual",
         "vision",
         "coder"
+      ]
+    },
+    {
+      "id": "banana",
+      "name": "🍌 Banana (Gemini Image)",
+      "features": [
+        "image-gen",
+        "instruct-edit",
+        "multi-ref",
+        "text-render"
+      ]
+    },
+    {
+      "id": "google-flow",
+      "name": "🎥 Google Flow / Veo 3",
+      "features": [
+        "text-to-video",
+        "image-to-video",
+        "native-audio",
+        "scenebuilder"
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "📽️ Gamma / Tome",
+      "features": [
+        "deck-gen",
+        "paste-outline",
+        "pptx-export"
+      ]
+    },
+    {
+      "id": "ai-web-builder",
+      "name": "⚡ AI Web Builder (Lovable/Bolt/v0)",
+      "features": [
+        "app-gen",
+        "iterate",
+        "deploy"
+      ]
+    },
+    {
+      "id": "ai-ux-tool",
+      "name": "🎨 AI UX Tool (Uizard/Galileo)",
+      "features": [
+        "wireframe",
+        "screenshot-scan",
+        "theme-gen"
+      ]
+    },
+    {
+      "id": "image-gen-generic",
+      "name": "🖼️ Image Generator (Midjourney/DALL·E/SD)",
+      "features": [
+        "text-to-image",
+        "style-ref",
+        "param-tags"
+      ]
+    },
+    {
+      "id": "video-gen-generic",
+      "name": "🎞️ Video Generator (Runway/Kling/Pika)",
+      "features": [
+        "image-to-video",
+        "motion-prompt",
+        "camera-control"
+      ]
+    },
+    {
+      "id": "3d-gen",
+      "name": "🏗️ 3D Generator (Meshy/Tripo/Luma)",
+      "features": [
+        "image-to-3d",
+        "text-to-3d",
+        "pbr-texture"
+      ]
+    },
+    {
+      "id": "cursor-agent",
+      "name": "🖥️ AI Code Agent (Cursor/Copilot/Windsurf)",
+      "features": [
+        "repo-edit",
+        "terminal",
+        "mcp"
+      ]
+    },
+    {
+      "id": "voice-gen",
+      "name": "🎙️ Voice & Avatar (ElevenLabs/HeyGen)",
+      "features": [
+        "tts",
+        "voice-clone",
+        "avatar-video"
       ]
     },
     {

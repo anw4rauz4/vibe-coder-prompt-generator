@@ -1,0 +1,27 @@
+{
+  "dan engine run": {
+    "scope": "python,markdown",
+    "prefix": "danrun",
+    "body": [
+      "python3 skills/dan/scripts/dan.py run ${1:engine} ${2:args}"
+    ],
+    "description": "Jalankan engine DAN"
+  },
+  "dan chart": {
+    "scope": "python",
+    "prefix": "danchart",
+    "body": [
+      "import svg_charts as sc",
+      "svg = sc.${1|bar,hbar,line,donut,gantt,progress|}(${2:data}, title='${3:judul}')"
+    ],
+    "description": "Buat chart SVG DAN"
+  },
+  "dan guard": {
+    "scope": "shell",
+    "prefix": "danguard",
+    "body": [
+      "python3 skills/dan/scripts/pmo_guard.py ${1:projects.json}"
+    ],
+    "description": "Jalankan PMO guard"
+  }
+}

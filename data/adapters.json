@@ -8,5 +8,15 @@
   { "id": "mistral", "name": "Mistral", "features": ["open-source", "fast", "codestral"] },
   { "id": "deepseek", "name": "DeepSeek", "features": ["reasoning", "code", "affordable"] },
   { "id": "qwen", "name": "Qwen", "features": ["multilingual", "vision", "coder"] },
+  { "id": "banana", "name": "🍌 Banana (Gemini Image)", "features": ["image-gen", "instruct-edit", "multi-ref", "text-render"] },
+  { "id": "google-flow", "name": "🎥 Google Flow / Veo 3", "features": ["text-to-video", "image-to-video", "native-audio", "scenebuilder"] },
+  { "id": "gamma", "name": "📽️ Gamma / Tome", "features": ["deck-gen", "paste-outline", "pptx-export"] },
+  { "id": "ai-web-builder", "name": "⚡ AI Web Builder (Lovable/Bolt/v0)", "features": ["app-gen", "iterate", "deploy"] },
+  { "id": "ai-ux-tool", "name": "🎨 AI UX Tool (Uizard/Galileo)", "features": ["wireframe", "screenshot-scan", "theme-gen"] },
+  { "id": "image-gen-generic", "name": "🖼️ Image Generator (Midjourney/DALL·E/SD)", "features": ["text-to-image", "style-ref", "param-tags"] },
+  { "id": "video-gen-generic", "name": "🎞️ Video Generator (Runway/Kling/Pika)", "features": ["image-to-video", "motion-prompt", "camera-control"] },
+  { "id": "3d-gen", "name": "🏗️ 3D Generator (Meshy/Tripo/Luma)", "features": ["image-to-3d", "text-to-3d", "pbr-texture"] },
+  { "id": "cursor-agent", "name": "🖥️ AI Code Agent (Cursor/Copilot/Windsurf)", "features": ["repo-edit", "terminal", "mcp"] },
+  { "id": "voice-gen", "name": "🎙️ Voice & Avatar (ElevenLabs/HeyGen)", "features": ["tts", "voice-clone", "avatar-video"] },
   { "id": "generic", "name": "Generic", "features": ["fallback"] }
 ]

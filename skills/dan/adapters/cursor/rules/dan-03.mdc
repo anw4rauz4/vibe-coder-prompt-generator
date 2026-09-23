@@ -1,0 +1,11 @@
+---
+description: Mengubah data menjadi infografik lengkap dan dashboard siap presentasi, sekaligus melakukan analisa graph/network. Menyediakan 16 tipe chart SVG tanpa dependensi (bar, hbar, stacked bar, line, area, donut/pie, funnel, radar, scatter/bubble, heatmap, waterfall, gauge, sparkline, network) dan merakitn
+globs: 
+alwaysApply: false
+---
+
+# dan-data-to-infographic
+
+Baca selengkapnya: `skills/dan/skills/03-data-to-infographic/SKILL.md`.
+
+Mengubah data menjadi infografik lengkap dan dashboard siap presentasi, sekaligus melakukan analisa graph/network. Menyediakan 16 tipe chart SVG tanpa dependensi (bar, hbar, stacked bar, line, area, donut/pie, funnel, radar, scatter/bubble, heatmap, waterfall, gauge, sparkline, network) dan merakitnya menjadi HTML self-contained atau poster SVG. Termasuk graph analyst: PageRank, betweenness, closeness, eigenvector, HITS, deteksi komunitas, untuk memetakan jaringan KOL, referral, ko-okurensi kata kunci, atau topik konten. Gunakan saat pengguna meminta infografik, visualisasi data, dashboard, laporan bergambar, chart/grafik tertentu, poster data, atau analisa jaringan/relasi.

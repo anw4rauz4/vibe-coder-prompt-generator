@@ -1,7 +1,7 @@
 {
-  "name": "vibe-coder-prompt-generator",
-  "version": "2.1.0",
-  "description": "Generator prompt AI dengan 105+ skills, 106+ sub-agents, dan template per-platform",
+  "name": "rauza-prompt-generator",
+  "version": "3.0.0",
+  "description": "Generator prompt AI dengan 120+ skills, 125+ sub-agents, 20 platform AI, dan visual pipeline screenshot-to-video/3D/wireframe",
   "main": "app.js",
   "scripts": {
     "start": "npx http-server -p 8080 -o",

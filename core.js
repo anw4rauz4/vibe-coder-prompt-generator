@@ -118,6 +118,142 @@ const PLATFORM_TEMPLATES = {
       '- **Bahasa:** Ikuti bahasa permintaan user'
     ]
   },
+  banana: {
+    execution: [
+      '1. **Parse Intent:** Identifikasi subjek produk, gaya, dan hasil yang diinginkan.',
+      '2. **Instruct Edit:** Nyatakan APA yang diubah dan APA YANG DIKUNCI (bentuk, label, logo produk).',
+      '3. **Multi-Reference:** Manfaatkan hingga beberapa gambar referensi (subjek, gaya, latar).',
+      '4. **Generate:** Hasilkan gambar + penjelasan singkat perubahan yang dilakukan.',
+      '5. **Validate:** Periksa konsistensi teks pada kemasan & logo — regenerasi bila rusak.'
+    ],
+    output: [
+      '- **Gambar:** per varian dengan rasio eksplisit (1:1, 9:16, 16:9)',
+      '- **Revisi:** prompt ulang singkat untuk tiap perbaikan',
+      '- **Iterasi:** 2-3 saran variasi lanjutan'
+    ]
+  },
+  'google-flow': {
+    execution: [
+      '1. **Storyboard:** Pecah durasi target menjadi scene 5-8 detik (batas per prompt).',
+      '2. **Ingredients:** Gunakan gambar produk/karakter sebagai referensi konsistensi.',
+      '3. **Prompt per Scene:** Subjek, aksi, gerakan kamera, dialog (native audio), SFX, ambience.',
+      '4. **Scenebuilder:** Rangkai dengan jump-to & extend sampai durasi tercapai.',
+      '5. **Validate:** Cek kontinuitas visual & audio antar scene.'
+    ],
+    output: [
+      '- **Tabel Scene:** detik → visual → dialog/VO → SFX',
+      '- **Prompt per Scene:** siap-tempel, satu blok kode per scene',
+      '- **Spesifikasi:** rasio aset (16:9 / 9:16) & total durasi'
+    ]
+  },
+  gamma: {
+    execution: [
+      '1. **Outline:** Pecah konten menjadi slide (judul + maksimal 3 poin).',
+      '2. **Layout:** Sarankan layout & kebutuhan visual per slide.',
+      '3. **Theme:** Kunci palet warna & tipografi agar konsisten.',
+      '4. **Generate:** Output outline siap di-paste ke Gamma / struktur PPTX.',
+      '5. **Validate:** Tiap slide satu pesan utama, visual mendukung.'
+    ],
+    output: [
+      '- **Outline:** per slide dalam markdown bernomor',
+      '- **Visual:** saran chart/gambar per slide',
+      '- **Ekspor:** instruksi PPTX/PDF'
+    ]
+  },
+  'ai-web-builder': {
+    execution: [
+      '1. **MVP Dulu:** Daftar halaman/fitur inti; non-goal dilarang dikerjakan.',
+      '2. **Stack Eksplisit:** Framework, styling, database, auth disebut jelas.',
+      '3. **Komposisi Berurutan:** Satu instruksi per layar agar AI tidak melompat.',
+      '4. **Iterate:** Permintaan perbaikan kecil & spesifik, bukan rewrite besar.',
+      '5. **Validate:** Responsif + empty/error state tersedia.'
+    ],
+    output: [
+      '- **Prompt Awal:** siap-tempel ke Lovable/Bolt/v0/Replit',
+      '- **Prompt Iterasi:** antrian perbaikan lanjutan',
+      '- **Integrasi:** catatan env/DB/deploy'
+    ]
+  },
+  'ai-ux-tool': {
+    execution: [
+      '1. **Scan Screenshot:** Ekstrak komponen & hierarki informasi.',
+      '2. **Wireframe:** Struktur ulang per layar (zona, komponen, alur).',
+      '3. **Theme:** Palet & tipografi baru yang konsisten.',
+      '4. **Handoff:** Design tokens + spesifikasi komponen.',
+      '5. **Validate:** Kontras & aksesibilitas (WCAG AA).'
+    ],
+    output: [
+      '- **Wireframe:** tekstual per layar',
+      '- **Tokens:** CSS variables siap pakai',
+      '- **Interaksi:** catatan animasi & state'
+    ]
+  },
+  'image-gen-generic': {
+    execution: [
+      '1. **Parse:** Subjek → gaya → komposisi → lighting → kualitas.',
+      '2. **Susun Prompt:** Padat dan deskriptif, istilah fotografi/desain nyata.',
+      '3. **Parameter:** Sertakan --ar/--v (Midjourney) atau negative prompt (SD).',
+      '4. **Variasi:** Berikan 2-3 varian prompt.',
+      '5. **Validate:** Cek anatomi, teks pada gambar, dan konsistensi produk.'
+    ],
+    output: [
+      '- **Prompt Utama:** + 2 varian',
+      '- **Parameter:** rasio, versi model, negative prompt',
+      '- **Tips:** perbaikan untuk iterasi berikutnya'
+    ]
+  },
+  'video-gen-generic': {
+    execution: [
+      '1. **Scene:** Satu prompt = satu shot 5-10 detik.',
+      '2. **Motion:** Deskripsikan gerakan kamera & subjek secara eksplisit.',
+      '3. **Image-to-Video:** Gunakan gambar produk sebagai frame awal.',
+      '4. **Validate:** Hindari morphing produk; cek konsistensi antar shot.'
+    ],
+    output: [
+      '- **Prompt per Shot:** + camera motion',
+      '- **Spesifikasi:** durasi & rasio per shot',
+      '- **Rangkaian:** urutan shot untuk video penuh'
+    ]
+  },
+  '3d-gen': {
+    execution: [
+      '1. **Input:** Foto/screenshot multi-sudut bila tersedia.',
+      '2. **Rekonstruksi:** Deskripsikan bentuk, material, detail yang harus dipertahankan.',
+      '3. **Texture:** PBR material, warna, roughness.',
+      '4. **Export:** glb/usdz + turntable render 360°.'
+    ],
+    output: [
+      '- **Prompt:** image-to-3d / text-to-3d',
+      '- **Settings:** polygon, texture resolution',
+      '- **QC:** checklist mesh (topologi, uv, material)'
+    ]
+  },
+  'cursor-agent': {
+    execution: [
+      '1. **Konteks Repo:** Sebut struktur folder & file yang disentuh.',
+      '2. **Tugas Spesifik:** Per file, hindari permintaan luas.',
+      '3. **Rules:** Ikuti .cursor/rules / AGENTS.md bila ada.',
+      '4. **Validate:** Jalankan test/typecheck setelah edit.'
+    ],
+    output: [
+      '- **Diff:** per file',
+      '- **Command:** terminal yang perlu dijalankan',
+      '- **Verifikasi:** langkah QA'
+    ]
+  },
+  'voice-gen': {
+    execution: [
+      '1. **Naskah:** Siapkan teks dengan penanda jeda & intonasi.',
+      '2. **Voice:** Pilih karakter suara & kunci konsistensinya.',
+      '3. **Avatar:** Penampilan, pakaian, latar (bila video avatar).',
+      '4. **Validate:** Pelafalan angka & istilah teknis.'
+    ],
+    output: [
+      '- **Naskah:** siap baca untuk TTS',
+      '- **Setting:** voice id, stability, speed',
+      '- **Brief Avatar:** lengkap per scene'
+    ]
+  },
   generic: {
     execution: [
       '1. **Parse Intent:** Analisis project overview dan detail.',
@@ -150,6 +286,13 @@ const IMAGE_INSTRUCTIONS = [
   '- Referensikan gambar dengan nomor (contoh: "sesuai Gambar 2") dalam jawaban Anda.'
 ];
 
+const IMAGE_INSTRUCTIONS_EN = [
+  '- Treat every image as a binding visual requirement.',
+  '- Extract layout, color palette, components, and information hierarchy from the images.',
+  '- If text and images conflict, state the conflict and ask for clarification before proceeding.',
+  '- Refer to images by number (e.g., "as in Image 2") in your answer.'
+];
+
 const formatBytes = (bytes) => {
   if (!Number.isFinite(bytes) || bytes <= 0) return '';
   const units = ['B', 'KB', 'MB'];
@@ -158,7 +301,7 @@ const formatBytes = (bytes) => {
   return `${Number.isInteger(v) ? v : v.toFixed(1)} ${units[i]}`;
 };
 
-const DAN_PRINCIPLES = [
+const RAUZA_PRINCIPLES = [
   '1. Data dulu, opini belakangan — setiap klaim punya angka atau ditandai `asumsi:`.',
   '2. Setiap temuan punya "so what": satu aksi konkret + pemilik + tenggat.',
   '3. Jujur soal ketidakpastian: sebut sampel, rentang waktu, dan keterbatasan.',
@@ -167,7 +310,7 @@ const DAN_PRINCIPLES = [
   '6. Tutup dengan 2-3 langkah berikutnya.'
 ];
 
-const DAN_DELIVERABLE_HINTS = {
+const RAUZA_DELIVERABLE_HINTS = {
   'marketing-data-analyst': 'JSON hasil analisa + Markdown ringkasan (KPI, anomali, forecast)',
   'marketing-strategist': 'Campaign plan: tujuan, audiens, channel mix, budget, A/B test',
   'data-to-infographic': 'Infografik/chart SVG self-contained (tanpa CDN)',
@@ -176,23 +319,52 @@ const DAN_DELIVERABLE_HINTS = {
   'motivator-coach': 'Rencana coaching GROW berbasis data performa',
   'project-monitoring-controlling': 'Status proyek: variance, SPI, RAG, stalled, earned value',
   'software-architecture': 'Scaffold/review/trade-off + rekomendasi ber-konteks',
-  'architectural-design': 'Denah 2D, massa 3D, tampak, KDB/KLB, RAB, tahapan konstruksi'
+  'architectural-design': 'Denah 2D, massa 3D, tampak, KDB/KLB, RAB, tahapan konstruksi',
+  'persona-visual-director': 'Brand visual guide: palet, mood, gaya konsisten lintas aset (foto/video/3D/banner)'
 };
 
-function buildDanPlaybook(skills = []) {
-  const danSkills = skills.filter(s => DAN_DELIVERABLE_HINTS[s.id]);
-  if (danSkills.length === 0) return null;
+const RAUZA_PRINCIPLES_EN = [
+  '1. Data first, opinion later — every claim has a number or is marked `assumption:`.',
+  '2. Every finding has a "so what": one concrete action + owner + deadline.',
+  '3. Be honest about uncertainty: state sample, timeframe, and limitations.',
+  '4. Few words, rich substance: tables/lists over long paragraphs.',
+  '5. Finish at the deliverable, not just advice.',
+  '6. Close with 2-3 next steps.'
+];
+
+const RAUZA_DELIVERABLE_HINTS_EN = {
+  'marketing-data-analyst': 'Analysis JSON + Markdown summary (KPI, anomalies, forecast)',
+  'marketing-strategist': 'Campaign plan: goal, audience, channel mix, budget, A/B test',
+  'data-to-infographic': 'Self-contained SVG infographic/charts (no CDN)',
+  'image-video-creator': 'Timed shot-list storyboard + image/video prompts + SRT',
+  'design-engineer-2d-3d': 'Design brief + technical spec + 3D sketch/mockup',
+  'motivator-coach': 'Data-driven GROW coaching plan',
+  'project-monitoring-controlling': 'Project status: variance, SPI, RAG, stalled, earned value',
+  'software-architecture': 'Scaffold/review/trade-off + context-aware recommendation',
+  'architectural-design': '2D floor plans, 3D massing, elevations, KDB/KLB, RAB, construction phases',
+  'persona-visual-director': 'Brand visual guide: palette, mood, consistent style across assets (photo/video/3D/banner)'
+};
+
+function buildRauzaPlaybook(skills = [], lang = 'id') {
+  const en = lang === 'en';
+  const hints = en ? RAUZA_DELIVERABLE_HINTS_EN : RAUZA_DELIVERABLE_HINTS;
+  const rauzaSkills = skills.filter(s => hints[s.id]);
+  if (rauzaSkills.length === 0) return null;
 
   const lines = [];
-  lines.push('## 🧠 DAN PLAYBOOK (METODOLOGI WAJIB)');
-  lines.push('Skill DAN aktif dalam prompt ini. Ikuti metodologi DAN:');
+  lines.push(en ? '## 🧠 RAUZA PLAYBOOK (MANDATORY METHODOLOGY)' : '## 🧠 RAUZA PLAYBOOK (METODOLOGI WAJIB)');
+  lines.push(en
+    ? 'RAUZA skills are active in this prompt. Follow the RAUZA methodology:'
+    : 'Skill RAUZA aktif dalam prompt ini. Ikuti metodologi RAUZA:');
   lines.push('');
-  DAN_PRINCIPLES.forEach(l => lines.push(l));
+  (en ? RAUZA_PRINCIPLES_EN : RAUZA_PRINCIPLES).forEach(l => lines.push(l));
   lines.push('');
-  lines.push('**Deliverable yang diharapkan per skill DAN:**');
-  danSkills.forEach(s => lines.push(`- **${s.name}** → ${DAN_DELIVERABLE_HINTS[s.id]}`));
+  lines.push(en ? '**Expected deliverable per RAUZA skill:**' : '**Deliverable yang diharapkan per skill RAUZA:**');
+  rauzaSkills.forEach(s => lines.push(`- **${s.name}** → ${hints[s.id]}`));
   lines.push('');
-  lines.push('Paket referensi lengkap (pustaka metrik, framework, runbook, engine CLI) tersedia di folder `skills/dan/` pada repositori ini.');
+  lines.push(en
+    ? 'The full reference package (metric library, frameworks, runbooks, CLI engines) lives in the `skills/dan/` folder of this repository.'
+    : 'Paket referensi lengkap (pustaka metrik, framework, runbook, engine CLI) tersedia di folder `skills/dan/` pada repositori ini.');
   return lines;
 }
 
@@ -578,12 +750,15 @@ function resolvePersona(project, categories = [], skills = []) {
   return null;
 }
 
-function buildImageSection(images = [], notes = '') {
+function buildImageSection(images = [], notes = '', lang = 'id') {
   if (!Array.isArray(images) || images.length === 0) return null;
+  const en = lang === 'en';
 
   const lines = [];
-  lines.push(`## 🖼️ REFERENCE IMAGES (${images.length})`);
-  lines.push(`User melampirkan ${images.length} gambar sebagai referensi visual (dilampirkan bersama prompt ini):`);
+  lines.push(en ? `## 🖼️ REFERENCE IMAGES (${images.length})` : `## 🖼️ REFERENCE IMAGES (${images.length})`);
+  lines.push(en
+    ? `The user attached ${images.length} image(s) as visual reference (attached together with this prompt):`
+    : `User melampirkan ${images.length} gambar sebagai referensi visual (dilampirkan bersama prompt ini):`);
   lines.push('');
 
   images.forEach((img, i) => {
@@ -591,17 +766,205 @@ function buildImageSection(images = [], notes = '') {
       ? ` (${img.width}×${img.height}${img.size ? `, ${formatBytes(img.size)}` : ''})`
       : (img.size ? ` (${formatBytes(img.size)})` : '');
     const note = img.note ? ` — ${img.note}` : '';
-    lines.push(`${i + 1}. **${img.name || `Gambar ${i + 1}`}**${dims}${note}`);
+    lines.push(`${i + 1}. **${img.name || (en ? `Image ${i + 1}` : `Gambar ${i + 1}`)}**${dims}${note}`);
   });
 
   if (notes && String(notes).trim()) {
     lines.push('');
-    lines.push(`**Catatan tambahan dari user:** ${String(notes).trim()}`);
+    lines.push(en
+      ? `**Additional notes from the user:** ${String(notes).trim()}`
+      : `**Catatan tambahan dari user:** ${String(notes).trim()}`);
   }
 
   lines.push('');
-  lines.push('**Instruksi analisis gambar:**');
-  IMAGE_INSTRUCTIONS.forEach(l => lines.push(l));
+  lines.push(en ? '**Image analysis instructions:**' : '**Instruksi analisis gambar:**');
+  (en ? IMAGE_INSTRUCTIONS_EN : IMAGE_INSTRUCTIONS).forEach(l => lines.push(l));
+  return lines;
+}
+
+// ============================================
+// AKSEN UI PER PROJECT — tampilan menyesuaikan project yang dipilih
+// ============================================
+const PROJECT_ACCENTS = {
+  'banana-product-photo': { accent: '#f5c518', accent2: '#ff8a3d', icon: '🍌', vibe: 'Kreatif Studio',
+    workflow: ['1. Analisis gambar: bentuk produk, label, bahan, latar.', '2. Susun prompt instruct-edit: apa yang diganti, apa yang DIKUNCI (bentuk & label produk).', '3. Sarankan variasi: rasio 1:1 / 9:16 / 16:9, latar, dan sudut kamera.', '4. QA hasil: konsistensi logo & teks pada kemasan.'] },
+  'google-flow-video': { accent: '#ff5d6c', accent2: '#ff8a3d', icon: '🎥', vibe: 'Flow Scenebuilder',
+    workflow: ['1. Pecah durasi target menjadi scene ±8 detik (batas per prompt Veo).', '2. Siapkan ingredients: gambar produk/karakter sebagai referensi konsistensi.', '3. Tulis prompt per scene: subjek, aksi, kamera, dialog, SFX, ambience.', '4. Rangkai di Flow: jump-to, extend, dan sinkronkan audio antar scene.'] },
+  'gamma-presentation': { accent: '#7c5cff', accent2: '#00d4ff', icon: '📽️', vibe: 'Deck Instant',
+    workflow: ['1. Tentukan audiens, tujuan deck, dan jumlah slide.', '2. Susun outline per slide: judul + maksimal 3 poin + kebutuhan visual.', '3. Tambahkan petunjuk layout & palet agar tema konsisten.', '4. Ekspor: paste outline ke Gamma, atau minta PPTX dari ChatGPT/Claude.'] },
+  'ai-web-builder': { accent: '#00d4ff', accent2: '#2ecc8f', icon: '⚡', vibe: 'Ship Cepat',
+    workflow: ['1. Definisikan MVP: halaman/fitur inti dulu, non-goal dilarang dikerjakan.', '2. Sebutkan tech stack & integrasi secara eksplisit.', '3. Komposisikan halaman berurutan — satu instruksi per layar agar AI tidak melompat.', '4. Iterasi: permintaan perbaikan kecil dan spesifik, bukan rewrite besar.'] },
+  'screenshot-to-visual': { accent: '#2ecc8f', accent2: '#00d4ff', icon: '📸', vibe: 'One-Shot Visual',
+    workflow: ['1. Baca screenshot: identifikasi produk/UI, gaya, dan tujuan output.', '2. Pilih pipeline: video, 3D, atau wireframe (bisa lebih dari satu).', '3. Susun prompt per pipeline sesuai standar generator tujuan.', '4. Beri catatan QA: konsistensi produk, durasi, dan rasio aset.'] },
+  'product-visual-suite': { accent: '#e8b4ff', accent2: '#7c5cff', icon: '🧴', vibe: 'Brand Kit Visual',
+    workflow: ['1. Kunci brand: palet, mood, dan gaya visual dipakai di SEMUA aset.', '2. Foto hero: latar, properti, lighting, rasio per marketplace.', '3. Video: storyboard 15 detik + VO + musik + teks layar.', '4. 3D & banner: turntable render + banner per platform (Meta/TikTok/MP).'] },
+  'ai-ux-redesign': { accent: '#f59e0b', accent2: '#7c5cff', icon: '🎨', vibe: 'UX Doctor',
+    workflow: ['1. Audit screenshot: hierarki, kontras, spacing, alur pengguna.', '2. Daftar masalah UX diurutkan dari dampak terbesar.', '3. Wireframe ulang: struktur per layar + alur baru.', '4. Design tokens: warna, tipografi, spacing — siap handoff Figma.'] }
+};
+
+const FALLBACK_PLACEHOLDER = 'Contoh: Buatkan produk digital untuk UMKM — jelaskan target pengguna, fitur utama, gaya visual, dan platform tujuan...';
+
+function resolveProjectUi(project) {
+  if (!project) return null;
+  const extra = PROJECT_ACCENTS[project.id] || {};
+  return {
+    accent: extra.accent || null,
+    accent2: extra.accent2 || null,
+    icon: extra.icon || (project.name || '').split(' ')[0] || '🚀',
+    vibe: extra.vibe || null,
+    workflow: extra.workflow || null,
+    tips: project.tips || null,
+    detailPlaceholder: (project.placeholders && project.placeholders.detail) || FALLBACK_PLACEHOLDER
+  };
+}
+
+// ============================================
+// PROMPT DETAIL — struktur 9 elemen universal (diterima semua AI generator)
+// ============================================
+const DETAIL_ELEMENTS = {
+  id: [
+    '- [Subjek] Apa objek/produk/aplikasi yang dikerjakan?',
+    '- [Tujuan] Untuk apa hasilnya dipakai (ads, pitch, dev, edukasi)?',
+    '- [Audiens] Siapa yang melihat/memakai hasilnya?',
+    '- [Gaya & Mood] Referensi visual, palet, suasana, tone.',
+    '- [Spesifikasi Teknis] Rasio/dimensi, durasi, format file, platform.',
+    '- [Kendala] Larangan, batasan brand, hal yang TIDAK boleh berubah.',
+    '- [Format Keluaran] Struktur jawaban yang diharapkan.',
+    '- [Kriteria Sukses] Bagaimana hasil disebut "berhasil".'
+  ],
+  en: [
+    '- [Subject] What object/product/app is being worked on?',
+    '- [Purpose] What will the output be used for (ads, pitch, dev, education)?',
+    '- [Audience] Who will see/use the result?',
+    '- [Style & Mood] Visual references, palette, atmosphere, tone.',
+    '- [Technical Specs] Aspect ratio/dimensions, duration, file format, platform.',
+    '- [Constraints] Prohibitions, brand limits, things that must NOT change.',
+    '- [Output Format] Expected structure of the answer.',
+    '- [Success Criteria] How the result is judged "done".'
+  ]
+};
+
+function buildDetailRequirements(detail, lang = 'id') {
+  const en = lang === 'en';
+  const text = String(detail || '').trim();
+  if (!text) return null;
+  const lines = [];
+  lines.push(en
+    ? '### 🧩 DETAIL STRUCTURE (understand each element before working)'
+    : '### 🧩 STRUKTUR DETAIL (pahami tiap elemen sebelum bekerja)');
+  lines.push(text);
+  lines.push('');
+  lines.push(en
+    ? '**Extraction framework — answer implicitly in your output when the user does not state it (mark `assumption:`):**'
+    : '**Framework ekstraksi — jawab implisit di output Anda bila user tidak menyebutkannya (tandai `asumsi:`):**');
+  DETAIL_ELEMENTS[lang === 'en' ? 'en' : 'id'].forEach(l => lines.push(l));
+  return lines;
+}
+
+// ============================================
+// VISUAL PIPELINE — screenshot/foto produk → video / 3D / wireframe
+// Aktif otomatis bila project punya skill pipeline atau ada gambar terlampir
+// ============================================
+const PIPELINE_SKILL_HINTS = ['screenshot-to-video', 'screenshot-to-3d', 'screenshot-to-wireframe', 'product-visual-suite'];
+
+function buildVisualPipeline(images, skills, lang = 'id') {
+  const en = lang === 'en';
+  const skillIds = new Set((skills || []).map(s => s.id));
+  const wantsPipeline = PIPELINE_SKILL_HINTS.some(id => skillIds.has(id));
+  if (!wantsPipeline && (!images || images.length === 0)) return null;
+
+  const video = wantsPipeline || skillIds.has('screenshot-to-video') || skillIds.has('product-visual-suite');
+  const three = wantsPipeline || skillIds.has('screenshot-to-3d') || skillIds.has('product-visual-suite');
+  const wire = wantsPipeline || skillIds.has('screenshot-to-wireframe');
+
+  const lines = [];
+  lines.push(en
+    ? '## 🎬 VISUAL PIPELINE — FROM SCREENSHOT TO READY-TO-USE OUTPUT'
+    : '## 🎬 VISUAL PIPELINE — DARI SCREENSHOT MENJADI OUTPUT SIAP PAKAI');
+  lines.push(en
+    ? 'The user only needs to attach a screenshot/photo. Compose READY-TO-PASTE prompts for each relevant pipeline below (the user just copies them into the target generator):'
+    : 'User cukup melampirkan screenshot/foto. Susun PROMPT SIAP-PAKAI untuk tiap pipeline yang relevan di bawah (user tinggal copy ke generator tujuan):');
+  lines.push('');
+  if (video) {
+    lines.push('### ▶️ Pipeline A — Video (Google Flow / Veo 3, Runway, Kling, Pika)');
+    lines.push(en
+      ? '- Break into 5-8 second scenes; per scene write: subject, action, camera movement, lighting, dialogue/VO, SFX, ambience.'
+      : '- Pecah jadi scene 5–8 detik; per scene tulis: subjek, aksi, gerakan kamera, lighting, dialog/VO, SFX, ambience.');
+    lines.push(en
+      ? '- The product screenshot/photo = `ingredients` (consistency reference) — the product MUST NOT change shape.'
+      : '- Screenshot/foto produk = `ingredients` (referensi konsistensi) — produk TIDAK BOLEH berubah bentuk.');
+    lines.push(en
+      ? '- State the aspect ratio (16:9 / 9:16 / 1:1) and total target duration.'
+      : '- Sebut rasio (16:9 / 9:16 / 1:1) dan total durasi target.');
+  }
+  if (three) {
+    lines.push('### 🏗️ Pipeline B — 3D (Meshy / Tripo / Luma / Spline)');
+    lines.push(en
+      ? '- Reconstruction prompt: main shape, material, details that must be preserved.'
+      : '- Prompt rekonstruksi: bentuk utama, material, detail yang harus dipertahankan.');
+    lines.push(en
+      ? '- Render instructions: 360° turntable, studio lighting, PBR materials, glb/usdz output + 1:1 video ratio.'
+      : '- Instruksi render: turntable 360°, lighting studio, PBR material, output glb/usdz + rasio video 1:1.');
+  }
+  if (wire) {
+    lines.push('### 📐 Pipeline C — Wireframe / Redesign (Uizard, Figma AI, hand-off dev)');
+    lines.push(en
+      ? '- Analyze the screenshot: information hierarchy, detected components, UX problems.'
+      : '- Analisis screenshot: hierarki informasi, komponen terdeteksi, masalah UX.');
+    lines.push(en
+      ? '- Produce a textual wireframe per screen (zones, components, flow) + design tokens (CSS vars).'
+      : '- Hasilkan wireframe tekstual per layar (zona, komponen, alur) + design tokens (CSS vars).');
+  }
+  lines.push('');
+  lines.push(en
+    ? '**Pipeline rule:** do not mix two pipelines in one prompt; write each prompt in a separate code block for easy copying.'
+    : '**Aturan pipeline:** jangan campur instruksi dua pipeline dalam satu prompt; tulis tiap prompt dalam blok kode terpisah agar mudah disalin.');
+  return lines;
+}
+
+// ============================================
+// PLATFORM PROMPT FRAMEWORK — struktur standar yang diterima AI generator apa pun
+// ============================================
+function buildPlatformFramework(platform, lang = 'id') {
+  const en = lang === 'en';
+  const lines = [];
+  lines.push(en
+    ? '## 🧱 PROMPT FRAMEWORK (MANDATORY — standard output structure)'
+    : '## 🧱 PROMPT FRAMEWORK (WAJIB — struktur keluaran standar)');
+  lines.push(en
+    ? 'Structure your answer with this frame so the result works in any generator:'
+    : 'Susun jawaban Anda dengan kerangka ini sehingga hasilnya bisa langsung dipakai di generator mana pun:');
+  lines.push('');
+  lines.push('```');
+  lines.push(en
+    ? '[SUBJECT]     - one sentence: what is being made'
+    : '[SUBJEK]      — satu kalimat: apa yang dibuat');
+  lines.push(en
+    ? '[STYLE]       - palette, mood, visual references, lighting'
+    : '[GAYA]        — palet, mood, referensi visual, lighting');
+  lines.push(en
+    ? '[TECHNICAL]   - ratio, duration, format, target platform'
+    : '[TEKNIS]      — rasio, durasi, format, platform target');
+  lines.push(en
+    ? '[CONSTRAINTS] - prohibitions & things locked (e.g., product shape)'
+    : '[KENDALA]     — larangan & hal yang dikunci (mis. bentuk produk)');
+  lines.push(en
+    ? '[MAIN PROMPT] - ready-to-paste prompt per scene/screen/asset'
+    : '[PROMPT UTAMA]— prompt siap-tempel per scene/layar/aset');
+  lines.push(en
+    ? '[NEGATIVE]    - things to avoid (for generators that support it)'
+    : '[NEGATIVE]    — hal yang dihindari (untuk generator yang mendukung)');
+  lines.push(en
+    ? '[QA CHECK]    - quick checklist before use'
+    : '[QA CHECK]    — daftar cek cepat sebelum dipakai');
+  lines.push('```');
+  lines.push('');
+  lines.push(en
+    ? `- Target platform: **${platform.name || 'Generic'}** — adapt the syntax (e.g., --ar/--v parameters for Midjourney, natural language for Veo 3, JSON schema for coding agents).`
+    : `- Platform tujuan: **${platform.name || 'Generic'}** — sesuaikan sintaksnya (mis. parameter --ar/--v untuk Midjourney, natural language untuk Veo 3, JSON schema untuk agent coding).`);
+  lines.push(en
+    ? '- If the platform has an input limit (e.g., max prompt length), produce a concise version + a full version.'
+    : '- Jika satu platform punya batas input (mis. prompt maksimum), buat versi ringkas + versi lengkap.');
   return lines;
 }
 
@@ -632,17 +995,225 @@ function decodeConfig(str) {
   }
 }
 
-function buildPrompt({ project, skills = [], agents = [], platform = {}, detail = '', categories = [], images = [], imageNotes = '' } = {}) {
+// ============================================
+// KONTEKS PROJECT — output prompt menyesuaikan jenis project, to the point
+// ============================================
+const FLAVOR_AUDIT = {
+  code: ['Kode berjalan tanpa error saat dieksekusi.', 'Tidak ada fungsi/variabel yang direferensikan tapi tidak ada. Jika asumsi teknis dipakai, tandai `asumsi:`.', 'Semua state ditangani: loading, error, empty.', 'Sebutkan cara menjalankan/test hasil.'],
+  media: ['Deskripsi visual bisa dibayangkan orang lain secara identik (subyek, latar, lighting, kamera eksplisit).', 'Sifat produk/karakter yang dikunci tidak berubah — sebutkan eksplisit apa yang dikunci.', 'Durasi/rasio/format sesuai spesifikasi yang diminta.', 'Tidak menambahkan brand/teks/wajah yang tidak diminta.'],
+  design: ['Setiap keputusan desain punya alasan yang mengacu ke user goal, bukan selera pribadi.', 'Kontras & aksesibilitas (WCAG AA) terpenuhi.', 'Design token konsisten — tidak ada nilai di luar sistem.', 'Semua state komponen ada: default, hover, active, disabled, error, empty.'],
+  data: ['Setiap angka bisa ditelusuri ke sumber/tabel yang disebut; angka tanpa sumber ditandai `asumsi:`.', 'Proyeksi/forecast selalu dengan rentang (±) dan asumsi eksplisit — tidak ada angka tunggal palsu-akurat.', 'Korelasi bukan sebab-akibat; jangan klaim sebab tanpa bukti.', 'Anomali selalu disertai hipotesis penyebab yang bisa diuji.'],
+  document: ['Setiap klaim faktual punya sumber; tanpa sumber ditandai `asumsi:` atau dihapus.', 'Tidak ada superlatif tanpa pembanding ("terbaik", "nomor satu").', 'Struktur mengikuti kerangka deliverable — tidak ada bagian kosong/placeholder.', 'Bahasa sesuai audiens; istilah teknis didefinisikan.'],
+  coaching: ['Rekomendasi merujuk data/angka performa, bukan opini atau kata motivasi kosong.', 'Target & aksi selalu terukur: angka + tenggat + pemilik.', 'Pertanyaan reflektif dipisahkan dari rekomendasi.', 'Tidak ada janji hasil yang tidak bisa dipertanggungjawabkan.']
+};
+
+const FLAVOR_CONTEXT_RULES = {
+  code: ['Cukup kode + catatan esensial; penjelasan panjang dilarang.', 'Jangan mengerjakan fitur di luar permintaan (no scope creep).', 'Jika requirement ambigu, pilih asumsi paling masuk akal, tandai `asumsi:`, lalu lanjut — jangan berhenti bertanya.'],
+  media: ['Tulis HANYA aset yang diminta; jangan menawarkan variasi tambahan di luar permintaan.', 'Satu aset = satu prompt; jangan mencampur instruksi aset berbeda.', 'Tanpa narrasi pemasaran berlebihan — deskripsi visual netral dan presisi.'],
+  design: ['Fokus pada masalah desain yang disebut; jangan mendesain ulang bagian yang tidak dikeluhkan.', 'Sertakan token/spesifikasi, bukan hanya gambaran.', 'Jangan menambah fitur/layar baru di luar permintaan.'],
+  data: ['Tampilkan angka dalam tabel; narasi maksimal 2-3 kalimat per temuan.', 'Jangan mengulang angka yang sama dalam bentuk berbeda.', 'Jika data tidak tersedia, tulis `data tidak tersedia` — dilarang mengarang angka.'],
+  document: ['Poin-poin, bukan paragraf panjang; satu ide per poin.', 'Jangan mengulang konteks di setiap bagian.', 'Kalimat pasif/berlebihan diganti kalimat aktif singkat.'],
+  coaching: ['Tanya maksimal 3 pertanyaan kunci; sisanya rekomendasi terukur.', 'Dilarang memberi kata penyemangat tanpa data di baliknya.', 'Tutup dengan aksi terukur, bukan semangat.']
+};
+
+const FLAVOR_BANNED = {
+  code: 'pseudocode untuk kode final, kode yang tidak bisa dikompilasi, placeholder TODO pada kode yang diserahkan',
+  media: 'istilah kabur ("cantik", "keren", "bagus") tanpa deskripsi konkret, penambahan elemen yang tidak diminta',
+  design: 'klaim estetika tanpa alasan fungsional, token liar di luar sistem',
+  data: 'angka karangan, proyeksi tanpa rentang, sebab-akibat tanpa bukti, "mengalami tren" tanpa angka',
+  document: 'superlatif tanpa pembanding, klaim tanpa sumber, kalimat pengisi ("sebagaimana kita ketahui")',
+  coaching: 'kata motivasi kosong, target tanpa angka, saran generik tanpa konteks'
+};
+
+const FLAVOR_META_BRIEF = {
+  code: 'mulai langsung dari arsitektur/kode; tanpa pembuka pengantar',
+  media: 'mulai dari tabel aset/scene; tanpa teori produksi',
+  design: 'mulai dari daftar masalah → keputusan; tanpa kuliah teori desain',
+  data: 'mulai dari ringkasan angka; tanpa metodologi panjang',
+  document: 'mulai dari jawaban/ringkasan; tanpa pembuka basa-basi',
+  coaching: 'mulai dari fakta performa; tanpa pembuka motivasi'
+};
+
+const FLAVOR_METRICS = {
+  code: 'Kode berjalan / test lulus; nol referensi rusak.',
+  media: 'Setiap aset punya subjek+aksi+teknis lengkap dan bisa langsung diproduksi.',
+  design: 'Tiap layar punya satu aksi utama; semua state komponen terdefinisi.',
+  data: 'Setiap insight bisa ditindaklanjuti: aksi + pemilik + tenggat.',
+  document: 'Pembaca bisa bertindak tanpa bertanya ulang.',
+  coaching: 'Ada 1-3 aksi terukur dengan pemilik & tenggat yang jelas.'
+};
+
+const FLAVOR_WIRE = {
+  code: 'tulis ulang pernyataan bahasa/framework, jalankan logika di kepala, cek import/export',
+  media: 'baca ulang prompt per aset; pastikan tak ada elemen yang saling kontradiksi',
+  design: 'cek konsistensi token & alasan tiap keputusan',
+  data: 'hitung ulang setiap angka; cocokkan dengan sumber yang disebut',
+  document: 'baca ulang klaim faktual; pastikan sumber ada',
+  coaching: 'cek setiap rekomendasi punya angka & tenggat'
+};
+
+function detectProjectFlavor(project, skills = []) {
+  const sid = new Set((skills || []).map(s => s.id));
+  if (sid.has('software-architecture') || sid.has('ai-app-saas-building')) return 'code';
+  if (sid.has('motivator-coach') || sid.has('sales-coaching')) return 'coaching';
+  if (sid.has('data-to-infographic') || sid.has('marketing-data-analyst')) return 'data';
+
+  const byProject = {
+    'video-cinematic': 'media', 'video-ads': 'media', 'short-form': 'media', 'ai-video': 'media',
+    'image-analysis': 'media', 'image-to-video': 'media', 'image-to-banner': 'media',
+    'banana-product-photo': 'media', 'google-flow-video': 'media', 'screenshot-to-visual': 'media',
+    'product-visual-suite': 'media',
+    'gamma-presentation': 'document',
+    'ai-web-builder': 'code', 'software-engineering': 'code',
+    'dashboard': 'data', 'sales-monitoring': 'data', 'dan-marketing-analysis': 'data',
+    'sales-coaching': 'coaching', 'hr-management': 'coaching', 'talent-mapping': 'coaching',
+    'indoor-design': 'design', 'outdoor-design': 'design', 'ai-ux-redesign': 'design', 'ui-ux-design': 'design'
+  };
+  if (project && byProject[project.id]) return byProject[project.id];
+
+  const byCategory = {
+    web_app: 'code', ai_modern: 'code', cloning: 'code', engineering: 'code', '3d_2d': 'code',
+    media_gen: 'media', cinematic: 'media', image_processing: 'media',
+    design: 'design', data_viz: 'data', business: 'document', education: 'document'
+  };
+  if (project && byCategory[project.category]) return byCategory[project.category];
+  return 'document';
+}
+
+const FLAVOR_AUDIT_EN = {
+  code: ['Code runs without errors when executed.', 'No function/variable referenced but missing. Mark technical assumptions with `assumption:`.', 'All states handled: loading, error, empty.', 'State how to run/test the result.'],
+  media: ['Visual descriptions must be imaginable identically by others (subject, setting, lighting, camera explicit).', 'Locked product/character traits do not change — state explicitly what is locked.', 'Duration/ratio/format match the requested spec.', 'No brands/text/faces added that were not requested.'],
+  design: ['Every design decision has a reason tied to the user goal, not personal taste.', 'Contrast & accessibility (WCAG AA) are met.', 'Design tokens consistent — no values outside the system.', 'All component states exist: default, hover, active, disabled, error, empty.'],
+  data: ['Every number traces back to a stated source/table; unsourced numbers are marked `assumption:`.', 'Projections/forecasts always carry a range (±) and explicit assumptions — no fake-precise single numbers.', 'Correlation is not causation; no causal claims without evidence.', 'Anomalies always come with a testable hypothesis.'],
+  document: ['Every factual claim has a source; without one it is marked `assumption:` or removed.', 'No superlatives without comparison ("best", "number one").', 'Structure follows the deliverable frame — no empty/placeholder sections.', 'Language fits the audience; technical terms are defined.'],
+  coaching: ['Recommendations reference performance data, not opinions or empty pep talk.', 'Targets & actions are measurable: number + deadline + owner.', 'Reflective questions are separated from recommendations.', 'No promised outcomes that cannot be accounted for.']
+};
+
+const FLAVOR_CONTEXT_RULES_EN = {
+  code: ['Code + essential notes only; long explanations are forbidden.', 'Do not build features beyond the request (no scope creep).', 'If requirements are ambiguous, pick the most reasonable assumption, mark `assumption:`, and continue — do not stop to ask.'],
+  media: ['Write ONLY the requested assets; do not offer extra variations beyond the request.', 'One asset = one prompt; never mix different asset instructions.', 'No marketing fluff — visual descriptions stay neutral and precise.'],
+  design: ['Focus on the design problems stated; do not redesign parts nobody complained about.', 'Include tokens/specs, not just visuals.', 'Do not add new features/screens beyond the request.'],
+  data: ['Show numbers in tables; narrative max 2-3 sentences per finding.', 'Do not repeat the same number in different forms.', 'If data is unavailable, write `data unavailable` — fabricating numbers is forbidden.'],
+  document: ['Bullets, not long paragraphs; one idea per bullet.', 'Do not repeat context in every section.', 'Replace passive/verbose sentences with short active ones.'],
+  coaching: ['Ask at most 3 key questions; the rest is measurable recommendation.', 'Giving pep talk without data behind it is forbidden.', 'Close with measurable actions, not motivation.']
+};
+
+const FLAVOR_BANNED_EN = {
+  code: 'pseudocode for final code, non-compilable code, TODO placeholders in delivered code',
+  media: 'vague terms ("beautiful", "nice", "cool") without concrete description, adding elements nobody asked for',
+  design: 'aesthetic claims without functional reasons, wild tokens outside the system',
+  data: 'made-up numbers, projections without ranges, causation without evidence, "trending" without numbers',
+  document: 'superlatives without comparison, claims without sources, filler sentences ("as we all know")',
+  coaching: 'empty motivational words, targets without numbers, generic advice without context'
+};
+
+const FLAVOR_META_BRIEF_EN = {
+  code: 'start directly with architecture/code; no introductory preface',
+  media: 'start with the asset/scene table; no production theory',
+  design: 'start with problem list → decisions; no design-theory lecture',
+  data: 'start with the numbers summary; no long methodology',
+  document: 'start with the answer/summary; no opening pleasantries',
+  coaching: 'start with performance facts; no motivational opening'
+};
+
+const FLAVOR_METRICS_EN = {
+  code: 'Code runs / tests pass; zero broken references.',
+  media: 'Every asset has subject+action+technical details and can be produced immediately.',
+  design: 'Every screen has one primary action; all component states defined.',
+  data: 'Every insight is actionable: action + owner + deadline.',
+  document: 'The reader can act without asking again.',
+  coaching: '1-3 measurable actions with clear owner & deadline.'
+};
+
+const FLAVOR_WIRE_EN = {
+  code: 're-state language/framework claims, run the logic mentally, check imports/exports',
+  media: 're-read each asset prompt; ensure no contradictory elements',
+  design: 'check token consistency & the reason behind each decision',
+  data: 'recalculate every number; match against the sources cited',
+  document: 're-read factual claims; ensure sources exist',
+  coaching: 'check every recommendation has a number & deadline'
+};
+
+function buildContextRules(flavor, project, skills = [], agents = [], lang = 'id') {
+  const en = lang === 'en';
+  const rules = en ? FLAVOR_CONTEXT_RULES_EN : FLAVOR_CONTEXT_RULES;
+  const banned = en ? FLAVOR_BANNED_EN : FLAVOR_BANNED;
+  const lines = [];
+  lines.push(en
+    ? '## 🎧 CONTEXT & FOCUS (MANDATORY — no rambling, no hallucination)'
+    : '## 🎧 KONTEKS & FOKUS (WAJIB — anti bertele-tele & anti halu)');
+  lines.push(en
+    ? `**Work type: ${flavor.toUpperCase()}**. Do ONLY what is requested in the details below.`
+    : `**Jenis pekerjaan: ${flavor.toUpperCase()}**. Kerjakan HANYA yang diminta pada detail di bawah.`);
+  lines.push('');
+  lines.push(en ? '**Focus limits:**' : '**Batasan fokus:**');
+  rules[flavor].forEach(r => lines.push(`- ${r}`));
+  lines.push('');
+  lines.push(en
+    ? '**Out of scope — ignore unless explicitly requested:**'
+    : '**Di luar cakupan — abaikan kecuali diminta eksplisit:**');
+  const skList = skills.length ? skills.map(s => s.name).join(', ') : (en ? '(no skills)' : '(tidak ada skill)');
+  const agList = agents.length ? agents.map(a => a.name).join(', ') : (en ? '(no agents)' : '(tidak ada agent)');
+  lines.push(en
+    ? `- Registered skills: ${skList}`
+    : `- Skill terdaftar: ${skList}`);
+  lines.push(en
+    ? `- Registered agents: ${agList}`
+    : `- Agent terdaftar: ${agList}`);
+  lines.push('');
+  lines.push((en ? '**Never output:** ' : '**Dilarang keluar:** ') + banned[flavor] + '.');
+  return lines;
+}
+
+function buildAuditBlock(flavor, lang = 'id') {
+  const en = lang === 'en';
+  const audit = en ? FLAVOR_AUDIT_EN : FLAVOR_AUDIT;
+  const metrics = en ? FLAVOR_METRICS_EN : FLAVOR_METRICS;
+  const wire = en ? FLAVOR_WIRE_EN : FLAVOR_WIRE;
+  const brief = en ? FLAVOR_META_BRIEF_EN : FLAVOR_META_BRIEF;
+  const lines = [];
+  lines.push(en
+    ? '## 🔍 AUDIT & ANTI-HALLUCINATION (pass all before answering)'
+    : '## 🔍 AUDIT & ANTI-HALUSINASI (lulus semua sebelum menjawab)');
+  lines.push(en ? '**Fact verification:**' : '**Verifikasi fakta:**');
+  audit[flavor].forEach(c => lines.push(`- [ ] ${c}`));
+  lines.push('');
+  lines.push(en
+    ? `- [ ] **Self-check before final:** ${wire[flavor]}.`
+    : `- [ ] **Wire / self-check sebelum final:** ${wire[flavor]}.`);
+  lines.push(en
+    ? `- [ ] **Definition of done:** ${metrics[flavor]}`
+    : `- [ ] **Definisi selesai:** ${metrics[flavor]}`);
+  lines.push('');
+  lines.push((en ? '**Answer format:** ' : '**Format jawaban:** ') + brief[flavor] + '.');
+  return lines;
+}
+
+const LANG_DIRECTIVE_EN = [
+  '## 🌐 OUTPUT LANGUAGE: ENGLISH',
+  '- Write ALL your deliverables and explanations in **English**.',
+  '- Some specification blocks below are written in Indonesian — treat them as the spec, execute them fully, but deliver the result in English.',
+  '- Keep product names, brand terms, and quoted user text as-is.'
+];
+
+const LANG_DIRECTIVE_ID = [
+  '## 🌐 BAHASA KELUARAN: INDONESIA',
+  '- Tulis SELURUH deliverable dan penjelasan dalam **Bahasa Indonesia**.',
+  '- Istilah teknis dalam bahasa asing boleh dipertahankan bila memang baku (mis. framework, nama tools).'
+];
+
+function buildPrompt({ project, skills = [], agents = [], platform = {}, detail = '', categories = [], images = [], imageNotes = '', lang = 'id' } = {}) {
   if (!project || !project.name) {
     throw new TypeError('buildPrompt: project dengan .name wajib ada');
   }
 
   const tpl = PLATFORM_TEMPLATES[platform.id] || PLATFORM_TEMPLATES.generic;
+  const flavor = detectProjectFlavor(project, skills);
   const lines = [];
   const sep = '='.repeat(60);
 
   lines.push(sep);
-  lines.push(`🎯 VIBE CODER PROMPT — ${(cleanName(project.name).toUpperCase() || 'PROJECT')}`);
+  lines.push(`🎯 RAUZA PROMPT — ${(cleanName(project.name).toUpperCase() || 'PROJECT')}`);
   lines.push(sep);
   lines.push('');
 
@@ -655,6 +1226,14 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
   if ((platform.features || []).length > 0) {
     lines.push(`- **Platform Features:** ${platform.features.join(', ')}`);
   }
+  lines.push('');
+
+  // --- DIREKTIF BAHASA KELUARAN ---
+  lines.push(...(lang === 'en' ? LANG_DIRECTIVE_EN : LANG_DIRECTIVE_ID));
+  lines.push('');
+
+  // --- KONTEKS: fokus & larangan spesifik jenis project ---
+  lines.push(...buildContextRules(flavor, project, skills, agents, lang));
   lines.push('');
 
   // --- PERSONA PROFESI: struktur prompt menyesuaikan kebutuhan profesi ---
@@ -680,32 +1259,39 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
     lines.push('## 🤖 SUB-AGENTS');
     agents.forEach(a => lines.push(`- **${a.name}** — ${a.description || ''}`));
     lines.push('');
-  }
-
-  if (detail) {
-    lines.push('## 📝 PROJECT DETAIL');
-    lines.push(detail);
-    lines.push('');
+  }  if (detail) {
+    const detailLines = buildDetailRequirements(detail, lang);
+  if (detailLines) {
+      lines.push('## 📝 PROJECT DETAIL');
+      lines.push(...detailLines);
+      lines.push('');
+    }
   }
 
   if (images && images.length > 0) {
-    const imageLines = buildImageSection(images, imageNotes);
+    const imageLines = buildImageSection(images, imageNotes, lang);
     if (imageLines) {
       lines.push(...imageLines);
       lines.push('');
     }
   }
 
-  const danPlaybook = buildDanPlaybook(skills);
-  if (danPlaybook) {
-    lines.push(...danPlaybook);
+  const visualPipeline = buildVisualPipeline(images, skills, lang);
+  if (visualPipeline) {
+    lines.push(...visualPipeline);
+    lines.push('');
+  }
+
+  const rauzaPlaybook = buildRauzaPlaybook(skills, lang);
+  if (rauzaPlaybook) {
+    lines.push(...rauzaPlaybook);
     lines.push('');
   }
 
   // --- BLUEPRINT OUTPUT: daftar deliverable khas profesi ---
   if (persona && persona.blueprint) {
     lines.push(`## 📦 ${persona.blueprint.heading}`);
-    lines.push('Hasil akhir WAJIB memuat semua bagian berikut:');
+    lines.push('Hasil akhir WAJIB memuat semua bagian berikut (tanpa bagian tambahan di luar daftar ini):');
     lines.push('');
     persona.blueprint.items.forEach(item => lines.push(`- [ ] ${item}`));
     lines.push('');
@@ -714,11 +1300,14 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
     lines.push('');
   }
 
-  lines.push('## 🚀 EXECUTION INSTRUCTIONS');
+  lines.push(...buildPlatformFramework(platform, lang));
+  lines.push('');
+
+  lines.push(lang === 'en' ? '## 🚀 EXECUTION INSTRUCTIONS' : '## 🚀 EXECUTION INSTRUCTIONS');
   tpl.execution.forEach(l => lines.push(l));
   lines.push('');
 
-  lines.push('## 📤 OUTPUT FORMAT');
+  lines.push(lang === 'en' ? '## 📤 OUTPUT FORMAT' : '## 📤 OUTPUT FORMAT');
   tpl.output.forEach(l => lines.push(l));
   lines.push('');
 
@@ -726,14 +1315,17 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
   TOKEN_LINES.forEach(l => lines.push(l));
   lines.push('');
 
+  lines.push(...buildAuditBlock(flavor, lang));
+  lines.push('');
+
   lines.push(sep);
-  lines.push('Vibe Coder — One Prompt, Infinite Possibilities');
+  lines.push('RAUZA — One Prompt, Infinite Possibilities');
   lines.push(sep);
 
   return lines.join('\n');
 }
 
-const VibeCore = { escapeHtml, encodeConfig, decodeConfig, buildPrompt, buildImageSection, buildDanPlaybook, resolvePersona, PERSONA_TEMPLATES, PLATFORM_TEMPLATES };
+const VibeCore = { escapeHtml, encodeConfig, decodeConfig, buildPrompt, buildImageSection, buildRauzaPlaybook, resolvePersona, resolveProjectUi, buildDetailRequirements, buildVisualPipeline, buildPlatformFramework, detectProjectFlavor, buildContextRules, buildAuditBlock, PROJECT_ACCENTS, PERSONA_TEMPLATES, PLATFORM_TEMPLATES };
 
 // UMD-style: Node (tests) & browser
 if (typeof module !== 'undefined' && module.exports) {

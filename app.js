@@ -8,6 +8,8 @@ const CUSTOM_KEY = 'vibe-coder-custom-v1';
 const HISTORY_LIMIT = 20;
 
 const MAX_IMAGES = 10;
+const DEFAULT_DETAIL_PLACEHOLDER = 'Contoh: Buatkan aplikasi e-commerce dengan React dan Tailwind...';
+const ACCENT_VARS = ['--p-accent', '--p-accent-2', '--p-accent-soft', '--p-accent-soft-2'];
 
 // escapeHtml tersedia global dari core.js (jangan dideklarasikan ulang di sini)
 
@@ -24,6 +26,8 @@ class VibeCoderApp {
       selectedSkills: [],
       selectedAgents: [],
       selectedPlatform: 'chatgpt',
+      selectedLang: 'id',
+      platformLangs: {},
       projectDetail: '',
       images: [],
       imageNotes: '',
@@ -49,10 +53,18 @@ class VibeCoderApp {
     this.loadCustomData();
     this.loadHistory();
     this.loadImages();
+    this.loadPlatformLangs();
     await this.loadData();
     this.restoreState();
     this.render();
+    this.restoreLangControl();
     this.attachEvents();
+  }
+
+  restoreLangControl() {
+    const select = document.getElementById('lang-select');
+    if (select) select.value = this.state.selectedLang === 'en' ? 'en' : 'id';
+    this.updateLangMemoryNote();
   }
 
   // ============================================
@@ -399,6 +411,7 @@ class VibeCoderApp {
         skills: this.state.selectedSkills,
         agents: this.state.selectedAgents,
         platform: this.state.selectedPlatform,
+        lang: this.state.selectedLang,
         detail: this.state.projectDetail,
         autoSelect: this.state.autoSelect
       }));
@@ -420,6 +433,7 @@ class VibeCoderApp {
       this.state.selectedSkills = Array.isArray(saved.skills) ? saved.skills : [];
       this.state.selectedAgents = Array.isArray(saved.agents) ? saved.agents : [];
       this.state.selectedPlatform = saved.platform || 'chatgpt';
+      this.state.selectedLang = saved.lang || this.getPlatformLang(this.state.selectedPlatform);
       this.state.projectDetail = saved.detail || '';
       if (typeof saved.autoSelect === 'boolean') this.state.autoSelect = saved.autoSelect;
     } catch (e) { /* corrupted state */ }
@@ -438,6 +452,9 @@ class VibeCoderApp {
       this.state.selectedSkills = Array.isArray(decoded.skills) ? decoded.skills : [];
       this.state.selectedAgents = Array.isArray(decoded.agents) ? decoded.agents : [];
       this.state.selectedPlatform = decoded.platform || 'chatgpt';
+      this.state.selectedLang = decoded.lang === 'en' ? 'en'
+        : decoded.lang === 'id' ? 'id'
+        : this.getPlatformLang(this.state.selectedPlatform);
       this.state.projectDetail = decoded.detail || '';
       this.state.autoSelect = false;
       return true;
@@ -466,6 +483,8 @@ class VibeCoderApp {
     document.getElementById('project-detail').value = this.state.projectDetail;
     document.getElementById('auto-select-toggle').checked = this.state.autoSelect;
     document.getElementById('image-notes').value = this.state.imageNotes;
+    const langSel = document.getElementById('lang-select');
+    if (langSel) langSel.value = this.state.selectedLang === 'en' ? 'en' : 'id';
     this.renderImages();
 
     // Highlight project aktif
@@ -473,6 +492,9 @@ class VibeCoderApp {
       const item = document.querySelector(`.project-item[data-id="${this.state.selectedProject.id}"]`);
       if (item) item.classList.add('active');
     }
+
+    // Sinkronkan UI adaptif dengan project yang dipulihkan
+    this.applyProjectUi(this.state.selectedProject);
   }
 
   renderProjects() {
@@ -576,7 +598,7 @@ class VibeCoderApp {
     }
     const footer = document.querySelector('.footer p');
     if (footer) {
-      footer.textContent = `Vibe Coder Prompt Generator — ${skills.length} Skills, ${agents.length} Sub-Agents, ${adapters.length} Platforms`;
+      footer.textContent = `RAUZA Prompt Generator — ${skills.length} Skills, ${agents.length} Sub-Agents, ${adapters.length} Platforms`;
     }
   }
 
@@ -652,6 +674,18 @@ class VibeCoderApp {
     });
     $('platform-select').addEventListener('change', (e) => {
       this.state.selectedPlatform = e.target.value;
+      // Ingat bahasa per platform — pulihkan pilihan bahasa untuk platform ini
+      this.state.selectedLang = this.getPlatformLang(this.state.selectedPlatform);
+      $('lang-select').value = this.state.selectedLang;
+      this.updateLangMemoryNote();
+      this.saveState();
+      this.generatePrompt(true);
+    });
+    $('lang-select').addEventListener('change', (e) => {
+      this.state.selectedLang = e.target.value === 'en' ? 'en' : 'id';
+      this.state.platformLangs[this.state.selectedPlatform] = this.state.selectedLang;
+      this.savePlatformLangs();
+      this.updateLangMemoryNote();
       this.saveState();
       this.generatePrompt(true);
     });
@@ -797,6 +831,7 @@ class VibeCoderApp {
 
     this.renderSkills();
     this.renderAgents();
+    this.applyProjectUi(project);
 
     if (this.state.autoSelect) {
       this.applyProjectPreset(project);
@@ -804,6 +839,83 @@ class VibeCoderApp {
 
     this.saveState();
     this.generatePrompt(true);
+  }
+
+  // ============================================
+  // ADAPTIVE UI — tampilan menyesuaikan project yang dipilih
+  // ============================================
+
+  hexToRgba(hex, alpha) {
+    const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(String(hex || ''));
+    if (!m) return '';
+    const [r, g, b] = [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)];
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  applyProjectUi(project) {
+    const ui = VibeCore.resolveProjectUi(project);
+    const root = document.documentElement;
+
+    // 1) Aksen warna via CSS variables (fallback ke tema bila project tanpa aksen)
+    if (ui && ui.accent) {
+      root.style.setProperty('--p-accent', ui.accent);
+      root.style.setProperty('--p-accent-2', ui.accent2 || ui.accent);
+      root.style.setProperty('--p-accent-soft', this.hexToRgba(ui.accent, 0.14));
+      root.style.setProperty('--p-accent-soft-2', this.hexToRgba(ui.accent2 || ui.accent, 0.10));
+    } else {
+      ACCENT_VARS.forEach((v) => root.style.removeProperty(v));
+    }
+
+    // 2) Kelas body: layout & ikon konten menyesuaikan jenis project
+    document.body.classList.toggle('mode-visual', !!(ui && ui.accent));
+
+    // 3) Hero card dinamis
+    const hero = document.getElementById('project-hero');
+    if (hero) {
+      if (!project) {
+        hero.hidden = true;
+        hero.innerHTML = '';
+      } else {
+        hero.hidden = false;
+        const wf = ui && ui.workflow
+          ? `<div class="hero-workflow"><strong>🔁 Alur kerja:</strong><ol>${ui.workflow.map(w => `<li>${escapeHtml(w.replace(/^\d+\.\s*/, ''))}</li>`).join('')}</ol></div>`
+          : '';
+        const tips = ui && ui.tips
+          ? `<div class="hero-tips">💡 <em>${escapeHtml(ui.tips)}</em></div>`
+          : '';
+        hero.innerHTML = `
+          <div class="hero-main">
+            <span class="hero-icon">${escapeHtml(ui.icon)}</span>
+            <div class="hero-text">
+              <div class="hero-title">${escapeHtml(project.name)}${ui.vibe ? `<span class="hero-vibe">${escapeHtml(ui.vibe)}</span>` : ''}</div>
+              <div class="hero-desc">${escapeHtml(project.desc)}</div>
+            </div>
+          </div>
+          ${tips}
+          ${wf}`;
+      }
+    }
+
+    // 4) Placeholder textarea detail menyesuaikan konteks project
+    const detailEl = document.getElementById('project-detail');
+    if (detailEl) {
+      detailEl.placeholder = (ui && ui.detailPlaceholder) || DEFAULT_DETAIL_PLACEHOLDER;
+    }
+
+    this.renderPersonaBadge(project);
+  }
+
+  renderPersonaBadge(project, skills) {
+    const badge = document.getElementById('persona-badge');
+    if (!badge) return;
+    const sk = skills || this.state.selectedSkills
+      .map(id => this.state.skills.find(s => s.id === id)).filter(Boolean);
+    const persona = project ? VibeCore.resolvePersona(project, this.state.categories, sk) : null;
+    if (!persona) { badge.hidden = true; badge.innerHTML = ''; return; }
+    badge.hidden = false;
+    badge.innerHTML =
+      `<span>${escapeHtml(persona.icon)} Mode ${escapeHtml(persona.label)}</span>` +
+      `<span class="persona-label">— struktur output menyesuaikan profesi ini</span>`;
   }
 
   applyProjectPreset(project) {
@@ -870,6 +982,7 @@ class VibeCoderApp {
         'Pilih project dan klik "Generate Prompt" untuk melihat hasilnya...';
       const badge = document.getElementById('persona-badge');
       if (badge) { badge.hidden = true; badge.innerHTML = ''; }
+      this.applyProjectUi(null);
       window.location.hash = '';
     } else {
       const key = type === 'skills' ? 'selectedSkills' : 'selectedAgents';
@@ -889,8 +1002,42 @@ class VibeCoderApp {
   // PROMPT GENERATION
   // ============================================
 
+  // ============================================
+  // BAHASA OUTPUT — diingat per platform AI
+  // ============================================
+
+  PLATFORM_LANGS_KEY = 'rauza-platform-langs-v1';
+
+  loadPlatformLangs() {
+    try {
+      const raw = localStorage.getItem(this.PLATFORM_LANGS_KEY);
+      this.state.platformLangs = raw ? (JSON.parse(raw) || {}) : {};
+    } catch (e) {
+      this.state.platformLangs = {};
+    }
+  }
+
+  savePlatformLangs() {
+    try {
+      localStorage.setItem(this.PLATFORM_LANGS_KEY, JSON.stringify(this.state.platformLangs));
+    } catch (e) { /* storage unavailable */ }
+  }
+
+  getPlatformLang(platformId) {
+    return this.state.platformLangs[platformId] || this.state.selectedLang || 'id';
+  }
+
+  updateLangMemoryNote() {
+    const note = document.getElementById('lang-memory-note');
+    if (!note) return;
+    const saved = this.state.platformLangs[this.state.selectedPlatform];
+    note.textContent = saved
+      ? `(platform ini terakhir pakai ${saved === 'en' ? 'English' : 'Indonesia'})`
+      : '(pilihan diingat otomatis per platform)';
+  }
+
   generatePrompt(silent = false) {
-    const { selectedProject, selectedSkills, selectedAgents, selectedPlatform, projectDetail, images, imageNotes } = this.state;
+    const { selectedProject, selectedSkills, selectedAgents, selectedPlatform, selectedLang, projectDetail, images, imageNotes } = this.state;
 
     if (!selectedProject) {
       if (!silent) this.toast('⚠️ Pilih project terlebih dahulu!', 'warning');
@@ -909,22 +1056,12 @@ class VibeCoderApp {
       detail: projectDetail,
       categories: this.state.categories,
       images,
-      imageNotes
+      imageNotes,
+      lang: selectedLang === 'en' ? 'en' : 'id'
     });
     document.getElementById('output-preview').textContent = prompt;
     this.renderPersonaBadge(selectedProject, skills);
     return prompt;
-  }
-
-  renderPersonaBadge(project, skills) {
-    const badge = document.getElementById('persona-badge');
-    if (!badge) return;
-    const persona = VibeCore.resolvePersona(project, this.state.categories, skills);
-    if (!persona) { badge.hidden = true; badge.innerHTML = ''; return; }
-    badge.hidden = false;
-    badge.innerHTML =
-      `<span>${escapeHtml(persona.icon)} Mode ${escapeHtml(persona.label)}</span>` +
-      `<span class="persona-label">— prompt disusun sesuai kebutuhan profesi ini</span>`;
   }
 
   // ============================================
@@ -938,6 +1075,7 @@ class VibeCoderApp {
       skills: this.state.selectedSkills,
       agents: this.state.selectedAgents,
       platform: this.state.selectedPlatform,
+      lang: this.state.selectedLang === 'en' ? 'en' : 'id',
       detail: this.state.projectDetail,
       imageNotes: this.state.imageNotes || '',
       images: this.state.images.map(i => ({
@@ -955,6 +1093,9 @@ class VibeCoderApp {
     this.state.selectedSkills = Array.isArray(config.skills) ? config.skills : [];
     this.state.selectedAgents = Array.isArray(config.agents) ? config.agents : [];
     this.state.selectedPlatform = config.platform || 'chatgpt';
+    this.state.selectedLang = config.lang === 'en' ? 'en'
+      : config.lang === 'id' ? 'id'
+      : this.getPlatformLang(this.state.selectedPlatform);
     this.state.projectDetail = config.detail || '';
     this.state.imageNotes = typeof config.imageNotes === 'string' ? config.imageNotes : '';
     this.state.images = Array.isArray(config.images)
@@ -965,12 +1106,16 @@ class VibeCoderApp {
       i.classList.toggle('active', i.dataset.id === config.project));
     document.getElementById('category-select').value = this.state.selectedCategory;
     document.getElementById('project-detail').value = this.state.projectDetail;
+    const langSelect = document.getElementById('lang-select');
+    if (langSelect) langSelect.value = this.state.selectedLang === 'en' ? 'en' : 'id';
+    this.updateLangMemoryNote();
     document.getElementById('image-notes').value = this.state.imageNotes;
 
     this.renderSkills();
     this.renderAgents();
     this.renderCounts();
     this.renderImages();
+    this.applyProjectUi(this.state.selectedProject);
     this.saveImages();
     this.generatePrompt(true);
     this.saveState();
@@ -993,7 +1138,7 @@ class VibeCoderApp {
     if (!text) { this.toast('⚠️ Belum ada prompt. Pilih project dulu!', 'warning'); return; }
 
     this.download(new Blob([text], { type: 'text/plain' }),
-      `vibe-coder-prompt-${this.timestamp()}.txt`);
+      `rauza-prompt-${this.timestamp()}.txt`);
     this.saveToHistory();
     this.toast('✅ Prompt ter-download!', 'success');
   }
@@ -1004,7 +1149,7 @@ class VibeCoderApp {
       return;
     }
     const blob = new Blob([JSON.stringify(this.getConfig(), null, 2)], { type: 'application/json' });
-    this.download(blob, `vibe-coder-config-${this.timestamp()}.json`);
+    this.download(blob, `rauza-config-${this.timestamp()}.json`);
     this.toast('✅ Config ter-export!', 'success');
   }
 
@@ -1036,7 +1181,7 @@ class VibeCoderApp {
 
     // Coba Web Share API dulu (mobile-friendly)
     if (navigator.share) {
-      navigator.share({ title: 'Vibe Coder Prompt', url })
+      navigator.share({ title: 'RAUZA Prompt', url })
         .catch(() => {}); // user cancel
       return;
     }

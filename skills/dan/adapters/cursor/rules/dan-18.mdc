@@ -1,0 +1,11 @@
+---
+description: Produksi konten video berbantuan AI ujung-ke-ujung: storyboard bertiming (shot, kamera, transisi, teks layar, VO, SFX), cut-list/edit list, subtitle .srt, prompt video-generation per shot, caption+hashtag, dan kalender pilar konten. Melengkapi sub-skill 04 dengan fokus pipeline produksi & QC pasca-g
+globs: 
+alwaysApply: false
+---
+
+# dan-ai-video-content
+
+Baca selengkapnya: `skills/dan/skills/18-ai-video-content/SKILL.md`.
+
+Produksi konten video berbantuan AI ujung-ke-ujung: storyboard bertiming (shot, kamera, transisi, teks layar, VO, SFX), cut-list/edit list, subtitle .srt, prompt video-generation per shot, caption+hashtag, dan kalender pilar konten. Melengkapi sub-skill 04 dengan fokus pipeline produksi & QC pasca-generate. Gunakan saat pengguna meminta video TikTok/Reels/Shorts/YouTube, edit list, auto-caption, atau seri konten berulang.

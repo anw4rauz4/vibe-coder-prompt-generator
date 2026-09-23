@@ -1,0 +1,11 @@
+---
+description: Merancang agent AI yang benar: kartu agent (tujuan, tool, guardrails, memori, eval), pola single-agent vs multi-agent (router, orchestrator-worker, evaluator-optimizer), desain tool yang aman (izin eksplisit, side-effect ditandai), dan loop refleksi. Termasuk pembangkit kartu agent & system prompt v
+globs: 
+alwaysApply: false
+---
+
+# dan-ai-agents
+
+Baca selengkapnya: `skills/dan/skills/12-ai-agents/SKILL.md`.
+
+Merancang agent AI yang benar: kartu agent (tujuan, tool, guardrails, memori, eval), pola single-agent vs multi-agent (router, orchestrator-worker, evaluator-optimizer), desain tool yang aman (izin eksplisit, side-effect ditandai), dan loop refleksi. Termasuk pembangkit kartu agent & system prompt via assistant_builder.py. Gunakan saat pengguna meminta "buatkan agent untuk X", "arsitektur multi-agent", "agent saya sering hallucinate/nyasar", atau membagi pekerjaan antar agent.

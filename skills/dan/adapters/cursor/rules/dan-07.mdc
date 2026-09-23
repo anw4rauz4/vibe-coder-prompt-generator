@@ -1,0 +1,11 @@
+---
+description: Tools manajemen proyek untuk marketing: MONITORING (tinjauan berkala + RAG + KPI + risiko), TRACKING (status tiap tugas vs rencana, SPI, variance, hari terlambat, deteksi stalled), PROGRESS (% selesai berbobot, burn-up planned-vs-actual, forecast tanggal selesai), CONTROLLING (earned value CPI/EAC, 
+globs: 
+alwaysApply: false
+---
+
+# dan-project-monitoring-controlling
+
+Baca selengkapnya: `skills/dan/skills/07-project-monitoring-controlling/SKILL.md`.
+
+Tools manajemen proyek untuk marketing: MONITORING (tinjauan berkala + RAG + KPI + risiko), TRACKING (status tiap tugas vs rencana, SPI, variance, hari terlambat, deteksi stalled), PROGRESS (% selesai berbobot, burn-up planned-vs-actual, forecast tanggal selesai), CONTROLLING (earned value CPI/EAC, matriks risiko, tindakan korektif/preventif), plus FORM interaktif (form progress, form monitoring, form controlling) dan Gantt chart. Terintegrasi dengan sub-skill motivator: pesan coaching dibangun dari data proyek. Gunakan saat pengguna menanyakan status proyek, progres kampanye, apakah on-track, tugas mana yang terlambat/stalled, laporan mingguan PMO, dashboard proyek, atau butuh form untuk update tim.

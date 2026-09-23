@@ -1,0 +1,11 @@
+---
+description: Observabilitas pemanggilan LLM/agent tanpa vendor: trace append-only ke JSONL (prompt-id, model, token, biaya, latensi, pass/fail), laporan agregat (pass-rate, biaya total/rata-rata, latensi p50/p95, token rata-rata), dan alarm pass-rate rendah. Data milik sendiri, bisa diekspor spreadsheet. Gunakan
+globs: 
+alwaysApply: false
+---
+
+# dan-llm-observability
+
+Baca selengkapnya: `skills/dan/skills/20-llm-observability/SKILL.md`.
+
+Observabilitas pemanggilan LLM/agent tanpa vendor: trace append-only ke JSONL (prompt-id, model, token, biaya, latensi, pass/fail), laporan agregat (pass-rate, biaya total/rata-rata, latensi p50/p95, token rata-rata), dan alarm pass-rate rendah. Data milik sendiri, bisa diekspor spreadsheet. Gunakan saat pengguna bertanya "berapa biaya AI kami", "prompt mana yang sering gagal", "latensi kami wajar tidak", atau ingin QA berkelanjutan atas keluaran model.

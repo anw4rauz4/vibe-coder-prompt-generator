@@ -1,0 +1,13 @@
+{
+  "python.analysis.extraPaths": [
+    "skills/dan/scripts"
+  ],
+  "python.terminal.launchArgs": [],
+  "files.associations": {
+    "*.mdc": "markdown"
+  },
+  "search.exclude": {
+    "**/deliverables/cases": true
+  },
+  "dan.root": "${workspaceFolder}"
+}

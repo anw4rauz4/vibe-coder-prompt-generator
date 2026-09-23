@@ -1,0 +1,16 @@
+{
+  "assistant": {
+    "default_model": null,
+    "context_servers": [
+      {
+        "name": "dan",
+        "command": {
+          "path": "python3",
+          "args": [
+            "<abs>/skills/dan/scripts/mcp_server.py"
+          ]
+        }
+      }
+    ]
+  }
+}

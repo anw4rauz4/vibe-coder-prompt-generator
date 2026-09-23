@@ -631,56 +631,122 @@
   },
   {
     "id": "marketing-data-analyst",
-    "name": "DAN Marketing Data Analyst",
+    "name": "RAUZA Marketing Data Analyst",
     "category": "business",
     "description": "KPI, funnel, tren, anomali, forecast"
   },
   {
     "id": "marketing-strategist",
-    "name": "DAN Marketing Strategist",
+    "name": "RAUZA Marketing Strategist",
     "category": "business",
     "description": "STP, positioning, budget, campaign plan"
   },
   {
     "id": "data-to-infographic",
-    "name": "DAN Data to Infographic",
+    "name": "RAUZA Data to Infographic",
     "category": "data_viz",
     "description": "18 tipe chart, infografik, network analysis"
   },
   {
     "id": "image-video-creator",
-    "name": "DAN Image & Video Creator",
+    "name": "RAUZA Image & Video Creator",
     "category": "media_gen",
     "description": "Storyboard bertiming, prompt image/video, SRT"
   },
   {
     "id": "design-engineer-2d-3d",
-    "name": "DAN Design Engineer 2D/3D",
+    "name": "RAUZA Design Engineer 2D/3D",
     "category": "3d_2d",
     "description": "Brief desain, spec produk, sketsa 3D"
   },
   {
     "id": "motivator-coach",
-    "name": "DAN Motivator Coach",
+    "name": "RAUZA Motivator Coach",
     "category": "business",
     "description": "GROW, SDT, coaching berbasis data"
   },
   {
     "id": "project-monitoring-controlling",
-    "name": "DAN Project Monitoring",
+    "name": "RAUZA Project Monitoring",
     "category": "engineering",
     "description": "PMO: SPI, variance, RAG, earned value"
   },
   {
     "id": "software-architecture",
-    "name": "DAN Software Architecture",
+    "name": "RAUZA Software Architecture",
     "category": "engineering",
     "description": "Scaffold multi-bahasa, review, trade-off"
   },
   {
     "id": "architectural-design",
-    "name": "DAN Architectural Design",
+    "name": "RAUZA Architectural Design",
     "category": "engineering",
     "description": "Denah 2D, massa 3D, KDB/KLB, RAB"
+  },
+  {
+    "id": "nanobanana-image",
+    "name": "Nano Banana / Banana Pro",
+    "category": "image_processing",
+    "description": "Prompt image & edit konsisten untuk Gemini 2.5 Flash Image"
+  },
+  {
+    "id": "google-flow-video",
+    "name": "Google Flow / Veo 3",
+    "category": "media_gen",
+    "description": "Scenebuilder, ingredients-to-video, Veo 3 + audio"
+  },
+  {
+    "id": "gamma-presentation",
+    "name": "Gamma / Tome PPT AI",
+    "category": "education",
+    "description": "Deck AI: outline, layout, visual, ekspor PPTX"
+  },
+  {
+    "id": "ai-web-dev-builder",
+    "name": "AI Web Dev Builder",
+    "category": "ai_modern",
+    "description": "Lovable, Bolt, v0, Replit Agent, Firebase Studio"
+  },
+  {
+    "id": "screenshot-to-video",
+    "name": "Screenshot to Video",
+    "category": "image_processing",
+    "description": "Screenshot produk → video marketing sinematik"
+  },
+  {
+    "id": "screenshot-to-3d",
+    "name": "Screenshot to 3D",
+    "category": "image_processing",
+    "description": "Foto/screenshot produk → model & render 3D"
+  },
+  {
+    "id": "screenshot-to-wireframe",
+    "name": "Screenshot to Wireframe",
+    "category": "cloning",
+    "description": "Screenshot UI → wireframe/lo-fi & blueprint redesign"
+  },
+  {
+    "id": "product-visual-suite",
+    "name": "Product Visual Suite",
+    "category": "media_gen",
+    "description": "Paket visual produk: foto, video, 3D, AR-ready"
+  },
+  {
+    "id": "ai-ux-designer",
+    "name": "AI UX Designer",
+    "category": "design",
+    "description": "Uizard, Galileo, Figma AI: desain UI berbantuan AI"
+  },
+  {
+    "id": "prompt-detail-engineering",
+    "name": "Prompt Detail Engineering",
+    "category": "ai_modern",
+    "description": "Struktur prompt universal 9 elemen — diterima semua AI generator"
+  },
+  {
+    "id": "persona-visual-director",
+    "name": "RAUZA Visual Director",
+    "category": "media_gen",
+    "description": "Irama visual, palet brand, konsistensi gaya lintas aset"
   }
 ]

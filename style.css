@@ -14,6 +14,153 @@
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  /* Aksen adaptif per project — diisi via JS saat project diklik */
+  --p-accent: var(--primary);
+  --p-accent-2: var(--secondary);
+  --p-accent-soft: rgba(99, 102, 241, 0.12);
+  --p-accent-soft-2: rgba(139, 92, 246, 0.1);
+}
+
+body.mode-visual {
+  --p-accent-soft: color-mix(in srgb, var(--p-accent) 12%, transparent);
+  --p-accent-soft-2: color-mix(in srgb, var(--p-accent-2) 10%, transparent);
+}
+
+/* ============================================ */
+/* PROJECT HERO — tampilan menyesuaikan project */
+/* ============================================ */
+.project-hero {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--p-accent);
+  background:
+    linear-gradient(135deg, var(--p-accent-soft), transparent 55%),
+    var(--bg);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  animation: heroIn 0.25s ease;
+}
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero-main {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.hero-icon {
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px var(--p-accent-soft));
+}
+
+.hero-title {
+  font-weight: 700;
+  font-size: 1.02rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-vibe {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--p-accent);
+  border: 1px solid var(--p-accent);
+  border-radius: 99px;
+  padding: 0.1rem 0.55rem;
+}
+
+.hero-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.hero-tips {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: var(--p-accent-soft-2);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+}
+
+.hero-workflow {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.hero-workflow ol {
+  margin: 0.35rem 0 0 1.2rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.hero-workflow strong {
+  color: var(--p-accent);
+}
+
+/* ============================================ */
+/* OUTPUT & ACTIONS                             */
+/* ============================================ */
+.output-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn-small.active {
+  border-color: var(--p-accent);
+  color: var(--p-accent);
+}
+
+.output-preview {
+  border-left: 3px solid var(--p-accent);
+}
+
+.persona-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--p-accent);
+  background: var(--p-accent-soft);
+  border: 1px solid var(--p-accent);
+  border-radius: 99px;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.persona-badge .persona-label {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* PROJECT ITEM — aksen saat aktif */
+.project-item.active {
+  border-left-color: var(--p-accent);
+  background: var(--p-accent-soft);
+}
+
+/* Ganti border-left dari var(--primary) lama ke aksen adaptif */
+.btn-primary {
+  background: linear-gradient(135deg, var(--p-accent), var(--p-accent-2));
+}
+
+.lang-memory-note {
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
 
 /* LIGHT THEME */
@@ -157,8 +304,12 @@ body {
 }
 
 .project-item.active {
-  background: var(--primary);
-  border-left-color: var(--secondary);
+  background: var(--p-accent-soft);
+  border-left-color: var(--p-accent);
+}
+
+.project-item.active .project-name {
+  color: var(--p-accent);
 }
 
 .project-item:focus-visible {
@@ -178,7 +329,7 @@ body {
 }
 
 .project-item.active .project-desc {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-muted);
 }
 
 /* CONTENT */
@@ -407,6 +558,13 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.persona-badge.persona-badge {
+  color: var(--p-accent);
+  background: var(--p-accent-soft);
+  border: 1px solid var(--p-accent);
+  box-shadow: none;
+}
+
 .persona-badge[hidden] {
   display: none;
 }
@@ -503,15 +661,15 @@ textarea {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--p-accent), var(--p-accent-2));
   color: white;
   flex: 1;
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
+  filter: brightness(1.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 16px var(--p-accent-soft);
 }
 
 .btn-secondary {
@@ -792,19 +950,87 @@ textarea {
   background: var(--primary);
 }
 
-/* RESPONSIVE */
+/* ============================================ */
+/* RESPONSIVE — HP, tablet, iPhone, desktop     */
+/* ============================================ */
+
+/* iPhone safe area (notch & home indicator) */
+@supports (padding: env(safe-area-inset-top)) {
+  .header {
+    padding-top: calc(0.75rem + env(safe-area-inset-top));
+    padding-left: calc(1rem + env(safe-area-inset-left));
+    padding-right: calc(1rem + env(safe-area-inset-right));
+  }
+  .footer {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Tablet ≤ 1024px */
+@media (max-width: 1024px) {
+  .main {
+    grid-template-columns: 240px 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+/* HP & tablet kecil ≤ 768px */
 @media (max-width: 768px) {
   .main {
     grid-template-columns: 1fr;
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  /* Sidebar jadi panel horizontal scroll — hemat ruang vertikal */
+  .sidebar {
+    position: static;
     padding: 1rem;
   }
 
-  .sidebar {
-    position: static;
+  .project-list {
+    max-height: 40vh;
   }
 
-  .project-list {
-    max-height: 300px;
+  /* Touch target minimal 44px (standar iOS HIG) */
+  .project-item {
+    padding: 0.85rem 1rem;
+  }
+
+  .skill-item,
+  .agent-item {
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .skill-item input[type="checkbox"],
+  .agent-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  .btn-tiny,
+  .btn-small {
+    min-height: 40px;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    min-height: 48px;
+  }
+
+  select,
+  input[type="search"],
+  input[type="text"],
+  textarea {
+    font-size: 16px; /* cegah auto-zoom iOS saat fokus */
+    min-height: 44px;
+  }
+
+  textarea {
+    min-height: 96px;
   }
 
   .stats {
@@ -815,20 +1041,123 @@ textarea {
     font-size: 1rem;
   }
 
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+
   .header {
     padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .header-right {
+    gap: 0.5rem;
   }
 
   .actions {
     flex-direction: column;
   }
 
+  .actions .btn-primary,
+  .actions .btn-secondary {
+    width: 100%;
+  }
+
   .output-actions {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .output-actions .btn-small {
+    width: 100%;
   }
 
   .skill-list, .agent-list {
     grid-template-columns: 1fr;
+    max-height: 320px;
+  }
+
+  /* Hero lebih ringkas di HP */
+  .project-hero {
+    padding: 0.85rem 1rem;
+  }
+
+  .hero-icon {
+    font-size: 1.6rem;
+  }
+
+  .hero-workflow ol {
+    margin-left: 1rem;
+  }
+
+  .output-preview {
+    max-height: 320px;
+    font-size: 0.72rem;
+  }
+
+  /* Dialog custom full-width bawah (gaya bottom sheet mobile) */
+  .dialog {
+    width: calc(100% - 2rem);
+    max-width: 420px;
+  }
+
+  .toast-container {
+    left: 0.75rem;
+    right: 0.75rem;
+    top: calc(0.75rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+/* HP kecil ≤ 480px */
+@media (max-width: 480px) {
+  .main {
+    padding: 0.5rem;
+  }
+
+  .sidebar,
+  .builder,
+  .output {
+    padding: 0.85rem;
+  }
+
+  .project-list {
+    max-height: 34vh;
+  }
+
+  .output-preview {
+    max-height: 260px;
+  }
+
+  .hero-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* Layar sentuh: hilangkan hover yang melekat */
+@media (hover: none) {
+  .project-item:hover {
+    transform: none;
+    border-left-color: var(--border);
+  }
+
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+/* iPhone landscape — header lebih ramping */
+@media (max-height: 480px) and (orientation: landscape) {
+  .header {
+    position: static;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .project-list {
+    max-height: 24vh;
   }
 }
 
