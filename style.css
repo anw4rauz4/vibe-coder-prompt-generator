@@ -256,10 +256,16 @@ body {
 /* MAIN */
 .main {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 280px minmax(0, 1fr);
   gap: 1.5rem;
   padding: 1.5rem 2rem;
   flex: 1;
+}
+
+/* Cegah track grid membengkak oleh min-content <select>/<pre> di layar kecil */
+.main > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* SIDEBAR */
@@ -389,19 +395,21 @@ body {
 
 .list-toolbar {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
 .list-toolbar input[type="search"] {
   flex: 1;
+  min-width: 0;
   padding: 0.5rem 0.75rem;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 16px; /* >=16px: cegah auto-zoom iOS saat fokus */
 }
 
 .list-toolbar input[type="search"]:focus {
@@ -969,7 +977,7 @@ textarea {
 /* Tablet ≤ 1024px */
 @media (max-width: 1024px) {
   .main {
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px minmax(0, 1fr);
     padding: 1rem;
     gap: 1rem;
   }
@@ -978,7 +986,7 @@ textarea {
 /* HP & tablet kecil ≤ 768px */
 @media (max-width: 768px) {
   .main {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 0.75rem;
     gap: 1rem;
   }
