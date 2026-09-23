@@ -796,5 +796,11 @@
     "name": "Social Reels Pack",
     "category": "media_gen",
     "description": "Adaptasi konten per platform: Reels, IG, TikTok, FB — hook, durasi, caption"
+  },
+  {
+    "id": "content-calendar-30",
+    "name": "Content Calendar 30 Hari",
+    "category": "business",
+    "description": "Kalender 4 minggu tema + finale: tabel harian, ritme produksi, buffer"
   }
 ]

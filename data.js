@@ -867,6 +867,30 @@ window.EMBEDDED_DATA = {
       }
     },
     {
+      "id": "kalender-konten-30",
+      "name": "📅 Kalender Konten 30 Hari",
+      "desc": "Rencana posting 30 hari untuk serial kartun anak",
+      "category": "business",
+      "skills": [
+        "content-calendar-30",
+        "social-reels-pack",
+        "cerita-anak",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "content-calendar-planner",
+        "reels-platform-strategist",
+        "children-story-writer"
+      ],
+      "persona": "marketing-strategist",
+      "accent": "#8b5cf6",
+      "accent2": "#38bdf8",
+      "tips": "Struktur yang terbukti: Minggu 1 perkenalan karakter (bangun kenal), Minggu 2 konflik harian (bangun Lucu), Minggu 3 kisah berpasangan (bangun Setia), Minggu 4 finale + teaser (bangun Nunggu). Post jam 15.00-17.00 WIB, siapkan 3 episode cadangan.",
+      "placeholders": {
+        "detail": "Contoh: Serial 'Kiko si Kancil Pintar' 30 episode reels 60 dtk untuk TikTok + IG + FB, target anak 4-8 tahun, 1 episode/hari, mulai Senin depan; minta tabel lengkap + prompt 7 episode pertama."
+      }
+    },
+    {
       "id": "ai-ux-redesign",
       "name": "🎨 AI UX Redesign",
       "desc": "Desain ulang UI dengan AI (Uizard, Galileo, Figma AI)",
@@ -1739,6 +1763,12 @@ window.EMBEDDED_DATA = {
       "name": "Social Reels Pack",
       "category": "media_gen",
       "description": "Adaptasi konten per platform: Reels, IG, TikTok, FB — hook, durasi, caption"
+    },
+    {
+      "id": "content-calendar-30",
+      "name": "Content Calendar 30 Hari",
+      "category": "business",
+      "description": "Kalender 4 minggu tema + finale: tabel harian, ritme produksi, buffer"
     }
   ],
   "agents": [
@@ -2551,6 +2581,12 @@ window.EMBEDDED_DATA = {
       "name": "Reels Platform Strategist",
       "category": "media_gen",
       "description": "Hook 3 dtk, durasi, caption & hashtag per platform"
+    },
+    {
+      "id": "content-calendar-planner",
+      "name": "Content Calendar Planner",
+      "category": "business",
+      "description": "Alokasi tema 30 hari, ritme produksi, jadwal unggah"
     }
   ],
   "adapters": [

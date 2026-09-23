@@ -18,7 +18,7 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 
 | Fitur | Keterangan |
 |---|---|
-| 📁 **Preset Project** | 49 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, **Banana Product Photo, Google Flow/Veo 3, Gamma PPT, AI Web Builder, Screenshot→Visual, Product Visual Suite, AI UX Redesign**, dll. |
+| 📁 **Preset Project** | 50 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, **Banana Product Photo, Google Flow/Veo 3, Gamma PPT, AI Web Builder, Screenshot→Visual, Product Visual Suite, AI UX Redesign**, dll. |
 | 🛠️ **125 Skills** | Multi-pilih skill, cari dengan pencarian, filter per kategori — termasuk 21 skill RAUZA |
 | 🤖 **127 Sub-Agents** | Pilih agent pendamping untuk memecah tugas kompleks — termasuk 21 agent RAUZA |
 | 🧠 **RAUZA Playbook** | Skill "RAUZA ..." mengaktifkan metodologi: data dulu, tiap temuan = aksi terukur, deliverable jelas per skill |
@@ -33,6 +33,7 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 | 🕌 **Kisah Nabi (Adab Visual)** | Pedoman khusus: nabi & sahabat tidak digambarkan wajahnya (siluet/aura cahaya), sumber riwayat di caption, struktur reels 60 dtk |
 | ⚔️ **Sejarah Pahlawan** | Akurasi dulu: verifikasi kostum, properti & latar zaman sebelum generate; kronologi 4-6 scene untuk reels |
 | 🐣 **Cerita Anak** | Formula usia 4-8 tahun: hook 3 dtk → konflik sederhana → moral tersirat, warna cerah & aman ditonton |
+| 📅 **Kalender Konten 30 Hari** | Rencana posting serial kartun: 4 minggu ARC (kenal → lucu → setia → nunggu), tabel harian lengkap (hook, moral, CTA, jam unggah, hashtag), ritme produksi batch + episode cadangan |
 | 📱 **Social Reels Pack** | Adaptasi per platform: hook, durasi, caption & hashtag untuk Instagram Reels, TikTok, Facebook |
 | 🧱 **Prompt Framework** | Setiap prompt menyertakan kerangka standar [SUBJEK][GAYA][TEKNIS][KENDALA][PROMPT UTAMA][NEGATIVE][QA CHECK] yang dimengerti generator mana pun |
 | 🎯 **Output Kontekstual** | Isi prompt otomatis dipilih per jenis pekerjaan (code / media / design / data / document / coaching) — prompt video tidak berisi teori marketing, prompt marketing tidak berisi pipeline video |

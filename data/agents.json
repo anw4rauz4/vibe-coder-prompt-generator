@@ -808,5 +808,11 @@
     "name": "Reels Platform Strategist",
     "category": "media_gen",
     "description": "Hook 3 dtk, durasi, caption & hashtag per platform"
+  },
+  {
+    "id": "content-calendar-planner",
+    "name": "Content Calendar Planner",
+    "category": "business",
+    "description": "Alokasi tema 30 hari, ritme produksi, jadwal unggah"
   }
 ]

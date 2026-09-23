@@ -1171,7 +1171,9 @@ const PROJECT_ACCENTS = {
   'pahlawan-history-video': { accent: '#ea580c', accent2: '#f5c518', icon: '⚔️', vibe: 'Sejarah Akurat',
     workflow: ['1. Verifikasi: tahun, wilayah, kostum, properti khas.', '2. Character sheet pahlawan + latar zaman baku.', '3. Storyboard kronologi 4-6 scene.', '4. Generate video + kutipan nilai perjuangan di penutup.'] },
   'cerita-anak-reels': { accent: '#fbbf24', accent2: '#38bdf8', icon: '🐣', vibe: 'Usia 4-8 Tahun',
-    workflow: ['1. Hook 3 detik: karakter lucu/pertanyaan.', '2. Struktur: perkenalan → masalah → 2 gagal → solusi.', '3. Generate scene warna cerah, gerakan jelas.', '4. Moral tersirat + pertanyaan ke penonton + CTA.'] }
+    workflow: ['1. Hook 3 detik: karakter lucu/pertanyaan.', '2. Struktur: perkenalan → masalah → 2 gagal → solusi.', '3. Generate scene warna cerah, gerakan jelas.', '4. Moral tersirat + pertanyaan ke penonton + CTA.'] },
+  'kalender-konten-30': { accent: '#8b5cf6', accent2: '#38bdf8', icon: '📅', vibe: '30 Hari Seri',
+    workflow: ['1. Kunci karakter & durasi episode dari character bible.', '2. Isi tabel 30 hari: 4 minggu ARC + finale + teaser.', '3. Ritme produksi: batch 3 episode/hari + 3 cadangan.', '4. Evaluasi angka di H7/H14/H21, rotasi tema yang bocor.'] }
 };
 
 const FALLBACK_PLACEHOLDER = 'Contoh: Buatkan produk digital untuk UMKM — jelaskan target pengguna, fitur utama, gaya visual, dan platform tujuan...';
@@ -1190,7 +1192,8 @@ const PROJECT_ACCENTS_EN = {
   'cartoon-3d-video': { vibe: '3D Series', workflow: ['1. Character bible: locked description + expression sheet.', '2. Storyboard: split the story into 5-8 second scenes.', '3. Per-scene prompts with identical character descriptions.', '4. One-sentence moral/closing + per-platform package.'] },
   'kisah-nabi-reels': { vibe: 'Visual Adab', workflow: ['1. Pick the story + source (Quran/hadith/sirah).', '2. Storyboard scenes without the Prophet\'s face (silhouette/light aura).', '3. Generate assets with the adab phrase in every prompt.', '4. Assemble the 60s reel + wisdom + source in the caption.'] },
   'pahlawan-history-video': { vibe: 'Accurate History', workflow: ['1. Verify: year, region, costume, signature props.', '2. Hero character sheet + locked period setting.', '3. Storyboard a 4-6 scene chronology.', '4. Generate video + a closing quote about the struggle.'] },
-  'cerita-anak-reels': { vibe: 'Ages 4-8', workflow: ['1. 3-second hook: funny character/question.', '2. Structure: intro → problem → 2 failed tries → solution.', '3. Generate bright scenes with clear motion.', '4. Implicit moral + a question to the audience + CTA.'] }
+  'cerita-anak-reels': { vibe: 'Ages 4-8', workflow: ['1. 3-second hook: funny character/question.', '2. Structure: intro → problem → 2 failed tries → solution.', '3. Generate bright scenes with clear motion.', '4. Implicit moral + a question to the audience + CTA.'] },
+  'kalender-konten-30': { vibe: '30-Day Series', workflow: ['1. Lock character & episode length from the character bible.', '2. Fill the 30-day table: 4-week ARC + finale + teaser.', '3. Production rhythm: 3-episode daily batches + 3 spares.', '4. Review metrics on D7/D14/D21, rotate leaking themes.'] }
 };
 
 function resolveProjectUi(project, lang = 'id') {
@@ -1456,6 +1459,7 @@ function detectProjectFlavor(project, skills = []) {
     'product-visual-suite': 'media', 'suno-song': 'media', 'hailuo-short': 'media',
     'multiview-model': 'media', 'cartoon-3d-video': 'media',
     'kisah-nabi-reels': 'media', 'pahlawan-history-video': 'media', 'cerita-anak-reels': 'media',
+    'kalender-konten-30': 'document',
     'gamma-presentation': 'document',
     'ai-web-builder': 'code', 'software-engineering': 'code',
     'dashboard': 'data', 'sales-monitoring': 'data', 'dan-marketing-analysis': 'data',
@@ -1661,6 +1665,45 @@ const STORY_CONTENT_HINTS = {
     '- Penutup: kutipan/nilai perjuangan + CTA.',
     '',
     '**Larangan:** kostum dari era/wilayah lain, senjata yang tidak khas, mengubah fakta sejarah demi dramatisasi.'
+  ].join('\n'),
+  'kalender-konten-30': [
+    '## 📅 FRAMEWORK KALENDER KONTEN 30 HARI (serial kartun anak)',
+    '**Struktur 4 minggu — ARC (bangun kenal → lucu → setia → nunggu):**',
+    '',
+    '### Minggu 1 — Perkenalan Karakter (H1-H7)',
+    '- H1: Video pengenalan utama karakter utama (hook: siapa dia?).',
+    '- H2-H6: Satu episode per karakter pendukung / kebiasaan lucu karakter.',
+    '- H7: Reels kompilasi momen terlucu minggu ini + CTA follow.',
+    '',
+    '### Minggu 2 — Konflik Harian (H8-H14)',
+    '- Masalah sehari-hari anak (takut gelap, malas merapikan, berebut mainan) → solusi pintar.',
+    '- Format tetap: hook 3 dtk → masalah → 2 gagal → solusi → moral.',
+    '- H14: Kuis interaktif ("Kiko ngapain biar berhasil? Komen di bawah!").',
+    '',
+    '### Minggu 3 — Kisah Berpasangan / 2 Bagian (H15-H21)',
+    '- Cerita dibagi 2 episode: H15 bagian 1 (cliffhanger) → H16 bagian 2.',
+    '- Sisanya: kisah persahabatan/kejujuran yang saling menyambung.',
+    '- H21: Polling ("Episode mana favoritmu?").',
+    '',
+    '### Minggu 4 — Finale & Teaser (H22-H30)',
+    '- H22-H27: Kisah besar dua bagian (petualangan terbesar serial ini).',
+    '- H28: Behind the scene / cara membuat karakter (konten "bagaimana").',
+    '- H29: Momen terbaik 30 hari (kompilasi).',
+    '- H30: Finale + teaser musim 2 + CTA terkuat.',
+    '',
+    '**Output WAJIB — tabel kalender dengan kolom:**',
+    '| Hari | Tanggal | Judul Episode | Arc/HH | Hook 3 dtk (teks) | Moral | CTA | Platform & Jam Unggah | Hashtag | Status |',
+    '',
+    '- Isi SEMUA 30 baris — tidak boleh ada baris kosong/placeholder.',
+    '- Kolom Hook harus kalimat jadi, bukan deskripsi.',
+    '',
+    '**Ritme produksi (agar tidak telat posting):**',
+    '- Batch produksi: 1 hari produksi = 3 episode jadi (prompt+asset+video).',
+    '- Buat 3 episode cadangan SEBELUM hari ke-1 (buffer sakit/lembur).',
+    '- Jam unggah konsisten (rekomendasi: 15.00-17.00 WIB untuk konten anak).',
+    '- Tiap Minggu ke-7 & ke-14 & ke-21: evaluasi angka → rotasi tema yang bocor.',
+    '',
+    '**Larangan:** melompati hari, 2 episode jadi 1 hari lalu kosong besoknya, mengubah karakter di tengah kalender tanpa alasan cerita.'
   ].join('\n'),
   'cerita-anak-reels': [
     '## 🐣 PANDUAN KONTEN CERITA ANAK (usia 4-8 tahun)',
