@@ -687,6 +687,7 @@ class VibeCoderApp {
       this.savePlatformLangs();
       this.updateLangMemoryNote();
       this.saveState();
+      this.applyProjectUi(this.state.selectedProject);
       this.generatePrompt(true);
     });
 
@@ -853,7 +854,7 @@ class VibeCoderApp {
   }
 
   applyProjectUi(project) {
-    const ui = VibeCore.resolveProjectUi(project);
+    const ui = VibeCore.resolveProjectUi(project, this.state.selectedLang);
     const root = document.documentElement;
 
     // 1) Aksen warna via CSS variables (fallback ke tema bila project tanpa aksen)
@@ -910,7 +911,9 @@ class VibeCoderApp {
     if (!badge) return;
     const sk = skills || this.state.selectedSkills
       .map(id => this.state.skills.find(s => s.id === id)).filter(Boolean);
-    const persona = project ? VibeCore.resolvePersona(project, this.state.categories, sk) : null;
+    const persona = project
+      ? VibeCore.resolvePersona(project, this.state.categories, sk, this.state.selectedLang)
+      : null;
     if (!persona) { badge.hidden = true; badge.innerHTML = ''; return; }
     badge.hidden = false;
     badge.innerHTML =

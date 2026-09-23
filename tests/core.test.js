@@ -463,6 +463,23 @@ test('index.html punya dropdown bahasa', () => {
   assert.ok(html.includes('lang-select'), 'dropdown bahasa hilang');
 });
 
+test('10 persona EN lengkap & dipakai saat lang=en', () => {
+  const { PERSONA_TEMPLATES_EN, PERSONA_TEMPLATES } = require('../core.js');
+  assert.strictEqual(Object.keys(PERSONA_TEMPLATES_EN).length, 10, 'persona EN tidak 10');
+  assert.deepStrictEqual(Object.keys(PERSONA_TEMPLATES_EN).sort(), Object.keys(PERSONA_TEMPLATES).sort(), 'kunci persona EN != ID');
+  Object.values(PERSONA_TEMPLATES_EN).forEach(t => {
+    assert.ok(t.label && t.role && t.mission && t.tone, 'field persona EN kurang');
+    assert.ok(t.workflow.length >= 5, 'workflow persona EN < 5');
+    assert.ok(t.blueprint.items.length >= 5, 'blueprint persona EN < 5');
+    assert.ok(t.qualityChecks.length >= 4, 'qualityChecks persona EN < 4');
+  });
+  const coach = data.projects.find(p => p.id === 'sales-coaching');
+  const pen = buildPrompt({ project: coach, skills: [], agents: [], platform: {}, detail: '', categories: data.categories, lang: 'en' });
+  assert.ok(pen.includes('COACHING SESSION BLUEPRINT'), 'blueprint EN hilang');
+  assert.ok(pen.includes('find their own answers'), 'mission EN hilang');
+  assert.ok(!pen.includes('BLUEPRINT SESI COACHING'), 'blueprint ID bocor ke EN');
+});
+
 // ---------- APP.JS INTEGRITY ----------
 console.log('\n🧩 app.js integrity');
 test('app.js syntax valid', () => {
