@@ -744,6 +744,129 @@ window.EMBEDDED_DATA = {
       }
     },
     {
+      "id": "multiview-model",
+      "name": "🔄 Multi-View 6 Tampak",
+      "desc": "Model sheet depan/samping/belakang/atas/bawah — konsisten untuk video",
+      "category": "media_gen",
+      "skills": [
+        "multiview-turnaround",
+        "cartoon-3d-story",
+        "prompt-detail-engineering",
+        "persona-visual-director"
+      ],
+      "agents": [
+        "multiview-modeler",
+        "cartoon-character-designer"
+      ],
+      "persona": "creative-producer",
+      "accent": "#38bdf8",
+      "accent2": "#7c5cff",
+      "tips": "Alur konsistensi: 1) generate sheet 6 tampak dari 1 gambar referensi → 2) pilih tampak yang paling mirip → 3) gunakan tampak itu sebagai gambar referensi (image-to-video) untuk semua klip. Selalu sebut deskripsi karakter yang sama kata-per-kata di setiap prompt.",
+      "placeholders": {
+        "detail": "Contoh: Karakter anak laki-laki 8 tahun kartun 3D — rambut hitam pendek, baju koko putih, sarung hijau, mata besar cokelat; buat sheet 6 tampak (depan, samping kiri, samping kanan, belakang, atas, bawah) di latar putih polos, gaya Pixar."
+      }
+    },
+    {
+      "id": "cartoon-3d-video",
+      "name": "🧸 Kartun 3D Video Story",
+      "desc": "Serial kartun 3D untuk konten video story",
+      "category": "cinematic",
+      "skills": [
+        "cartoon-3d-story",
+        "video-story-3d",
+        "multiview-turnaround",
+        "social-reels-pack",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "cartoon-character-designer",
+        "multiview-modeler",
+        "reels-platform-strategist"
+      ],
+      "persona": "creative-producer",
+      "accent": "#f472b6",
+      "accent2": "#38bdf8",
+      "tips": "Kunci konsistensi serial: buat character sheet + deskripsi karakter baku dulu, lalu SETIAP episode memakai deskripsi yang sama persis. Pecah cerita jadi scene 5-8 detik per prompt video.",
+      "placeholders": {
+        "detail": "Contoh: Serial 10 episode kisah persahabatan kelinci dan kura-kura di desa — gaya Pixar lembut, warna pastel, tiap episode 60 dtk untuk TikTok, ada pepatah moral di akhir."
+      }
+    },
+    {
+      "id": "kisah-nabi-reels",
+      "name": "🕌 Kisah Nabi Reels",
+      "desc": "Cerita islami adab: kisah nabi & sahabat untuk reels",
+      "category": "education",
+      "skills": [
+        "kisah-nabi",
+        "cartoon-3d-story",
+        "screenshot-to-video",
+        "social-reels-pack",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "islamic-story-editor",
+        "cartoon-character-designer",
+        "reels-platform-strategist"
+      ],
+      "persona": "educator",
+      "accent": "#10b981",
+      "accent2": "#f5c518",
+      "tips": "Pedoman adab: nabi & sahabat TIDAK digambarkan wajahnya (siluet/aura cahaya), fokus pada suasana, tangan, pemandangan, dan simbol. Sertakan sumber riwayat di caption. Prompt visual selalu sebut 'tidak ada penggambaran wajah nabi'.",
+      "placeholders": {
+        "detail": "Contoh: Kisah Nabi Yusuf bagian mimpi 11 bintang — 5 scene kartun 3D untuk reels 60 dtk, gaya Pixar, latar Mesir kuno, tanpa menggambarkan wajah nabi (aura cahaya), akhiri dengan pelajaran akhlak + sumber QS Yusuf:4."
+      }
+    },
+    {
+      "id": "pahlawan-history-video",
+      "name": "⚔️ Pahlawan & Sejarah",
+      "desc": "Video sejarah pahlawan: akurat kostum & latar zaman",
+      "category": "education",
+      "skills": [
+        "pahlawan-history",
+        "cartoon-3d-story",
+        "hailuo-video",
+        "social-reels-pack",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "history-accuracy-checker",
+        "cartoon-character-designer",
+        "reels-platform-strategist"
+      ],
+      "persona": "educator",
+      "accent": "#ea580c",
+      "accent2": "#f5c518",
+      "tips": "Akurasi dulu, baru estetika: tetapkan tahun, kostum, properti, dan latar zaman di character sheet — verifikasi silang sebelum generate video. Kostum yang salah akan menghancurkan kredibilitas konten sejarah.",
+      "placeholders": {
+        "detail": "Contoh: Kisah Pangeran Diponegoro — 6 scene untuk reels 90 dtk: latar Jawa 1825, baju adat + blangkon, keris, perang gerilya di hutan jati; gaya kartun 3D semi-realistis; kronologi peristiwa diperiksa dahulu."
+      }
+    },
+    {
+      "id": "cerita-anak-reels",
+      "name": "🐣 Cerita Anak Reels",
+      "desc": "Dongeng edukatif animasi untuk anak (reels/TikTok)",
+      "category": "education",
+      "skills": [
+        "cerita-anak",
+        "cartoon-3d-story",
+        "multiview-turnaround",
+        "social-reels-pack",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "children-story-writer",
+        "cartoon-character-designer",
+        "reels-platform-strategist"
+      ],
+      "persona": "educator",
+      "accent": "#fbbf24",
+      "accent2": "#38bdf8",
+      "tips": "Formula cerita anak reels: hook 3 dtk (pertanyaan/karakter lucu) → konflik sederhana → resolusi + moral tersirat 1 kalimat. Bahasa sesuai usia 4-8 tahun, kalimat pendek, tanpa adegan menakutkan.",
+      "placeholders": {
+        "detail": "Contoh: Cerita kancil dan buaya untuk anak 5 tahun — 6 scene kartun 3D warna cerah, reels 60 dtk, lagu pembuka 5 dtk, moral: pintar berpikir menyelesaikan masalah; ending prompt tanya-jawab ke penonton."
+      }
+    },
+    {
       "id": "ai-ux-redesign",
       "name": "🎨 AI UX Redesign",
       "desc": "Desain ulang UI dengan AI (Uizard, Galileo, Figma AI)",
@@ -1580,6 +1703,42 @@ window.EMBEDDED_DATA = {
       "name": "Hailuo AI Video",
       "category": "media_gen",
       "description": "Text/image-to-video: gerakan kamera, subject reference"
+    },
+    {
+      "id": "multiview-turnaround",
+      "name": "Multi-View Model Sheet",
+      "category": "media_gen",
+      "description": "Model 6 tampak: depan, samping kiri/kanan, belakang, atas, bawah — karakter konsisten"
+    },
+    {
+      "id": "cartoon-3d-story",
+      "name": "Cartoon 3D Story",
+      "category": "cinematic",
+      "description": "Karakter kartun Pixar-style, desain character & ekspresi"
+    },
+    {
+      "id": "kisah-nabi",
+      "name": "Kisah Nabi & Sahabat",
+      "category": "education",
+      "description": "Cerita islami: pedoman visual adab, sumber rujukan, nilai akhlak"
+    },
+    {
+      "id": "pahlawan-history",
+      "name": "Sejarah Pahlawan",
+      "category": "education",
+      "description": "Biografi pahlawan & sejarah: akurasi kostum, latar zaman, kronologi"
+    },
+    {
+      "id": "cerita-anak",
+      "name": "Cerita Anak",
+      "category": "education",
+      "description": "Dongeng edukatif: bahasa sederhana, durasi reels, nilai moral"
+    },
+    {
+      "id": "social-reels-pack",
+      "name": "Social Reels Pack",
+      "category": "media_gen",
+      "description": "Adaptasi konten per platform: Reels, IG, TikTok, FB — hook, durasi, caption"
     }
   ],
   "agents": [
@@ -2356,6 +2515,42 @@ window.EMBEDDED_DATA = {
       "name": "Hailuo Video Director",
       "category": "media_gen",
       "description": "Prompt sinematik 6-10 dtk, kamera & subjek konsisten"
+    },
+    {
+      "id": "multiview-modeler",
+      "name": "Multi-View Modeler",
+      "category": "media_gen",
+      "description": "Sheet 6 tampak konsisten untuk turntable & aksi video"
+    },
+    {
+      "id": "cartoon-character-designer",
+      "name": "Cartoon Character Designer",
+      "category": "cinematic",
+      "description": "Desain karakter kartun: bentuk, palet, ekspresi, kostum"
+    },
+    {
+      "id": "islamic-story-editor",
+      "name": "Islamic Story Editor",
+      "category": "education",
+      "description": "Kurasi kisah: sumber sahih, adab visual, nilai akhlak"
+    },
+    {
+      "id": "history-accuracy-checker",
+      "name": "History Accuracy Checker",
+      "category": "education",
+      "description": "Verifikasi kostum, properti, latar zaman & kronologi"
+    },
+    {
+      "id": "children-story-writer",
+      "name": "Children Story Writer",
+      "category": "education",
+      "description": "Naskah dongeng sesuai usia, bahasa sederhana, moral tersirat"
+    },
+    {
+      "id": "reels-platform-strategist",
+      "name": "Reels Platform Strategist",
+      "category": "media_gen",
+      "description": "Hook 3 dtk, durasi, caption & hashtag per platform"
     }
   ],
   "adapters": [

@@ -18,7 +18,7 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 
 | Fitur | Keterangan |
 |---|---|
-| 📁 **Preset Project** | 44 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, **Banana Product Photo, Google Flow/Veo 3, Gamma PPT, AI Web Builder, Screenshot→Visual, Product Visual Suite, AI UX Redesign**, dll. |
+| 📁 **Preset Project** | 49 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, **Banana Product Photo, Google Flow/Veo 3, Gamma PPT, AI Web Builder, Screenshot→Visual, Product Visual Suite, AI UX Redesign**, dll. |
 | 🛠️ **125 Skills** | Multi-pilih skill, cari dengan pencarian, filter per kategori — termasuk 21 skill RAUZA |
 | 🤖 **127 Sub-Agents** | Pilih agent pendamping untuk memecah tugas kompleks — termasuk 21 agent RAUZA |
 | 🧠 **RAUZA Playbook** | Skill "RAUZA ..." mengaktifkan metodologi: data dulu, tiap temuan = aksi terukur, deliverable jelas per skill |
@@ -28,6 +28,12 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 | 🎨 **UI Adaptif** | Tampilan & aksen warna berubah sesuai project yang dipilih — hero card, tips, alur kerja, dan placeholder contoh spesifik per project |
 | 🧩 **Prompt Detail 9 Elemen** | Detail Anda otomatis dipetakan ke struktur Subjek/Tujuan/Audiens/Gaya/Spesifikasi/Kendala/Format/Kriteria Sukses — diterima semua AI generator |
 | 🎬 **Visual Pipeline** | Cukup lampirkan screenshot produk → prompt berisi 3 pipeline siap pakai: **Video** (Flow/Veo, Runway, Kling), **3D** (Meshy, Tripo, Luma), **Wireframe** (Uizard, Figma AI) |
+| 🔄 **Multi-View Model Sheet** | Karakter konsisten untuk video: 6 tampak (depan, samping kiri/kanan, belakang, atas, bawah) dengan deskripsi karakter baku yang dipakai ulang di setiap klip |
+| 🧸 **Kartun 3D & Storytelling** | Serial kartun 3D: character bible, sheet ekspresi, storyboard per episode — siap untuk Reels/IG/TikTok/FB |
+| 🕌 **Kisah Nabi (Adab Visual)** | Pedoman khusus: nabi & sahabat tidak digambarkan wajahnya (siluet/aura cahaya), sumber riwayat di caption, struktur reels 60 dtk |
+| ⚔️ **Sejarah Pahlawan** | Akurasi dulu: verifikasi kostum, properti & latar zaman sebelum generate; kronologi 4-6 scene untuk reels |
+| 🐣 **Cerita Anak** | Formula usia 4-8 tahun: hook 3 dtk → konflik sederhana → moral tersirat, warna cerah & aman ditonton |
+| 📱 **Social Reels Pack** | Adaptasi per platform: hook, durasi, caption & hashtag untuk Instagram Reels, TikTok, Facebook |
 | 🧱 **Prompt Framework** | Setiap prompt menyertakan kerangka standar [SUBJEK][GAYA][TEKNIS][KENDALA][PROMPT UTAMA][NEGATIVE][QA CHECK] yang dimengerti generator mana pun |
 | 🎯 **Output Kontekstual** | Isi prompt otomatis dipilih per jenis pekerjaan (code / media / design / data / document / coaching) — prompt video tidak berisi teori marketing, prompt marketing tidak berisi pipeline video |
 | 🔍 **Audit & Anti-Halu** | Setiap prompt diawasi blok verifikasi: klaim ber-sumber, proyeksi ber-rentang, larangan superlatif tanpa pembanding, definisi "selesai" yang terukur |

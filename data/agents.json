@@ -772,5 +772,41 @@
     "name": "Hailuo Video Director",
     "category": "media_gen",
     "description": "Prompt sinematik 6-10 dtk, kamera & subjek konsisten"
+  },
+  {
+    "id": "multiview-modeler",
+    "name": "Multi-View Modeler",
+    "category": "media_gen",
+    "description": "Sheet 6 tampak konsisten untuk turntable & aksi video"
+  },
+  {
+    "id": "cartoon-character-designer",
+    "name": "Cartoon Character Designer",
+    "category": "cinematic",
+    "description": "Desain karakter kartun: bentuk, palet, ekspresi, kostum"
+  },
+  {
+    "id": "islamic-story-editor",
+    "name": "Islamic Story Editor",
+    "category": "education",
+    "description": "Kurasi kisah: sumber sahih, adab visual, nilai akhlak"
+  },
+  {
+    "id": "history-accuracy-checker",
+    "name": "History Accuracy Checker",
+    "category": "education",
+    "description": "Verifikasi kostum, properti, latar zaman & kronologi"
+  },
+  {
+    "id": "children-story-writer",
+    "name": "Children Story Writer",
+    "category": "education",
+    "description": "Naskah dongeng sesuai usia, bahasa sederhana, moral tersirat"
+  },
+  {
+    "id": "reels-platform-strategist",
+    "name": "Reels Platform Strategist",
+    "category": "media_gen",
+    "description": "Hook 3 dtk, durasi, caption & hashtag per platform"
   }
 ]

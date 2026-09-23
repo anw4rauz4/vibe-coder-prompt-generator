@@ -760,5 +760,41 @@
     "name": "Hailuo AI Video",
     "category": "media_gen",
     "description": "Text/image-to-video: gerakan kamera, subject reference"
+  },
+  {
+    "id": "multiview-turnaround",
+    "name": "Multi-View Model Sheet",
+    "category": "media_gen",
+    "description": "Model 6 tampak: depan, samping kiri/kanan, belakang, atas, bawah — karakter konsisten"
+  },
+  {
+    "id": "cartoon-3d-story",
+    "name": "Cartoon 3D Story",
+    "category": "cinematic",
+    "description": "Karakter kartun Pixar-style, desain character & ekspresi"
+  },
+  {
+    "id": "kisah-nabi",
+    "name": "Kisah Nabi & Sahabat",
+    "category": "education",
+    "description": "Cerita islami: pedoman visual adab, sumber rujukan, nilai akhlak"
+  },
+  {
+    "id": "pahlawan-history",
+    "name": "Sejarah Pahlawan",
+    "category": "education",
+    "description": "Biografi pahlawan & sejarah: akurasi kostum, latar zaman, kronologi"
+  },
+  {
+    "id": "cerita-anak",
+    "name": "Cerita Anak",
+    "category": "education",
+    "description": "Dongeng edukatif: bahasa sederhana, durasi reels, nilai moral"
+  },
+  {
+    "id": "social-reels-pack",
+    "name": "Social Reels Pack",
+    "category": "media_gen",
+    "description": "Adaptasi konten per platform: Reels, IG, TikTok, FB — hook, durasi, caption"
   }
 ]

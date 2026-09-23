@@ -831,7 +831,17 @@ const PROJECT_ACCENTS = {
   'suno-song': { accent: '#e85d9e', accent2: '#7c5cff', icon: '🎵', vibe: 'Music Studio',
     workflow: ['1. Konsep: tema, pesan, pendengar target.', '2. Lirik berstruktur: [Verse]/[Chorus]/[Bridge] + hook yang nempel.', '3. Style of Music: genre, mood, BPM, vokal, instrumen dalam satu baris.', '4. Generate di Suno → extend/remix varian terbaik.'] },
   'hailuo-short': { accent: '#14b8c4', accent2: '#00d4ff', icon: '🌊', vibe: 'Cinematic Clips',
-    workflow: ['1. Pecah konsep jadi klip 6-10 detik, satu aksi per klip.', '2. Formula prompt: subjek + aksi + kamera + lighting + suasana.', '3. S2V: pakai gambar produk sebagai frame awal untuk konsistensi.', '4. Rangkai klip di editor + grading agar satu gaya.'] }
+    workflow: ['1. Pecah konsep jadi klip 6-10 detik, satu aksi per klip.', '2. Formula prompt: subjek + aksi + kamera + lighting + suasana.', '3. S2V: pakai gambar produk sebagai frame awal untuk konsistensi.', '4. Rangkai klip di editor + grading agar satu gaya.'] },
+  'multiview-model': { accent: '#38bdf8', accent2: '#7c5cff', icon: '🔄', vibe: 'Model Sheet',
+    workflow: ['1. Kunci deskripsi karakter baku (usia, rambut, pakaian, gaya).', '2. Generate 6 tampak: depan, samping kiri/kanan, belakang, atas, bawah.', '3. Pilih tampak terbaik sebagai referensi semua klip video.', '4. Sebut deskripsi baku identik di setiap prompt klip.'] },
+  'cartoon-3d-video': { accent: '#f472b6', accent2: '#38bdf8', icon: '🧸', vibe: '3D Serial',
+    workflow: ['1. Character bible: deskripsi baku + sheet ekspresi.', '2. Storyboard: pecah cerita jadi scene 5-8 detik.', '3. Prompt per scene dengan deskripsi karakter identik.', '4. Moral/penutup 1 kalimat + paket per platform.'] },
+  'kisah-nabi-reels': { accent: '#10b981', accent2: '#f5c518', icon: '🕌', vibe: 'Adab Visual',
+    workflow: ['1. Pilih kisah + sumber (QS/hadits/sirah).', '2. Storyboard scene tanpa wajah nabi (siluet/aura cahaya).', '3. Generate aset dengan frasa adab di tiap prompt.', '4. Rangkai reels 60 dtk + hikmah + sumber di caption.'] },
+  'pahlawan-history-video': { accent: '#ea580c', accent2: '#f5c518', icon: '⚔️', vibe: 'Sejarah Akurat',
+    workflow: ['1. Verifikasi: tahun, wilayah, kostum, properti khas.', '2. Character sheet pahlawan + latar zaman baku.', '3. Storyboard kronologi 4-6 scene.', '4. Generate video + kutipan nilai perjuangan di penutup.'] },
+  'cerita-anak-reels': { accent: '#fbbf24', accent2: '#38bdf8', icon: '🐣', vibe: 'Usia 4-8 Tahun',
+    workflow: ['1. Hook 3 detik: karakter lucu/pertanyaan.', '2. Struktur: perkenalan → masalah → 2 gagal → solusi.', '3. Generate scene warna cerah, gerakan jelas.', '4. Moral tersirat + pertanyaan ke penonton + CTA.'] }
 };
 
 const FALLBACK_PLACEHOLDER = 'Contoh: Buatkan produk digital untuk UMKM — jelaskan target pengguna, fitur utama, gaya visual, dan platform tujuan...';
@@ -1095,6 +1105,8 @@ function detectProjectFlavor(project, skills = []) {
     'image-analysis': 'media', 'image-to-video': 'media', 'image-to-banner': 'media',
     'banana-product-photo': 'media', 'google-flow-video': 'media', 'screenshot-to-visual': 'media',
     'product-visual-suite': 'media', 'suno-song': 'media', 'hailuo-short': 'media',
+    'multiview-model': 'media', 'cartoon-3d-video': 'media',
+    'kisah-nabi-reels': 'media', 'pahlawan-history-video': 'media', 'cerita-anak-reels': 'media',
     'gamma-presentation': 'document',
     'ai-web-builder': 'code', 'software-engineering': 'code',
     'dashboard': 'data', 'sales-monitoring': 'data', 'dan-marketing-analysis': 'data',
@@ -1221,6 +1233,103 @@ function buildAuditBlock(flavor, lang = 'id') {
   return lines;
 }
 
+// ============================================
+// STORYTELLING EDUKASI — panduan konten khusus (kartun 3D, kisah nabi, pahlawan, cerita anak)
+// ============================================
+const STORY_CONTENT_HINTS = {
+  'multiview-model': [
+    '## 🔄 MODEL SHEET 6 TAMPAK (WAJIB — kunci konsistensi video)',
+    'Hasilkan 6 prompt terpisah, SATU untuk setiap tampak, semuanya dari deskripsi karakter yang sama kata-per-kata:',
+    '',
+    '### Urutan & isi tiap prompt:',
+    '- **1. Tampak Depan** — wajah penuh, simetris, pose berdiri netral (T-pose atau santai).',
+    '- **2. Tampak Samping Kiri** — profil kiri, telinga & garis hidung terlihat jelas.',
+    '- **3. Tampak Samping Kanan** — profil kanan, mirror dari samping kiri (perhatikan rambut/pisah pinggir).',
+    '- **4. Tampak Belakang** — punggung penuh, detail rambut belakang & punggung baju.',
+    '- **5. Tampak Atas** — dari atas: pola rambut, bahu, kaki mengarah ke bawah frame.',
+    '- **6. Tampak Bawah** — dari bawah: telapak kaki, dagu, bayangan wajah.',
+    '',
+    '**Aturan konsistensi:**',
+    '- Tulis deskripsi karakter BAKU sekali (usia, rambut, pakaian, warna mata, gaya) lalu pakai ulang IDENTIK di keenam prompt.',
+    '- Latar putih polos / neutral gray, lighting rata (flat lighting), tanpa properti tambahan.',
+    '- Semua tampak skala & proporsi sama — sebut "same character, same outfit, same scale".',
+    '- Akhiri dengan instruksi: sheet grid 3×2 (3 kolom × 2 baris) ATAU 6 gambar terpisah.',
+    '',
+    '**Cara pakai untuk video:** pilih tampak yang paling akurat → jadikan gambar referensi (image-to-video / S2V / ingredients) untuk semua klip → sebut deskripsi baku di setiap prompt klip.'
+  ].join('\n'),
+  'cartoon-3d-video': [
+    '## 🧸 CARTUN 3D VIDEO STORY (alur produksi serial)',
+    '**Tahap 1 — Character Bible (dikerjakan dulu, dipakai selamanya):**',
+    '- Deskripsi karakter baku: usia, bentuk kepala/tubuh, rambut, mata, pakaian, warna palet, kepribadian → 1 paragraf yang DIKUNCI.',
+    '- Sheet ekspresi: senang, sedih, kaget, marah, takut (5-6 ekspresi wajah).',
+    '- Model sheet 6 tampak (lihat prinsip di bawah jika diminta).',
+    '',
+    '**Tahap 2 — Storyboard Episode:**',
+    '- Pecah cerita jadi scene 5-8 detik; tiap scene: tempat, aksi, dialog/VO, emosi karakter.',
+    '- Konsistensi latar: deskripsi lokasi baku per lokasi (dipakai ulang antar scene/episode).',
+    '',
+    '**Tahap 3 — Prompt per Scene:**',
+    '- Selalu awali dengan deskripsi karakter baku + gaya (mis. "gaya Pixar 3D") + aksi scene.',
+    '- Kamera: sebut per scene (wide, close-up, orbit, follow).',
+    '- Akhiri episode dengan moral/kesimpulan 1 kalimat.',
+    '',
+    '**Larangan:** mengubah desain karakter antar scene, mengubah gaya antar episode, adegan yang tidak ada di storyboard.'
+  ].join('\n'),
+  'kisah-nabi-reels': [
+    '## 🕌 PANDUAN KONTEN KISAH NABI (adab & kehati-hatian)',
+    '**Adab visual (WAJIB, tanpa pengecualian):**',
+    '- Nabi & sahabat TIDAK digambarkan wajahnya. Gunakan: siluet, aura cahaya, sudut dari belakang, fokus ke tangan/kaki/pemandangan.',
+    '- Setiap prompt visual WAJIB memuat frasa: "no depiction of the Prophet face — radiant light aura instead".',
+    '- Tidak menggambarkan malaikat sebagai makhluk bersayap literal; gunakan cahaya/suara.',
+    '',
+    '**Akurasi & sumber:**',
+    '- Kerjakan dari sumber yang disebut user (QS + terjemah, hadits sahih, sirah terpercaya); tandai `asumsi:` bila detail visual tidak tercatat.',
+    '- Sebut sumber (surat:ayat / riwayat) di akhir cerita & di caption.',
+    '- Tidak menambahkan dialog yang di-rekaan untuk nabi; narasi bersuara pencerita.',
+    '',
+    '**Struktur reels 60 dtk:**',
+    '- Hook (3 dtk): pertanyaan/momen paling dramatis dari kisah.',
+    '- Isi (45 dtk): 4-6 scene kartun 3D, fokus emosi & pelajaran.',
+    '- Penutup (10 dtk): hikmah 1-2 kalimat + sumber + CTA (follow/simpan).',
+    '',
+    '**Gaya visual:** kartun 3D lembut, warna hangat, latar era kuname (Arab, Mesir, dsb sesuai kisah), tanpa elemen modern.',
+    '**Larangan:** wajah nabi/sahabat, musik instrumen bila user minta versi nasyid/vokal saja, konten modern yang merusak nuansa.'
+  ].join('\n'),
+  'pahlawan-history-video': [
+    '## ⚔️ PANDUAN KONTEN SEJARAH PAHLAWAN (akurasi dulu, baru estetika)',
+    '**Verifikasi sebelum generate (WAJIB):**',
+    '- Tetapkan: nama, tahun, wilayah, kostum adat setempat, properti khas (senjata, kendaraan, bangunan).',
+    '- Daftar "bukti visual" dari sumber: foto patung/monumen, lukisan historis, deskripsi buku sejarah.',
+    '- Bila kostum tidak terdokumentasi: pilih yang paling didukung sumber + tandai `asumsi:`.',
+    '',
+    '**Konsistensi:**',
+    '- Character sheet pahlawan (6 tampak bila perlu) dipakai di semua scene.',
+    '- Latar zaman baku: tidak ada elemen modern (listrik, mobil, plastik) sebelum masa itu.',
+    '',
+    '**Struktur reels 60-90 dtk:**',
+    '- Hook: momen paling heroik/menginspirasi.',
+    '- Kronologi ringkas 4-6 scene: latar → konflik → perlawanan → hasil/warisan.',
+    '- Penutup: kutipan/nilai perjuangan + CTA.',
+    '',
+    '**Larangan:** kostum dari era/wilayah lain, senjata yang tidak khas, mengubah fakta sejarah demi dramatisasi.'
+  ].join('\n'),
+  'cerita-anak-reels': [
+    '## 🐣 PANDUAN KONTEN CERITA ANAK (usia 4-8 tahun)',
+    '**Bahasa & nada:**',
+    '- Kalimat pendek 5-8 kata, kata aktif, tanpa istilah sulit; sapa penonton ("Ayo lihat!").',
+    '- Nada hangat & playful; tanpa satire/sarcasm.',
+    '',
+    '**Struktur reels 60 dtk:**',
+    '- Hook 3 dtk: karakter lucu/pertanyaan ("Kenapa kancil menangis?").',
+    '- Isi 45 dtk: 4-6 scene — perkenalan → masalah kecil → 2 percobaan gagal → solusi pintar.',
+    '- Penutup 10 dtk: moral tersirat 1 kalimat (jangan menggurui) + pertanyaan ke penonton + CTA.',
+    '',
+    '**Visual:** warna cerah & bulat (round shapes), karakter besar bermata lebar, gerakan lambat-jelas, tanpa adegan menakutkan/gelap mendadak/loud jump-scare.',
+    '**Keamanan:** tanpa kekerasan, tanpa ajaran berbahaya, konflik diselesaikan dengan kebaikan/kepintaran.',
+    '**Larangan:** cerita terlalu panjang untuk durasi, moral yang dipaksakan, elemen horor ringan sekalipun.'
+  ].join('\n')
+};
+
 const LANG_DIRECTIVE_EN = [
   '## 🌐 OUTPUT LANGUAGE: ENGLISH',
   '- Write ALL your deliverables and explanations in **English**.',
@@ -1317,6 +1426,12 @@ function buildPrompt({ project, skills = [], agents = [], platform = {}, detail 
   const rauzaPlaybook = buildRauzaPlaybook(skills, lang);
   if (rauzaPlaybook) {
     lines.push(...rauzaPlaybook);
+    lines.push('');
+  }
+
+  // --- PANDUAN KONTEN KHUSUS (storytelling edukasi) ---
+  if (project && STORY_CONTENT_HINTS[project.id]) {
+    lines.push(STORY_CONTENT_HINTS[project.id]);
     lines.push('');
   }
 
