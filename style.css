@@ -425,7 +425,7 @@ select, textarea, input[type="text"], input:not([type]) {
   border-radius: var(--radius-sm);
   color: var(--text);
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: 16px; /* konsisten anti auto-zoom iOS di semua perangkat */
   transition: border-color 0.2s;
 }
 
@@ -666,6 +666,7 @@ textarea {
 .btn-primary, .btn-secondary {
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
+  min-height: 48px; /* touch target nyaman di semua perangkat */
 }
 
 .btn-primary {
@@ -744,6 +745,45 @@ textarea {
   color: var(--text);
 }
 
+/* TOGGLE PANEL SKILL/AGENT (collapse — hemat ruang di HP) */
+.panel-toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.panel-toggle {
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.panel-toggle.open {
+  color: var(--p-accent, var(--primary));
+  border-color: var(--p-accent, var(--primary));
+}
+
+.skill-list.collapsed,
+.agent-list.collapsed {
+  display: none;
+}
+
+/* Panel tertutup: sembunyikan juga search & toolbar-nya */
+.form-group:has(.skill-list.collapsed) .list-toolbar,
+.form-group:has(.agent-list.collapsed) .list-toolbar {
+  display: none;
+}
+
 /* FOOTER */
 .footer {
   padding: 1rem 2rem;
@@ -762,6 +802,14 @@ textarea {
   flex-direction: column;
   gap: 0.5rem;
   z-index: 1000;
+  /* KRITIS di mobile: container tidak boleh menelan ketukan user.
+     Tanpa ini, container toast yang membentang lebar di atas layar
+     memblokir klik/tap pada project list & form saat toast tampil */
+  pointer-events: none;
+}
+
+.toast-container .toast {
+  pointer-events: auto;
 }
 
 .toast {
@@ -1144,6 +1192,14 @@ textarea {
 
 /* Layar sentuh: hilangkan hover yang melekat */
 @media (hover: none) {
+  /* Semua perangkat sentuh (iPhone/iPad/Android): input >=16px anti auto-zoom */
+  select,
+  input[type="search"],
+  input[type="text"],
+  textarea {
+    font-size: 16px;
+  }
+
   .project-item:hover {
     transform: none;
     border-left-color: var(--border);

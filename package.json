@@ -1,6 +1,6 @@
 {
   "name": "rauza-prompt-generator",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Generator prompt AI dengan 120+ skills, 125+ sub-agents, 20 platform AI, dan visual pipeline screenshot-to-video/3D/wireframe",
   "main": "app.js",
   "scripts": {

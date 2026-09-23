@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="RAUZA Prompt Generator: 120+ skills, 120+ sub-agents, 21 platform AI — Banana, Google Flow, Gamma, AI Web Builder, dan lainnya.">
+  <meta name="description" content="RAUZA Prompt Generator: 134 skills, 136 sub-agents, 22 platform AI — Banana, Google Flow, Gamma, AI Web Builder, dan lainnya.">
   <meta name="theme-color" content="#0f172a">
+  <!-- PWA: bisa di-install ke layar utama HP (Tambahkan ke Layar Utama) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="RAUZA">
   <title>RAUZA Prompt Generator</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,12 +23,12 @@
       <div class="logo">
         <span class="logo-icon">🚀</span>
         <h1>RAUZA Prompt Generator</h1>
-        <span class="version">v3.0.0</span>
+        <span class="version">v3.1.0</span>
       </div>
       <div class="header-right">
         <div class="stats">
-          <span class="stat">125 Skills</span>
-          <span class="stat">129 Sub-Agents</span>
+          <span class="stat">134 Skills</span>
+          <span class="stat">136 Sub-Agents</span>
           <span class="stat">22 Platforms</span>
         </div>
         <button id="theme-toggle" class="btn-small" title="Ganti tema">☀️ Light</button>
@@ -55,7 +63,10 @@
           <div class="form-group">
             <div class="label-row">
               <label for="skill-search">2. Skills (bisa multi-pilih)</label>
-              <span id="skill-count" class="count-badge">0 dipilih</span>
+              <span class="panel-toggle-wrap">
+                <span id="skill-count" class="count-badge">0 dipilih</span>
+                <button id="skill-panel-toggle" class="panel-toggle" type="button" aria-expanded="true" aria-controls="skill-list" title="Buka/tutup panel">▼</button>
+              </span>
             </div>
             <div class="list-toolbar">
               <input type="search" id="skill-search" placeholder="🔍 Cari skill...">
@@ -70,7 +81,10 @@
           <div class="form-group">
             <div class="label-row">
               <label for="agent-search">3. Sub-Agents (bisa multi-pilih)</label>
-              <span id="agent-count" class="count-badge">0 dipilih</span>
+              <span class="panel-toggle-wrap">
+                <span id="agent-count" class="count-badge">0 dipilih</span>
+                <button id="agent-panel-toggle" class="panel-toggle" type="button" aria-expanded="true" aria-controls="agent-list" title="Buka/tutup panel">▼</button>
+              </span>
             </div>
             <div class="list-toolbar">
               <input type="search" id="agent-search" placeholder="🔍 Cari agent...">
@@ -166,7 +180,7 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>RAUZA Prompt Generator — 133 Skills, 135 Sub-Agents, 22 Platforms</p>
+      <p>RAUZA Prompt Generator — 134 Skills, 136 Sub-Agents, 22 Platforms</p>
       <p>Plug &amp; Play di 21+ AI Platforms · Screenshot → Video / 3D / Musik / Wireframe</p>
     </footer>
   </div>
@@ -196,5 +210,14 @@
   <script src="data.js"></script>
   <script src="core.js"></script>
   <script src="app.js"></script>
+  <script src="panels.js"></script>
+  <script>
+    // Registrasi service worker — agar app tetap bisa dibuka saat offline
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>

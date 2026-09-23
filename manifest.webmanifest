@@ -1,0 +1,16 @@
+{
+  "name": "RAUZA Prompt Generator",
+  "short_name": "RAUZA",
+  "description": "Generator prompt AI: 50 project preset, 134 skill, 22 platform AI — dari HP, tablet, dan laptop.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -44,21 +44,47 @@ class VibeCoderApp {
   }
 
   async init() {
-    // Restore theme tersimpan sebelum apply
     try {
-      const savedTheme = localStorage.getItem('vibe-coder-theme');
-      if (savedTheme === 'light' || savedTheme === 'dark') this.state.theme = savedTheme;
-    } catch (e) { /* storage unavailable */ }
-    this.applyTheme();
-    this.loadCustomData();
-    this.loadHistory();
-    this.loadImages();
-    this.loadPlatformLangs();
-    await this.loadData();
-    this.restoreState();
-    this.render();
-    this.restoreLangControl();
-    this.attachEvents();
+      // Restore theme tersimpan sebelum apply
+      try {
+        const savedTheme = localStorage.getItem('vibe-coder-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') this.state.theme = savedTheme;
+      } catch (e) { /* storage unavailable (private mode) */ }
+      this.applyTheme();
+      this.loadCustomData();
+      this.loadHistory();
+      this.loadImages();
+      this.loadPlatformLangs();
+      await this.loadData();
+      this.restoreState();
+      this.render();
+      this.restoreLangControl();
+    } catch (err) {
+      // Jangan biarkan app mati diam-diam: tampilkan pesan agar user tahu
+      try { this.showErrorBanner(err); } catch (e2) { console.error(err); }
+    }
+    // attachEvents WAJIB tetap jalan meski langkah lain gagal —
+    // kalau tidak, seluruh tombol & list jadi mati (tidak bisa diklik)
+    try {
+      this.attachEvents();
+    } catch (err) {
+      console.error('attachEvents gagal:', err);
+      try { this.showErrorBanner(err); } catch (e2) {}
+    }
+  }
+
+  showErrorBanner(err) {
+    let banner = document.getElementById('boot-error-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'boot-error-banner';
+      banner.setAttribute('role', 'alert');
+      banner.style.cssText = 'margin:1rem;padding:0.9rem 1.1rem;border-radius:10px;background:#7f1d1d;color:#fecaca;font-size:0.85rem;line-height:1.5;z-index:2000;';
+      const anchor = document.querySelector('.content') || document.querySelector('.main') || document.body;
+      anchor.insertBefore(banner, anchor.firstChild);
+    }
+    banner.innerHTML = '<strong>⚠️ Ada bagian app yang gagal dimuat.</strong><br>Halaman tetap bisa dipakai sebagian, tapi disarankan muat ulang (pull-to-refresh).<br><code style="opacity:.8">' +
+      String(err && err.message || err).replace(/[<>&]/g, '') + '</code>';
   }
 
   restoreLangControl() {
@@ -612,7 +638,11 @@ class VibeCoderApp {
   // ============================================
 
   attachEvents() {
-    const $ = (id) => document.getElementById(id);
+    const $ = (id) => {
+      const el = document.getElementById(id);
+      if (!el) console.warn('Elemen tidak ditemukan (abaikan bila cache lama): #' + id);
+      return el || { addEventListener() {} };
+    };
 
     // --- Project selection (click + keyboard) ---
     $('project-list').addEventListener('click', (e) => {
@@ -1338,6 +1368,13 @@ class VibeCoderApp {
 // ============================================
 // INITIALIZE APP
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+function bootApp() {
+  if (window.vibeCoder) return;
   window.vibeCoder = new VibeCoderApp();
-});
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootApp);
+} else {
+  // Script termuat setelah DOM siap (cache/urutan load) — jangan tunggu event
+  bootApp();
+}
