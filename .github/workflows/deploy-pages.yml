@@ -31,7 +31,6 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-          build_type: workflow
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
