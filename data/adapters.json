@@ -18,5 +18,7 @@
   { "id": "3d-gen", "name": "🏗️ 3D Generator (Meshy/Tripo/Luma)", "features": ["image-to-3d", "text-to-3d", "pbr-texture"] },
   { "id": "cursor-agent", "name": "🖥️ AI Code Agent (Cursor/Copilot/Windsurf)", "features": ["repo-edit", "terminal", "mcp"] },
   { "id": "voice-gen", "name": "🎙️ Voice & Avatar (ElevenLabs/HeyGen)", "features": ["tts", "voice-clone", "avatar-video"] },
+  { "id": "suno", "name": "🎵 Suno (Musik AI)", "features": ["song-gen", "lyrics", "style-prompt", "extend"] },
+  { "id": "hailuo", "name": "🌊 Hailuo AI (Video)", "features": ["text-to-video", "image-to-video", "camera-control", "subject-ref"] },
   { "id": "generic", "name": "Generic", "features": ["fallback"] }
 ]

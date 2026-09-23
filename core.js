@@ -254,6 +254,34 @@ const PLATFORM_TEMPLATES = {
       '- **Brief Avatar:** lengkap per scene'
     ]
   },
+  suno: {
+    execution: [
+      '1. **Konsep:** Tentukan tema, pesan, dan pendengar target lagu.',
+      '2. **Lirik:** Tulis berstruktur dengan tag [Verse]/[Chorus]/[Bridge]/[Outro]; sebut nama/brand bila perlu.',
+      '3. **Style of Music:** Satu baris padat: genre + subgenre, mood, tempo (BPM), jenis vokal, instrumen kunci.',
+      '4. **Mode:** Custom Mode (lirik + style) atau Simple (deskripsi saja); [Instrumental] bila tanpa vokal.',
+      '5. **Validate:** Suku kata per baris masuk akal dinyanyikan; hindari kata sulit diuapkan.'
+    ],
+    output: [
+      '- **Kotak 1 — Lyrics:** lirik berstruktur lengkap dengan tag',
+      '- **Kotak 2 — Style of Music:** maksimal ±200 karakter',
+      '- **Varian:** 2 alternatif gaya + saran extend/remix'
+    ]
+  },
+  hailuo: {
+    execution: [
+      '1. **Klip 6-10 detik:** Satu prompt = satu klip; aksi tunggal yang jelas.',
+      '2. **Formula:** Subjek + aksi + gerakan kamera + lighting + suasana; hindari multi-aksi berantakan.',
+      '3. **T2V vs S2V:** Text-to-video untuk scene bebas; image-to-video (S2V) bila produk/wajah harus konsisten — gambar = frame awal.',
+      '4. **Kamera:** Sebut eksplisit (orbit, dolly-in, pan, handheld, slow motion).',
+      '5. **Validate:** Konsistensi produk antar klip; rencana penyambungan di editor.'
+    ],
+    output: [
+      '- **Prompt per klip:** siap-tempel, satu blok kode per klip',
+      '- **Rencana klip:** tabel urutan klip → durasi → transisi',
+      '- **Spesifikasi:** rasio (16:9/9:16), durasi total, referensi gambar bila S2V'
+    ]
+  },
   generic: {
     execution: [
       '1. **Parse Intent:** Analisis project overview dan detail.',
@@ -799,7 +827,11 @@ const PROJECT_ACCENTS = {
   'product-visual-suite': { accent: '#e8b4ff', accent2: '#7c5cff', icon: '🧴', vibe: 'Brand Kit Visual',
     workflow: ['1. Kunci brand: palet, mood, dan gaya visual dipakai di SEMUA aset.', '2. Foto hero: latar, properti, lighting, rasio per marketplace.', '3. Video: storyboard 15 detik + VO + musik + teks layar.', '4. 3D & banner: turntable render + banner per platform (Meta/TikTok/MP).'] },
   'ai-ux-redesign': { accent: '#f59e0b', accent2: '#7c5cff', icon: '🎨', vibe: 'UX Doctor',
-    workflow: ['1. Audit screenshot: hierarki, kontras, spacing, alur pengguna.', '2. Daftar masalah UX diurutkan dari dampak terbesar.', '3. Wireframe ulang: struktur per layar + alur baru.', '4. Design tokens: warna, tipografi, spacing — siap handoff Figma.'] }
+    workflow: ['1. Audit screenshot: hierarki, kontras, spacing, alur pengguna.', '2. Daftar masalah UX diurutkan dari dampak terbesar.', '3. Wireframe ulang: struktur per layar + alur baru.', '4. Design tokens: warna, tipografi, spacing — siap handoff Figma.'] },
+  'suno-song': { accent: '#e85d9e', accent2: '#7c5cff', icon: '🎵', vibe: 'Music Studio',
+    workflow: ['1. Konsep: tema, pesan, pendengar target.', '2. Lirik berstruktur: [Verse]/[Chorus]/[Bridge] + hook yang nempel.', '3. Style of Music: genre, mood, BPM, vokal, instrumen dalam satu baris.', '4. Generate di Suno → extend/remix varian terbaik.'] },
+  'hailuo-short': { accent: '#14b8c4', accent2: '#00d4ff', icon: '🌊', vibe: 'Cinematic Clips',
+    workflow: ['1. Pecah konsep jadi klip 6-10 detik, satu aksi per klip.', '2. Formula prompt: subjek + aksi + kamera + lighting + suasana.', '3. S2V: pakai gambar produk sebagai frame awal untuk konsistensi.', '4. Rangkai klip di editor + grading agar satu gaya.'] }
 };
 
 const FALLBACK_PLACEHOLDER = 'Contoh: Buatkan produk digital untuk UMKM — jelaskan target pengguna, fitur utama, gaya visual, dan platform tujuan...';
@@ -1062,7 +1094,7 @@ function detectProjectFlavor(project, skills = []) {
     'video-cinematic': 'media', 'video-ads': 'media', 'short-form': 'media', 'ai-video': 'media',
     'image-analysis': 'media', 'image-to-video': 'media', 'image-to-banner': 'media',
     'banana-product-photo': 'media', 'google-flow-video': 'media', 'screenshot-to-visual': 'media',
-    'product-visual-suite': 'media',
+    'product-visual-suite': 'media', 'suno-song': 'media', 'hailuo-short': 'media',
     'gamma-presentation': 'document',
     'ai-web-builder': 'code', 'software-engineering': 'code',
     'dashboard': 'data', 'sales-monitoring': 'data', 'dan-marketing-analysis': 'data',

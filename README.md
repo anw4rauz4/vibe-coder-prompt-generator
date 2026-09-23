@@ -10,7 +10,7 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 >
 > 🚀 **v3.0 — Screenshot to Anything** — Pilih project **📸 Screenshot → Visual**, lampirkan 1 screenshot produk, dan dapatkan prompt siap-tempel untuk 3 pipeline sekaligus: video marketing (Google Flow/Veo 3, Runway, Kling), render 3D (Meshy, Tripo, Luma), dan wireframe/redesign (Uizard, Figma AI). UI ikut berubah: aksen warna, hero card, tips, dan contoh detail menyesuaikan project yang dipilih.
 >
-> 🌐 **Plug-and-play 20 platform** — prompt sama diterima di banana, Google Flow, Gamma, Lovable/Bolt/v0, Midjourney, Meshy, dan 10 platform chatbot klasik. Paket skill RAUZA lengkap (21 sub-skill, 62 engine CLI, 13 adapter runtime, web hub) ada di [`skills/dan/`](skills/dan/) — buka [`skills/dan/site/index.html`](skills/dan/site/index.html) untuk hub browser interaktif.
+> 🌐 **Plug-and-play 22 platform** — prompt sama diterima di banana, Google Flow, Gamma, Lovable/Bolt/v0, Midjourney, Meshy, dan 12 platform chatbot & generator klasik. Paket skill RAUZA lengkap (21 sub-skill, 62 engine CLI, 13 adapter runtime, web hub) ada di [`skills/dan/`](skills/dan/) — buka [`skills/dan/site/index.html`](skills/dan/site/index.html) untuk hub browser interaktif.
 
 ---
 
@@ -18,12 +18,12 @@ Pilih project → pilih skills & sub-agents → tulis detail → lampirkan gamba
 
 | Fitur | Keterangan |
 |---|---|
-| 📁 **Preset Project** | 42 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, **Banana Product Photo, Google Flow/Veo 3, Gamma PPT, AI Web Builder, Screenshot→Visual, Product Visual Suite, AI UX Redesign**, dll. |
+| 📁 **Preset Project** | 44 template project siap pakai: Web App, Mobile App, Dashboard, Video Sinematik, AI SaaS, UI/UX, Sales Strategy, Bahan Ajar, **Banana Product Photo, Google Flow/Veo 3, Gamma PPT, AI Web Builder, Screenshot→Visual, Product Visual Suite, AI UX Redesign**, dll. |
 | 🛠️ **125 Skills** | Multi-pilih skill, cari dengan pencarian, filter per kategori — termasuk 21 skill RAUZA |
 | 🤖 **127 Sub-Agents** | Pilih agent pendamping untuk memecah tugas kompleks — termasuk 21 agent RAUZA |
 | 🧠 **RAUZA Playbook** | Skill "RAUZA ..." mengaktifkan metodologi: data dulu, tiap temuan = aksi terukur, deliverable jelas per skill |
 | 🎭 **Persona Profesi** | 10 blueprint profesi (coach, engineer konstruksi, arsitek, dst) — struktur prompt berbeda sesuai kebutuhan tiap profesi |
-| 🌐 **20 Platform AI** | Template prompt berbeda untuk ChatGPT, Claude, Gemini, Grok, Perplexity, Llama, Mistral, DeepSeek, Qwen, **Banana (Gemini Image), Google Flow/Veo 3, Gamma/Tome, AI Web Builder (Lovable/Bolt/v0), AI UX Tool, Image Gen (Midjourney/DALL·E/SD), Video Gen (Runway/Kling/Pika), 3D Gen (Meshy/Tripo/Luma), AI Code Agent, Voice & Avatar**, dan generic |
+| 🌐 **22 Platform AI** | Template prompt berbeda untuk ChatGPT, Claude, Gemini, Grok, Perplexity, Llama, Mistral, DeepSeek, Qwen, **Banana (Gemini Image), Google Flow/Veo 3, Gamma/Tome, AI Web Builder (Lovable/Bolt/v0), AI UX Tool, Suno (Musik), Hailuo AI (Video), Image Gen (Midjourney/DALL·E/SD), Video Gen (Runway/Kling/Pika), 3D Gen (Meshy/Tripo/Luma), AI Code Agent, Voice & Avatar**, dan generic |
 | 🗣️ **Bahasa Output ID/EN** | Pilih bahasa hasil prompt: Indonesia atau English — pilihan **diingat otomatis per platform AI** (mis. ChatGPT selalu EN, Gemini selalu ID) |
 | 🎨 **UI Adaptif** | Tampilan & aksen warna berubah sesuai project yang dipilih — hero card, tips, alur kerja, dan placeholder contoh spesifik per project |
 | 🧩 **Prompt Detail 9 Elemen** | Detail Anda otomatis dipetakan ke struktur Subjek/Tujuan/Audiens/Gaya/Spesifikasi/Kendala/Format/Kriteria Sukses — diterima semua AI generator |

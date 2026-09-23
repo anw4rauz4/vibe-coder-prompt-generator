@@ -760,5 +760,17 @@
     "name": "RAUZA Staying Updated",
     "category": "ai_modern",
     "description": "Digest mingguan sumber terpercaya, adopsi vs hype"
+  },
+  {
+    "id": "suno-producer",
+    "name": "Suno Music Producer",
+    "category": "media_gen",
+    "description": "Lirik, struktur lagu, style prompt Suno v4"
+  },
+  {
+    "id": "hailuo-director",
+    "name": "Hailuo Video Director",
+    "category": "media_gen",
+    "description": "Prompt sinematik 6-10 dtk, kamera & subjek konsisten"
   }
 ]

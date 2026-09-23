@@ -698,6 +698,52 @@ window.EMBEDDED_DATA = {
       }
     },
     {
+      "id": "suno-song",
+      "name": "🎵 Suno Song",
+      "desc": "Lagu lengkap AI: lirik, gaya, struktur siap-generate",
+      "category": "media_gen",
+      "skills": [
+        "suno-music",
+        "copywriting-ads",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "suno-producer",
+        "dan-media-creator"
+      ],
+      "persona": "creative-producer",
+      "accent": "#e85d9e",
+      "accent2": "#7c5cff",
+      "tips": "Prompt disusun jadi 2 kotak siap-tempel: Custom Mode (lirik berstruktur [Verse]/[Chorus]) + Style of Music (genre, mood, tempo, vokal). Tips: pakai [Instrumental] untuk versi tanpa vokal.",
+      "placeholders": {
+        "detail": "Contoh: Lagu pop Indonesia ceria untuk ulang tahun anak 7 tahun — vokal anak perempuan riang, tempo upbeat 120 BPM, ada sebutan nama 'Aisyah' di chorus, durasi 2-3 menit."
+      }
+    },
+    {
+      "id": "hailuo-short",
+      "name": "🌊 Hailuo Video",
+      "desc": "Video pendek sinematik via Hailuo AI (MiniMax)",
+      "category": "media_gen",
+      "skills": [
+        "hailuo-video",
+        "cinematic-video",
+        "camera-movement",
+        "lighting-mood",
+        "prompt-detail-engineering"
+      ],
+      "agents": [
+        "hailuo-director",
+        "cinematic-director"
+      ],
+      "persona": "creative-producer",
+      "accent": "#14b8c4",
+      "accent2": "#00d4ff",
+      "tips": "Prompt Hailuo efektif 6-10 detik per klip: subjek + aksi + gerakan kamera + lighting. Untuk video panjang, pecah jadi beberapa klip lalu sambung di editor. Manfaatkan S2V (image-to-video) untuk konsistensi produk.",
+      "placeholders": {
+        "detail": "Contoh: Klip 8 dtk produk sepatu lari — kamera orbit mengelilingi sepatu di atas podium beton, latar studio gelap dengan rim light biru, partikel debu mengambang, slow motion."
+      }
+    },
+    {
       "id": "ai-ux-redesign",
       "name": "🎨 AI UX Redesign",
       "desc": "Desain ulang UI dengan AI (Uizard, Galileo, Figma AI)",
@@ -1522,6 +1568,18 @@ window.EMBEDDED_DATA = {
       "name": "RAUZA Visual Director",
       "category": "media_gen",
       "description": "Irama visual, palet brand, konsistensi gaya lintas aset"
+    },
+    {
+      "id": "suno-music",
+      "name": "Suno Music AI",
+      "category": "media_gen",
+      "description": "Lagu lengkap: lirik, genre, mood, struktur [Verse]/[Chorus]"
+    },
+    {
+      "id": "hailuo-video",
+      "name": "Hailuo AI Video",
+      "category": "media_gen",
+      "description": "Text/image-to-video: gerakan kamera, subject reference"
     }
   ],
   "agents": [
@@ -2286,6 +2344,18 @@ window.EMBEDDED_DATA = {
       "name": "RAUZA Staying Updated",
       "category": "ai_modern",
       "description": "Digest mingguan sumber terpercaya, adopsi vs hype"
+    },
+    {
+      "id": "suno-producer",
+      "name": "Suno Music Producer",
+      "category": "media_gen",
+      "description": "Lirik, struktur lagu, style prompt Suno v4"
+    },
+    {
+      "id": "hailuo-director",
+      "name": "Hailuo Video Director",
+      "category": "media_gen",
+      "description": "Prompt sinematik 6-10 dtk, kamera & subjek konsisten"
     }
   ],
   "adapters": [
@@ -2464,6 +2534,26 @@ window.EMBEDDED_DATA = {
         "tts",
         "voice-clone",
         "avatar-video"
+      ]
+    },
+    {
+      "id": "suno",
+      "name": "🎵 Suno (Musik AI)",
+      "features": [
+        "song-gen",
+        "lyrics",
+        "style-prompt",
+        "extend"
+      ]
+    },
+    {
+      "id": "hailuo",
+      "name": "🌊 Hailuo AI (Video)",
+      "features": [
+        "text-to-video",
+        "image-to-video",
+        "camera-control",
+        "subject-ref"
       ]
     },
     {

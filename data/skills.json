@@ -748,5 +748,17 @@
     "name": "RAUZA Visual Director",
     "category": "media_gen",
     "description": "Irama visual, palet brand, konsistensi gaya lintas aset"
+  },
+  {
+    "id": "suno-music",
+    "name": "Suno Music AI",
+    "category": "media_gen",
+    "description": "Lagu lengkap: lirik, genre, mood, struktur [Verse]/[Chorus]"
+  },
+  {
+    "id": "hailuo-video",
+    "name": "Hailuo AI Video",
+    "category": "media_gen",
+    "description": "Text/image-to-video: gerakan kamera, subject reference"
   }
 ]
